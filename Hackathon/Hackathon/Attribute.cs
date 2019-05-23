@@ -8,39 +8,23 @@ using System.IO;
 namespace Hackathon {
     public class Attribute {
 
+        private readonly Dictionary<String, DataType> dataTypeNames = new Dictionary<string, DataType> {
+            ["Int32"] = DataType.STRING,
+            ["Single"] = DataType.FLOAT,
+            ["Boolean"] = DataType.BOOLEAN,
+            ["String"] = DataType.STRING,
+            ["DateTime"] = DataType.DATE,
+            ["ImagePath"] = DataType.PATH
+        };
         public DataType Type;
         public Object Value;
-        
-        //Builder for the types int, float, bool, string, datetime and imagepath. 
+         
         public Attribute(Object attribute) {
-            
-            switch (attribute.GetType().Name) {
-                case "Int32":
-                    Type = DataType.INTEGER;
-                    Value = attribute;
-                    break;
-                case "Single":
-                    Type = DataType.FLOAT;
-                    Value = attribute;
-                    break;
-                case "Boolean":
-                    Type = DataType.BOOLEAN;
-                    Value = attribute;
-                    break;
-                case "String":
-                    Type = DataType.STRING;
-                    Value = attribute;
-                    break;
-                case "DateTime":
-                    Type = DataType.DATE;
-                    Value = attribute;
-                    break;
-                case "ImagePath"://TODO: implémenter la classe
-                    Type = DataType.PATH;
-                    Value = attribute;
-                default:
-                    throw new Exception("Valeur érronée."); 
-            }
+            String className = attribute.GetType().Name;
+            if (!dataTypeNames.ContainsKey(className))
+                return;//TODO : Should throw an error
+            Type = dataTypeNames[className];
+            Value = attribute;
         }
 
     }
