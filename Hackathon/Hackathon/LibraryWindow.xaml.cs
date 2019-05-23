@@ -36,6 +36,8 @@ namespace Hackathon
         {
             //EDIT STRUCTURE BIBLIO
             UpdateLibraryWindow window = new UpdateLibraryWindow();
+            window.Owner = this;
+            window.WindowState = this.WindowState;
         }
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
