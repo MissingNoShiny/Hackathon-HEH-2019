@@ -79,6 +79,8 @@ namespace Hackathon
         {
             //CREER NOUVELLE BIBLIO
             UpdateLibraryWindow window = new UpdateLibraryWindow();
+            window.Owner = this;
+            window.WindowState = this.WindowState;
         }
         private void Edit_button(object sender, RoutedEventArgs e)
         {
@@ -101,6 +103,7 @@ namespace Hackathon
             else
             {
                 page_title.Content = "BIBLIOTHÈQUES";
+                Content_Visibility();
                 open_button.Width = 50;
                 library_list.Width = this.Width;
                 library_list.Height = this.Height - 100;
@@ -126,6 +129,17 @@ namespace Hackathon
             }
             else { Left = 300; Open_Panel(); }
         }
+        private void Content_Visibility()
+        {
+            open_button.Width = 150;
+            library_list.Width = this.Width;
+            search_box.Width = 150;
+            search_button.Width = 25;
+            navigation_button.Width = 50;
+            close_navigation_button.Width = 0;
+            navigation_button.Focusable = true;
+            close_navigation_button.Focusable = false;
+        }
         public void Admin_Mode()
         {
             if (add_button.Width == 0)
@@ -135,7 +149,7 @@ namespace Hackathon
                 page_content.Content = "Aucune bibliothèque";
                 add_button.Width = 50;
                 delete_button.Width = 50;
-                open_button.Width = 150;                
+                Content_Visibility();
             }
             else
             {
@@ -143,11 +157,7 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 add_button.Width = 0;
                 delete_button.Width = 0;
-            }
-            navigation_button.Width = 50;
-            close_navigation_button.Width = 0;
-            navigation_button.Focusable = true;
-            close_navigation_button.Focusable = false;
+            }            
         }
         
         public void Display_Fullscreen (bool fullscreen)
@@ -172,7 +182,13 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 page_content.Foreground = new SolidColorBrush(Colors.Black);
-                //library_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                search_box.Background= new SolidColorBrush(Colors.White);
+                search_box.Foreground = new SolidColorBrush(Colors.Black);
+                library_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                open_button.Foreground = new SolidColorBrush(Colors.Black);
+                open_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/open_button_light.png")));
+                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
+                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));
                 maximize_button.Opacity = 1;
                 maximize_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 maximize_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/maximize_button_light.png")));
@@ -191,7 +207,13 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 page_content.Foreground = new SolidColorBrush(Colors.White);
-                //library_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                search_box.Foreground = new SolidColorBrush(Colors.White);
+                library_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                open_button.Foreground = new SolidColorBrush(Colors.White);
+                open_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/open_button.png")));
+                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
+                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button.png")));
                 maximize_button.Opacity = 0.6;
                 maximize_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 maximize_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/maximize_button.png")));
@@ -212,6 +234,7 @@ namespace Hackathon
             if (search_box.Text == "Rechercher")
             {
                 search_box.Text = "";
+                search_box.Opacity = 1;
             }
         }
 
@@ -220,6 +243,31 @@ namespace Hackathon
             if (search_box.Text == "")
             {
                 search_box.Text = "Rechercher";
+                search_box.Opacity = 0.4;
+            }
+        }
+
+        private void Search_Button(object sender, RoutedEventArgs e)
+        {
+            if (search_box.Text != "" && search_box.Text != "Rechercher")
+            {
+                    Search_field(search_box.Text);
+            }
+        }
+
+        private void Enter_search_key(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return){
+                Search_field(search_box.Text);
+            }
+        }
+
+        private void Search_field(string field)
+        {
+            if (search_box.Text != "" && search_box.Width > 0)
+            {
+                //lance la recherche
+                MessageBox.Show("Recherche de : "+field);
             }
         }
     }

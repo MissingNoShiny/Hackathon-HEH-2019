@@ -34,5 +34,26 @@ namespace Hackathon {
             }
             return false;
         }
+
+        public void AddValue(Attribute value) {
+            Values.Add(value);
+        }
+
+        public void RemoveValue(int index) {
+            Values.RemoveAt(index);
+        }
+
+        public void IsNull() {
+            return Values.All(x => x.Value == null);
+        }
+
+        //Reorganizes the values of an Item based on a List containing the old index of each value at its new index
+        public void ReorganizeValues(List<int> newOrder) {
+            if (newOrder.Count != Values.Count)
+                return; //TODO : Should throw an error
+            List<Attribute> newValues = new List<Attribute>();
+            foreach (int oldIndex in newOrder)
+                newValues.Add(Values[oldIndex]);
+        }
     }
 }
