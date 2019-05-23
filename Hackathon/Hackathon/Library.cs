@@ -21,8 +21,8 @@ namespace Hackathon {
 
         public String Name;
 
-        public Library() {
-
+        public Library(String name) {
+            Name = name;
         }
 
         //Add a given item
@@ -63,8 +63,11 @@ namespace Hackathon {
             if (!AttributeNames.Contains(attributeName))
                 return;
             int index = AttributeNames.IndexOf(attributeName);
-            foreach (Item item in Items)
+            foreach (Item item in Items) {
                 item.RemoveValue(index);
+                if (item.IsNull())
+                    Items.Remove(item);
+            }
             AttributeTypes.Remove(attributeName);
             AttributeNames.Remove(attributeName);
         }
@@ -79,6 +82,20 @@ namespace Hackathon {
                 newOrder.Add(AttributeNames.IndexOf(attributeName));
             foreach (Item item in Items)
                 item.ReorganizeValues(newOrder);
+        }
+
+        //Searches an item in the library
+        public List<Item> Search(String search) {
+            List<Item> match = new List<Item>();
+            foreach (Item item in Items) {
+                for(int i = 0; i < AttributeNames.Count; i++) {
+                    if (AttributeNames[i].Contains(search)) {
+                        match.Add(item);
+                        break;
+                    }   
+                }
+            }
+            return match;
         }
     }
 }

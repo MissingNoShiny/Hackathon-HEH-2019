@@ -19,6 +19,7 @@ namespace Hackathon
     /// </summary>
     public partial class LibraryWindow : Window
     {
+        Library library;
         public LibraryWindow()
         {
             InitializeComponent();
