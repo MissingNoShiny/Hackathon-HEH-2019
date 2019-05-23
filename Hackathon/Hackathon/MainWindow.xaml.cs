@@ -78,6 +78,7 @@ namespace Hackathon
         private void Add_button(object sender, RoutedEventArgs e)
         {
             //CREER NOUVELLE BIBLIO
+            UpdateLibraryWindow window = new UpdateLibraryWindow();
         }
         private void Edit_button(object sender, RoutedEventArgs e)
         {
