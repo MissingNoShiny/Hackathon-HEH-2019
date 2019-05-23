@@ -18,7 +18,7 @@ namespace Hackathon
     public partial class MainWindow : Window
     {
         LibraryManager Libman = new LibraryManager();
-        PanelWindow panelWindow = new PanelWindow();
+        PanelWindow panelWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace Hackathon
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
 
+            panelWindow = new PanelWindow(this);
             panelWindow.Owner = this;
             panelWindow.EnableBlur();
             panelWindow.WindowState = WindowState;
@@ -44,27 +45,6 @@ namespace Hackathon
             Application.Current.MainWindow = this;
         }
         /*BUTTONS CLICK*/
-
-        /*
-        private void Open_Navigation_Button(object sender, RoutedEventArgs e)
-        {
-            navigation_button.Width = 0;
-            close_navigation_button.Width = 50;
-            navigation_button.Focusable = false;
-            close_navigation_button.Focusable = true;
-            Open_Panel();
-        }
-        private void Close_Navigation_Button(object sender, RoutedEventArgs e)
-        {
-            navigation_button.Width = 50;
-            close_navigation_button.Width = 0;
-            navigation_button.Focusable = true;
-            close_navigation_button.Focusable = false;
-            var pannelwindow = Application.Current.Windows.OfType<PanelWindow>().FirstOrDefault();
-            pannelwindow.Close();
-        }
-        */
-
         private void Navigation_Button(object sender, RoutedEventArgs e) {
             if (panelWindow.Visibility == Visibility.Collapsed)
                 panelWindow.Visibility = Visibility.Visible;
@@ -125,29 +105,6 @@ namespace Hackathon
                 Content_Visibility();                
             }
         }
-
-        /*
-        private void Open_Panel()
-        {
-            if (Left >= 300)
-            {
-                PanelWindow pannel = new PanelWindow();
-                pannel.Owner = this;
-                pannel.EnableBlur();
-                pannel.WindowState = this.WindowState;
-                if (add_button.Width == 0)
-                {
-                    pannel.admin_button.Content = "Mode avancé";
-                }
-                else
-                {
-                    pannel.admin_button.Content = "Utilisateur";
-                }
-                pannel.Show();
-            }
-            else { Left = 300; Open_Panel(); }
-        }
-        */
 
         private void UpdatePanelWindow() {
             if (Left >= 300) {

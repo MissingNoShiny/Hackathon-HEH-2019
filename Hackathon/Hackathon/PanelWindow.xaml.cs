@@ -27,8 +27,11 @@ namespace Hackathon
 
         private uint _blurBackgroundColor = 0x550000; /*ABE_end*/
 
-        public PanelWindow()
+        MainWindow mainWindow;
+
+        public PanelWindow(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             DataContext = this;
             InitializeComponent();
             this.Show();
@@ -41,10 +44,9 @@ namespace Hackathon
         /*BUTTONS CLICK*/
         private void Admin_Button(object sender, RoutedEventArgs e)
         {
-            var mainWindow = (Application.Current.MainWindow as MainWindow);
             mainWindow.Admin_Mode();
             Owner.Focus();
-            this.Close();
+            Visibility = Visibility.Collapsed;
         }        
         private void About_Button(object sender, RoutedEventArgs e)
         {
@@ -76,7 +78,6 @@ namespace Hackathon
                 this.WindowState = Owner.WindowState;
                 if (WindowState == WindowState.Maximized)
                 { 
-                    var mainWindow = (Application.Current.MainWindow as MainWindow);
                     mainWindow.Display_Fullscreen(true);
                     settings_button.Margin = new Thickness(10, 0, 0, 50);
                     page_title.Margin = new Thickness(25, 20, 75, 0);
@@ -84,7 +85,6 @@ namespace Hackathon
                 }
                 else
                 {
-                    var mainWindow = (Application.Current.MainWindow as MainWindow);
                     mainWindow.Display_Fullscreen(false);
                     settings_button.Margin = new Thickness(10, 0, 0, 10);
                     page_title.Margin = new Thickness(25, 50, 75, 0);
