@@ -6,5 +6,8 @@ using System.Threading.Tasks;
 
 namespace Hackathon {
     public class Attribute {
+        public Attribute(Object attribute) {
+
+        }
     }
 }

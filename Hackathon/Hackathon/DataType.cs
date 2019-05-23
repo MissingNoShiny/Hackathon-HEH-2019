@@ -8,6 +8,7 @@ namespace Hackathon {
     public enum DataType {
         STRING,
         INTEGER,
+        FLOAT,
         DATE,
         BOOLEAN,
         PATH
