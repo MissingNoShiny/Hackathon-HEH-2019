@@ -42,19 +42,19 @@
             </Button.Background>
         </Button>
         <Grid Margin="0,65,0,0">
-            <DataGrid  x:Name="library_list"></DataGrid>
+            <DataGrid  x:Name="library_list" Width="0" BorderBrush="Black" Opacity="0.1" ></DataGrid>
         </Grid>
-        <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
+        <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/add_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="delete_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,165.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" >
+        <Button x:Name="delete_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,165.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/delete_button.png"/>
             </Button.Background>
         </Button>        
-        <Button x:Name="open_button" Padding="20,0,50,4" Content="Ouvrir" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Open_button" Focusable="False" >
+        <Button x:Name="open_button" Padding="20,0,50,4" Content="Ouvrir" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Open_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/open_button.png"/>
             </Button.Background>

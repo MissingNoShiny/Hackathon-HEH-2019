@@ -79,6 +79,8 @@ namespace Hackathon
         {
             //CREER NOUVELLE BIBLIO
             UpdateLibraryWindow window = new UpdateLibraryWindow();
+            window.Owner = this;
+            window.WindowState = this.WindowState;
         }
         private void Edit_button(object sender, RoutedEventArgs e)
         {
@@ -135,7 +137,8 @@ namespace Hackathon
                 page_content.Content = "Aucune bibliothèque";
                 add_button.Width = 50;
                 delete_button.Width = 50;
-                open_button.Width = 150;                
+                open_button.Width = 150;
+                library_list.Width = this.Width;
             }
             else
             {
@@ -172,7 +175,13 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 page_content.Foreground = new SolidColorBrush(Colors.Black);
-                //library_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                search_box.Background= new SolidColorBrush(Colors.White);
+                search_box.Foreground = new SolidColorBrush(Colors.Black);
+                library_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                open_button.Foreground = new SolidColorBrush(Colors.Black);
+                open_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/open_button_light.png")));
+                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
+                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));
                 maximize_button.Opacity = 1;
                 maximize_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 maximize_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/maximize_button_light.png")));
@@ -191,7 +200,13 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 page_content.Foreground = new SolidColorBrush(Colors.White);
-                //library_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                search_box.Foreground = new SolidColorBrush(Colors.White);
+                library_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                open_button.Foreground = new SolidColorBrush(Colors.White);
+                open_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/open_button.png")));
+                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
+                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button.png")));
                 maximize_button.Opacity = 0.6;
                 maximize_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 maximize_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/maximize_button.png")));
