@@ -123,6 +123,7 @@ namespace Hackathon
                     pannel.admin_button.Content = "Utilisateur";
                 }
                 pannel.Show();
+                
             }
             else { Left = 300; Open_Panel(); }
         }
