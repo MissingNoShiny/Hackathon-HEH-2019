@@ -91,6 +91,7 @@
     <Compile Include="DataType.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Library.cs" />
+	<Compile Include="LibraryManager.cs" />
     <Compile Include="LibraryWindow.xaml.cs">
       <DependentUpon>LibraryWindow.xaml</DependentUpon>
     </Compile>
