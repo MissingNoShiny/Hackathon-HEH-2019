@@ -63,8 +63,11 @@ namespace Hackathon {
             if (!AttributeNames.Contains(attributeName))
                 return;
             int index = AttributeNames.IndexOf(attributeName);
-            foreach (Item item in Items)
+            foreach (Item item in Items) {
                 item.RemoveValue(index);
+                if (item.IsNull())
+                    Items.Remove(item);
+            }
             AttributeTypes.Remove(attributeName);
             AttributeNames.Remove(attributeName);
         }
@@ -82,7 +85,7 @@ namespace Hackathon {
         }
 
         //Searches an item in the library
-        public List<Item> Search (String search) {
+        public List<Item> Search(String search) {
             List<Item> match = new List<Item>();
             foreach (Item item in Items) {
                 for(int i = 0; i < AttributeNames.Count; i++) {
