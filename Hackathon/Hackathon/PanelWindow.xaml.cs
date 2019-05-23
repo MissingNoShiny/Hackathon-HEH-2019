@@ -85,7 +85,7 @@ namespace Hackathon
                 else
                 {
                     var mainWindow = (Application.Current.MainWindow as MainWindow);
-                    //mainWindow.Display_Fullscreen(false);
+                    mainWindow.Display_Fullscreen(false);
                     settings_button.Margin = new Thickness(10, 0, 0, 10);
                     page_title.Margin = new Thickness(25, 50, 75, 0);
                     page_content.Text = "Bibliothèques";

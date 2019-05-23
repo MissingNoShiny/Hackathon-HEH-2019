@@ -41,6 +41,7 @@ namespace Hackathon
                 maximize_button.Width = 50;
                 maximize_button.Focusable = true;
             }
+            Application.Current.MainWindow = this;
         }
         /*BUTTONS CLICK*/
 
