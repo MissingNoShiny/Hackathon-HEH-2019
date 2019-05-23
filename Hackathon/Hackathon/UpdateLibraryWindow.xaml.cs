@@ -30,9 +30,54 @@ namespace Hackathon
         int a = 0;
         int b = 0;
         int c = 0;
+        int d = 0;
 
         private void add_object_click(object sender, RoutedEventArgs e)
         {
+            StackPanel sp = new StackPanel();
+            sp.Orientation = Orientation.Horizontal;
+            sp.Name = ("sp" + a++);
+            sp.Margin = new Thickness(0,5,0,0);
+
+            TextBox tb = new TextBox();
+            tb.Name = ("name" + b++);
+            tb.Width = 120;
+            tb.Height = 23;
+            tb.HorizontalAlignment = HorizontalAlignment.Left;
+            
+
+            ComboBox cb = new ComboBox();
+            cb.Name = ("choicedata" + c++);
+            cb.SelectedIndex = 0;
+            cb.Items.Add("String");
+            cb.Items.Add("Int");
+            cb.Items.Add("Bool");
+            cb.Items.Add("Date");
+            cb.Width = 82;
+            cb.HorizontalAlignment = HorizontalAlignment.Center;
+            cb.Margin = new Thickness(10, 0, 10, 0);
+            
+           
+
+            ImageBrush myBrush = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png"));
+            myBrush.ImageSource = image.Source;
+
+            Button btn = new Button();
+            btn.Name = ("del_object" + d++);
+            btn.Width = 20;
+            btn.Height = 23;
+            btn.Background = myBrush;
+            btn.HorizontalAlignment = HorizontalAlignment.Right;
+
+
+            sp.Children.Add(tb);
+            sp.Children.Add(cb);
+            sp.Children.Add(btn);
+            this.stackpanel.Children.Add(sp);
+
+            /*
             TextBox tb = new TextBox();
             tb.Name = ("name" + a++);
             tb.Width = 120;
@@ -64,6 +109,7 @@ namespace Hackathon
             
             
             this.stackpanel2.Children.Add(btn);
+            */
         }
 
         private void del_object_click(object sender, RoutedEventArgs e)
