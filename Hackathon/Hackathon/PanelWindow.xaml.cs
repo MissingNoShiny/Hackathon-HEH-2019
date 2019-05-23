@@ -43,6 +43,8 @@ namespace Hackathon
             timer.Start();
             EnableBlur();
             WindowState = mainWindow.WindowState;
+            if (mainWindow.Admin)
+                admin_button.Content = "Utilisateur";
         }
         /*BUTTONS CLICK*/
         private void Admin_Button(object sender, RoutedEventArgs e)

@@ -19,6 +19,10 @@ namespace Hackathon
     {
         LibraryManager Libman = new LibraryManager();
         PanelWindow panelWindow;
+        public bool Admin {
+            get; private set;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +35,7 @@ namespace Hackathon
             LoadCollection(false);
 
             panelWindow = new PanelWindow(this);
+            Admin = false;
 
             navigation_button.Width = 50;
             library_list.ItemsSource = Libman.Libraries;
@@ -104,15 +109,6 @@ namespace Hackathon
             }
         }
 
-        private void UpdatePanelWindow() {
-            if (Left >= 300) {
-                if (add_button.Width == 0)
-                    panelWindow.admin_button.Content = "Mode avancé";
-                else
-                    panelWindow.admin_button.Content = "Utilisateur";
-            }
-        }
-
         private void Content_Visibility()
         {
             open_button.Width = 150;
@@ -124,7 +120,7 @@ namespace Hackathon
         }
         public void Admin_Mode()
         {
-            if (add_button.Width == 0)
+            if (Admin)
             {
                 //AFFICHE LES BOUTONS MODE AVANCE
                 page_title.Content = "MODE AVANCÉ";
@@ -139,7 +135,8 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 add_button.Width = 0;
                 delete_button.Width = 0;
-            }            
+            }
+            Admin = !Admin;
         }
         
         public void Display_Fullscreen (bool fullscreen)
