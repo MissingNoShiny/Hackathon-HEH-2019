@@ -19,13 +19,12 @@ namespace Hackathon
     /// </summary>
     public partial class LibraryWindow : Window
     {
-        Library lib = new Library();
+        Library library;
         public LibraryWindow()
         {
             InitializeComponent();
             this.Theme();
             this.Show();
-            item_list.ItemsSource = lib.Items;
         }
         private void Open_button(object sender, RoutedEventArgs e)
         {
