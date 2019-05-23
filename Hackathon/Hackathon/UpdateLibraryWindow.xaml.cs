@@ -23,6 +23,7 @@ namespace Hackathon
         public UpdateLibraryWindow()
         {
             InitializeComponent();
+            Theme();
             this.Show();
             
         }
@@ -79,5 +80,20 @@ namespace Hackathon
         {
 
         }
-    }
+
+        /*APPLYING THEME*/
+        public void Theme()
+        {
+            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            {
+                window_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
+                page_title.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_library.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/cancel_button_light.png")));
+                save_library.Foreground = new SolidColorBrush(Colors.Black);
+                save_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/validation_button_light.png")));                
+                add_object.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));
+            }
+        }
+        }
 }
