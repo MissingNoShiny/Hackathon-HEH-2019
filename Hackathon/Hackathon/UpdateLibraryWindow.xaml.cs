@@ -126,7 +126,7 @@ namespace Hackathon
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         /*APPLYING THEME*/
