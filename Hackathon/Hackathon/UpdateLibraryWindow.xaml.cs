@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace Hackathon
 {
@@ -23,6 +24,28 @@ namespace Hackathon
         {
             InitializeComponent();
             this.Show();
+            
         }
+        int a = 0;
+        int b = 0;
+
+        private void add_object_click(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = new TextBox();
+            tb.Name = ("name" + a++);
+            tb.Width = 120;
+            tb.Height = 23;
+            this.stackpanel.Children.Add(tb);
+
+            ComboBox cb = new ComboBox();
+            cb.Name = ("choicedata" + b++);
+            cb.SelectedIndex = 0;
+            cb.Items.Add("String");
+            cb.Items.Add("Int");
+            cb.Items.Add("Bool");
+            cb.Items.Add("Date");
+            this.stackpanel1.Children.Add(cb);
+        }
+        
     }
 }

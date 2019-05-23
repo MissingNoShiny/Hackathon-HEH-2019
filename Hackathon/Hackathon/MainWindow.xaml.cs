@@ -17,6 +17,7 @@ namespace Hackathon
 {
     public partial class MainWindow : Window
     {
+        LibraryManager Libman = new LibraryManager();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace Hackathon
             Left += 150;
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
-            Open_Panel();            
+            Open_Panel();
+            library_list.ItemsSource = Libman.Libraries;
             if (this.WindowState == WindowState.Normal)
             {
                 maximize_button.Width = 50;
@@ -103,10 +105,7 @@ namespace Hackathon
             else
             {
                 page_title.Content = "BIBLIOTHÈQUES";
-                Content_Visibility();
-                open_button.Width = 50;
-                library_list.Width = this.Width;
-                library_list.Height = this.Height - 100;
+                Content_Visibility();                
             }
         }
         private void Open_Panel()
@@ -135,10 +134,8 @@ namespace Hackathon
             library_list.Width = this.Width;
             search_box.Width = 150;
             search_button.Width = 25;
-            navigation_button.Width = 50;
-            close_navigation_button.Width = 0;
-            navigation_button.Focusable = true;
-            close_navigation_button.Focusable = false;
+            library_list.Width = this.Width;
+            library_list.Height = this.Height - 100;
         }
         public void Admin_Mode()
         {
@@ -158,6 +155,10 @@ namespace Hackathon
                 add_button.Width = 0;
                 delete_button.Width = 0;
             }            
+            navigation_button.Width = 50;
+            close_navigation_button.Width = 0;
+            navigation_button.Focusable = true;
+            close_navigation_button.Focusable = false;
         }
         
         public void Display_Fullscreen (bool fullscreen)
