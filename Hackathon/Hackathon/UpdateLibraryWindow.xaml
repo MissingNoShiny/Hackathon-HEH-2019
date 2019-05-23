@@ -11,8 +11,8 @@
 
 
     <Grid x:Name="window_background" Background="#262626">
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="54,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0"/>
-        <ComboBox x:Name="choicedata" HorizontalAlignment="Left" Margin="180,90,0,0" VerticalAlignment="Top" Width="82" SelectedIndex="0">
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="25,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0"/>
+        <ComboBox x:Name="choicedata" HorizontalAlignment="Left" Margin="155,90,0,0" VerticalAlignment="Top" Width="82" SelectedIndex="0">
 
             <ComboBoxItem>String</ComboBoxItem>
             <ComboBoxItem>Int</ComboBoxItem>
@@ -28,11 +28,8 @@
             </Button.Background>
         </Button>
 
-        <StackPanel x:Name="stackpanel" HorizontalAlignment="Left" Height="224" Margin="54,118,0,0" VerticalAlignment="Top" Width="120">
 
-        </StackPanel>
-        <StackPanel x:Name="stackpanel1" HorizontalAlignment="Left" Height="224" Margin="180,118,0,0" VerticalAlignment="Top" Width="82" MinWidth="20"/>
-        <StackPanel x:Name="stackpanel2" HorizontalAlignment="Left" Height="224" Margin="267,118,0,0" VerticalAlignment="Top" Width="35"/>
+
         <Button x:Name="save_library" Content="" HorizontalAlignment="Right" Margin="0,0,10.333,10" VerticalAlignment="Bottom" Width="50" BorderBrush="#44444444" Click="Save_library_Click" Height="50">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/validation_button.png"/>
@@ -43,5 +40,7 @@
                 <ImageBrush ImageSource="Assets/cancel_button.png"/>
             </Button.Background>
         </Button>
+        <StackPanel x:Name="stackpanel" HorizontalAlignment="Left" Height="350" Margin="25,117,0,5.5" VerticalAlignment="Center" Width="250"/>
+
     </Grid>
 </Window>
