@@ -17,30 +17,27 @@ namespace Hackathon {
         public Library() {
 
         }
-
-        public void AddItem(Item item) {//Add a given item
+        //Add a given item
+        public void AddItem(Item item) {
             foreach (Item item_temp in Items) {
-                if (item.Equals(item_temp)) { }
-                else {
+                if (!item.Equals(item_temp))
                     Items.Add(item);
-                }
             } 
         }
-
-        public void RemoveItem(Item item) {//Remove a given item
+        //Removes a given item
+        public void RemoveItem(Item item) {
             foreach (Item item_temp in Items) {
-                if (item.Equals(item_temp)) {
-                    Items.Remove(item_temp);
-                } else { }
+                if (item.Equals(item_temp)) 
+                    Items.Remove(item_temp); 
             }
         }
-
-        public void ModifyItem(Item oldi, Item newi) {//replace an item with another
+        //Replaces an item with another
+        public void ModifyItem(Item oldi, Item newi) {
             foreach(Item item_temp in Items) {
                 if (oldi.Equals(item_temp)) {
                     RemoveItem(oldi);
                     AddItem(newi);
-                } else { }
+                } 
             }
         }
     }
