@@ -52,7 +52,11 @@ namespace Hackathon {
         }
 
         public void AddAttribute(String attribute, DataType type) {
-
+            AttributeTypes[attribute] = type;
+            AttributeNames.Add(attribute);
+            foreach (Item item in Items) {
+                item.AddValue(null);
+            }
         }
 
         public void RemoveAttribute(String attributeName) {
@@ -65,5 +69,16 @@ namespace Hackathon {
             AttributeNames.Remove(attributeName);
         }
 
+        //Reorganizes attributes order, given the new order
+        public void ReorganizeAttributes(List<String> newAttributeNames) {
+            if (new HashSet<String>(newAttributeNames) != new HashSet<string>(AttributeNames)
+                || newAttributeNames.Count != AttributeNames.Count)
+                return; //TODO : Should throw an error
+            List<int> newOrder = new List<int>();
+            foreach (String attributeName in newAttributeNames)
+                newOrder.Add(AttributeNames.IndexOf(attributeName));
+            foreach (Item item in Items)
+                item.ReorganizeValues(newOrder);
+        }
     }
 }
