@@ -18,7 +18,7 @@ namespace Hackathon
     public partial class MainWindow : Window
     {
         LibraryManager Libman = new LibraryManager();
-        PanelWindow panelWindow = new PanelWindow();
+        PanelWindow panelWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace Hackathon
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
 
+            panelWindow = new PanelWindow(this);
             panelWindow.Owner = this;
             panelWindow.EnableBlur();
             panelWindow.WindowState = WindowState;
