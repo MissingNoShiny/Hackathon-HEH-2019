@@ -25,7 +25,7 @@ namespace Hackathon
             this.Theme();
             this.Show();            
             Left += 150;
-            //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
+            //CHECK IF LIBRARY
             LoadCollection(false);
             Open_Panel();            
             if (this.WindowState == WindowState.Normal)
@@ -77,14 +77,10 @@ namespace Hackathon
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
-            //CREER NOUVELLE BIBLIO
+            //CREATE NEW LIBRARY
             UpdateLibraryWindow window = new UpdateLibraryWindow();
             window.Owner = this;
             window.WindowState = this.WindowState;
-        }
-        private void Edit_button(object sender, RoutedEventArgs e)
-        {
-            //EDIT SELECTED BIBLIO
         }
 
         private void Delete_button(object sender, RoutedEventArgs e)
@@ -103,10 +99,7 @@ namespace Hackathon
             else
             {
                 page_title.Content = "BIBLIOTHÈQUES";
-                Content_Visibility();
-                open_button.Width = 50;
-                library_list.Width = this.Width;
-                library_list.Height = this.Height - 100;
+                Content_Visibility();                
             }
         }
         private void Open_Panel()
@@ -139,6 +132,8 @@ namespace Hackathon
             close_navigation_button.Width = 0;
             navigation_button.Focusable = true;
             close_navigation_button.Focusable = false;
+            library_list.Width = this.Width;
+            library_list.Height = this.Height - 100;
         }
         public void Admin_Mode()
         {
