@@ -29,6 +29,8 @@ namespace Hackathon
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
             Open_Panel();
+            navigation_button.Width = 0;
+            close_navigation_button.Width = 50;
             library_list.ItemsSource = Libman.Libraries;
             if (this.WindowState == WindowState.Normal)
             {
