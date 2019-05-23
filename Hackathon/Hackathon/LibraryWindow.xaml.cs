@@ -53,6 +53,7 @@ namespace Hackathon
             if (search_box.Text == "Rechercher")
             {
                 search_box.Text = "";
+                search_box.Opacity = 1;
             }
         }
 
@@ -61,13 +62,14 @@ namespace Hackathon
             if (search_box.Text == "")
             {
                 search_box.Text = "Rechercher";
+                search_box.Opacity = 0.4;
             }
         }
         private void Search_Button(object sender, RoutedEventArgs e)
         {
             if (search_box.Text != "" && search_box.Text != "Rechercher")
             {
-                Search_code(search_box.Text);
+                Search_field(search_box.Text);
             }
         }
 
@@ -75,13 +77,13 @@ namespace Hackathon
         {
             if (e.Key == Key.Return)
             {
-                Search_code(search_box.Text);
+                Search_field(search_box.Text);
             }
         }
 
-        private void Search_code(string field)
+        private void Search_field(string field)
         {
-            if (search_box.Text != "")
+            if (search_box.Text != "" && search_box.Width>0)
             {
                 //lance la recherche
                 MessageBox.Show("Recherche de : " + field);

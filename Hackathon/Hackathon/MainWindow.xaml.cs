@@ -147,6 +147,8 @@ namespace Hackathon
                 add_button.Width = 0;
                 delete_button.Width = 0;
             }
+            search_box.Width =150;
+            search_button.Width = 25;
             navigation_button.Width = 50;
             close_navigation_button.Width = 0;
             navigation_button.Focusable = true;
@@ -227,6 +229,7 @@ namespace Hackathon
             if (search_box.Text == "Rechercher")
             {
                 search_box.Text = "";
+                search_box.Opacity = 1;
             }
         }
 
@@ -235,6 +238,7 @@ namespace Hackathon
             if (search_box.Text == "")
             {
                 search_box.Text = "Rechercher";
+                search_box.Opacity = 0.4;
             }
         }
 
@@ -242,20 +246,20 @@ namespace Hackathon
         {
             if (search_box.Text != "" && search_box.Text != "Rechercher")
             {
-                    Search_code(search_box.Text);
+                    Search_field(search_box.Text);
             }
         }
 
         private void Enter_search_key(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return){
-                Search_code(search_box.Text);
+                Search_field(search_box.Text);
             }
         }
 
-        private void Search_code(string field)
+        private void Search_field(string field)
         {
-            if (search_box.Text != "")
+            if (search_box.Text != "" && search_box.Width > 0)
             {
                 //lance la recherche
                 MessageBox.Show("Recherche de : "+field);
