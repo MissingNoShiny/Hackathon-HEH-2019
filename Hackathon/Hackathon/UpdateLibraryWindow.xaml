@@ -7,12 +7,15 @@
         mc:Ignorable="d"
         Title="UpdateLibraryWindow" Height="500" Width="400"
         WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStyle="None"
         >
 
 
     <Grid x:Name="window_background" Background="#262626">
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="91,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
-        <Label x:Name="page_title" Content="CRÉER UNE BIBLIOTHÈQUE" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="page_title" Content="CRÉER UNE BIBLIOTHÈQUE" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" HorizontalAlignment="Left" Margin="75,25,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="add_object" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,10.333,0" VerticalAlignment="Center" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="add_object_click" Focusable="False" >
             <Button.Background>
@@ -27,9 +30,9 @@
                 <ImageBrush ImageSource="Assets/validation_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="cancel_library" Content="" HorizontalAlignment="Right" Margin="0,0,65.333,10" VerticalAlignment="Bottom" Width="50" BorderBrush="#44444444" Click="Cancel_library_Click" Height="50">
+        <Button x:Name="cancel_library" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" BorderBrush="#44444444" Click="Cancel_library_Click" Height="50">
             <Button.Background>
-                <ImageBrush ImageSource="Assets/cancel_button.png"/>
+                <ImageBrush ImageSource="Assets/back_button.png"/>
             </Button.Background>
         </Button>
         <StackPanel x:Name="stackpanel" HorizontalAlignment="Left" Height="350" Margin="25,117,0,5.5" VerticalAlignment="Center" Width="250"/>

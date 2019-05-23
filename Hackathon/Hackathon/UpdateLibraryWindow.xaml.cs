@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,10 @@ namespace Hackathon
             comboBoxes = new List<ComboBox>();
             InitializeComponent();
             Theme();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += Window_Position;
+            timer.Interval = TimeSpan.FromSeconds(0.0001);
+            timer.Start();
             this.Show();
             
         }
@@ -126,11 +131,19 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 cancel_library.Foreground = new SolidColorBrush(Colors.Black);
-                cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/cancel_button_light.png")));
+                cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
                 save_library.Foreground = new SolidColorBrush(Colors.Black);
                 save_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/validation_button_light.png")));                
                 add_object.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));
             }
         }
+        private void Window_Position(object sender, EventArgs e)
+        {
+            this.Top = Owner.Top + 30;
+            this.Left = Owner.Left+8;
+            this.Height = Owner.Height - 38;
+            this.Width = Owner.Width-16;
+            this.WindowState = Owner.WindowState;
         }
+    }
 }

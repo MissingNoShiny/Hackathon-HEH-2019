@@ -89,6 +89,11 @@ namespace Hackathon
             UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
+            window.Left = this.Left+8;
+            window.Top = this.Top+30;
+            window.Width = this.Width-16;
+            window.Height = this.Height-38;
+            panelWindow.Close();
         }
         private void Edit_button(object sender, RoutedEventArgs e)
         {
