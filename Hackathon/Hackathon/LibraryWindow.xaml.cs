@@ -22,6 +22,7 @@ namespace Hackathon
         public LibraryWindow()
         {
             InitializeComponent();
+            this.Theme();
             this.Show();
         }
         private void Open_button(object sender, RoutedEventArgs e)
@@ -60,6 +61,37 @@ namespace Hackathon
             if (search_box.Text == "")
             {
                 search_box.Text = "Rechercher";
+            }
+        }
+
+        /*APPLYING THEME*/
+        public void Theme()
+        {
+            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            {
+                window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                page_title.Foreground = new SolidColorBrush(Colors.Black);
+                page_content.Foreground = new SolidColorBrush(Colors.Black);
+                search_box.Background = new SolidColorBrush(Colors.White);
+                search_box.Foreground = new SolidColorBrush(Colors.Black);
+                item_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button_light.png")));
+                edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button_light.png")));
+                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
+                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));                
+            }
+            else
+            {
+                window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
+                page_title.Foreground = new SolidColorBrush(Colors.White);
+                page_content.Foreground = new SolidColorBrush(Colors.White);
+                search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                search_box.Foreground = new SolidColorBrush(Colors.White);
+                item_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button.png")));
+                edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button.png")));
+                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
+                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button.png")));                
             }
         }
     }
