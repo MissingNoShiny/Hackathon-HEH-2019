@@ -17,6 +17,7 @@ namespace Hackathon
 {
     public partial class MainWindow : Window
     {
+        LibraryManager Libman = new LibraryManager();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace Hackathon
             Left += 150;
             //CHECK IF LIBRARY
             LoadCollection(false);
-            Open_Panel();            
+            Open_Panel();
+            library_list.ItemsSource = Libman.Libraries;
             if (this.WindowState == WindowState.Normal)
             {
                 maximize_button.Width = 50;
