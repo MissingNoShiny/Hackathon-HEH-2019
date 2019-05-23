@@ -26,6 +26,11 @@ namespace Hackathon
             this.libraryManager = libraryManager;
             InitializeComponent();
             this.Theme();
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            if (mainWindow.Admin){
+                edit_struct_button.Width = 50;
+                edit_struct_button.Focusable = true;
+            }
             this.Show();
         }
         private void Add_button(object sender, RoutedEventArgs e)
@@ -38,6 +43,7 @@ namespace Hackathon
             UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
+            window.page_title.Content = "ÉDITER UNE BIBLIOTHÈQUE";
         }
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
@@ -100,7 +106,7 @@ namespace Hackathon
                 search_box.Background = new SolidColorBrush(Colors.White);
                 search_box.Foreground = new SolidColorBrush(Colors.Black);
                 item_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
-                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button_light.png")));
+                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_struct_button_light.png")));
                 edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button_light.png")));
                 delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
                 add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));                
@@ -113,7 +119,7 @@ namespace Hackathon
                 search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 search_box.Foreground = new SolidColorBrush(Colors.White);
                 item_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
-                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button.png")));
+                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_struct_button.png")));
                 edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button.png")));
                 delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
                 add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button.png")));                

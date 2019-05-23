@@ -235,6 +235,13 @@
     <Resource Include="Assets\validation_button_light.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\delete_list_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\edit_struct_button.png" />
+    <Resource Include="Assets\edit_struct_button_light.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="libraries\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

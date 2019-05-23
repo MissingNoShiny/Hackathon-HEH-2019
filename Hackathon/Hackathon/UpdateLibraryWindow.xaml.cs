@@ -66,7 +66,7 @@ namespace Hackathon
            
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png"));
+            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_list_button.png"));
             myBrush.ImageSource = image.Source;
 
             Button btn = new Button();
@@ -111,7 +111,7 @@ namespace Hackathon
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         /*APPLYING THEME*/
