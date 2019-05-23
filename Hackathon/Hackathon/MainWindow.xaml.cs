@@ -45,10 +45,14 @@ namespace Hackathon
         private void Navigation_Button(object sender, RoutedEventArgs e) {
             panelWindow.WindowState = WindowState;
             if (!panelWindow.IsLoaded)
+            {
                 panelWindow = new PanelWindow(this);
+            }
             else
+            {
                 panelWindow.Close();
-        }
+            }
+            }
         private void Maximize_Button(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
@@ -146,8 +150,16 @@ namespace Hackathon
         {
             if (fullscreen)
             {
-                this.WindowStyle = System.Windows.WindowStyle.None;
-                navigation_button.Margin = new Thickness(300, 10, 0, 0);
+                if (panelWindow.IsLoaded)
+                {
+                    this.WindowStyle = System.Windows.WindowStyle.None;
+                    navigation_button.Margin = new Thickness(300, 10, 0, 0);
+                }
+                else
+                {
+                    this.WindowStyle = System.Windows.WindowStyle.None;
+                    navigation_button.Margin = new Thickness(10, 10, 0, 0);
+                }
             }
             else
             {

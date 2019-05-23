@@ -78,21 +78,23 @@ namespace Hackathon
                 this.Top = Owner.Top;
                 this.Left = Owner.Left - 290;
                 this.Height = Owner.Height - 7;
-                this.WindowState = Owner.WindowState;
-                if (WindowState == WindowState.Maximized)
-                { 
-                    mainWindow.Display_Fullscreen(true);
-                    settings_button.Margin = new Thickness(10, 0, 0, 50);
-                    page_title.Margin = new Thickness(25, 20, 75, 0);
-                    page_content.Text = "";
-                }
-                else
-                {
-                    mainWindow.Display_Fullscreen(false);
-                    settings_button.Margin = new Thickness(10, 0, 0, 10);
-                    page_title.Margin = new Thickness(25, 50, 75, 0);
-                    page_content.Text = "Bibliothèques";
-                }            
+                var mainWindow = (Application.Current.MainWindow as MainWindow);
+                this.WindowState = mainWindow.WindowState;
+            if (WindowState == WindowState.Maximized)
+            {
+                mainWindow.Display_Fullscreen(true);
+                settings_button.Margin = new Thickness(10, 0, 0, 50);
+                page_title.Margin = new Thickness(25, 20, 75, 0);
+                page_content.Text = "";
+            }
+            else
+            {
+                mainWindow.Display_Fullscreen(false);
+                settings_button.Margin = new Thickness(10, 0, 0, 10);
+                page_title.Margin = new Thickness(25, 50, 75, 0);
+                page_content.Text = "Bibliothèques";
+            }
+            
         }        
         /*APPLYING THEME*/
         public void Theme()
