@@ -17,5 +17,18 @@ namespace Hackathon {
         public List<DataType> getDataTypes() {
             return null;
         }
+
+        public override bool Equals(object obj) {
+            Item item = (Item) obj;
+            if((item == null || !this.GetType().Equals(item.GetType())))
+                return false;
+            else {
+                for (int i = 0; i <= (item.Values.Count); i++) {
+                    if (this.Values[i] == item.Values[i])
+                        return true;
+                }
+            }
+            return false;
+        }
     }
 }
