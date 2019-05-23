@@ -35,11 +35,30 @@ namespace Hackathon
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
             //EDIT STRUCTURE BIBLIO
+            UpdateLibraryWindow window = new UpdateLibraryWindow();
         }
-
+        private void Edit_item_button(object sender, RoutedEventArgs e)
+        {
+            //EDIT ITEM BIBLIO
+        }
         private void Delete_button(object sender, RoutedEventArgs e)
         {
             //DELETE SELECTED BIBLIO
+        }
+        private void Search_focus(object sender, RoutedEventArgs e)
+        {
+            if (search_box.Text == "Rechercher")
+            {
+                search_box.Text = "";
+            }
+        }
+
+        private void Search_unfocus(object sender, RoutedEventArgs e)
+        {
+            if (search_box.Text == "")
+            {
+                search_box.Text = "Rechercher";
+            }
         }
     }
 }

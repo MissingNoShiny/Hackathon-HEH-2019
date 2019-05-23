@@ -78,6 +78,7 @@ namespace Hackathon
         private void Add_button(object sender, RoutedEventArgs e)
         {
             //CREER NOUVELLE BIBLIO
+            UpdateLibraryWindow window = new UpdateLibraryWindow();
         }
         private void Edit_button(object sender, RoutedEventArgs e)
         {
@@ -134,7 +135,7 @@ namespace Hackathon
                 page_content.Content = "Aucune bibliothèque";
                 add_button.Width = 50;
                 delete_button.Width = 50;
-                open_button.Width = 50;                
+                open_button.Width = 150;                
             }
             else
             {
@@ -203,6 +204,22 @@ namespace Hackathon
                 close_navigation_button.Opacity = 0.6;
                 close_navigation_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 close_navigation_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/navigation_button.png")));
+            }
+        }
+
+        private void Search_focus(object sender, RoutedEventArgs e)
+        {
+            if (search_box.Text == "Rechercher")
+            {
+                search_box.Text = "";
+            }
+        }
+
+        private void Search_unfocus(object sender, RoutedEventArgs e)
+        {
+            if (search_box.Text == "")
+            {
+                search_box.Text = "Rechercher";
             }
         }
     }
