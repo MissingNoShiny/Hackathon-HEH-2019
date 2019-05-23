@@ -234,5 +234,8 @@
     <Resource Include="Assets\validation_button.png" />
     <Resource Include="Assets\validation_button_light.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\delete_list_button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

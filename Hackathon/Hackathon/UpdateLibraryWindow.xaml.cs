@@ -59,7 +59,7 @@ namespace Hackathon
 
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png"));
+            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_list_button.png"));
             myBrush.ImageSource = image.Source;
 
             Button btn = new Button();
@@ -99,7 +99,7 @@ namespace Hackathon
 
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
-            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png"));
+            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_list_button.png"));
             myBrush.ImageSource = image.Source;
 
             Button btn = new Button();
