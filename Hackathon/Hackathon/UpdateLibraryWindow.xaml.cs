@@ -20,6 +20,8 @@ namespace Hackathon
     /// </summary>
     public partial class UpdateLibraryWindow : Window
     {
+        private int panelIndex = 0;
+
         public UpdateLibraryWindow()
         {
             InitializeComponent();
@@ -27,27 +29,23 @@ namespace Hackathon
             this.Show();
             
         }
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        int d = 0;
 
         private void add_object_click(object sender, RoutedEventArgs e)
         {
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
-            sp.Name = ("sp" + a++);
+            sp.Name = ("sp" + panelIndex);
             sp.Margin = new Thickness(0,5,0,0);
 
             TextBox tb = new TextBox();
-            tb.Name = ("name" + b++);
+            tb.Name = ("name" + panelIndex);
             tb.Width = 120;
             tb.Height = 23;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
             
 
             ComboBox cb = new ComboBox();
-            cb.Name = ("choicedata" + c++);
+            cb.Name = ("choicedata" + panelIndex);
             cb.SelectedIndex = 0;
             cb.Items.Add("String");
             cb.Items.Add("Int");
@@ -65,13 +63,17 @@ namespace Hackathon
             myBrush.ImageSource = image.Source;
 
             Button btn = new Button();
-            btn.Name = ("del_object" + d++);
+            btn.Name = ("del_object" + panelIndex);
             btn.Width = 20;
             btn.Height = 23;
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
+            btn.Click += delegate {
+                panelIndex--;
+                stackpanel.Children.Remove(sp);
+            };
 
-
+            panelIndex++;
             sp.Children.Add(tb);
             sp.Children.Add(cb);
             sp.Children.Add(btn);
