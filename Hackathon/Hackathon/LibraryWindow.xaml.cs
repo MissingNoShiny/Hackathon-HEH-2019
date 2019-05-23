@@ -63,6 +63,30 @@ namespace Hackathon
                 search_box.Text = "Rechercher";
             }
         }
+        private void Search_Button(object sender, RoutedEventArgs e)
+        {
+            if (search_box.Text != "" && search_box.Text != "Rechercher")
+            {
+                Search_code(search_box.Text);
+            }
+        }
+
+        private void Enter_search_key(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Search_code(search_box.Text);
+            }
+        }
+
+        private void Search_code(string field)
+        {
+            if (search_box.Text != "")
+            {
+                //lance la recherche
+                MessageBox.Show("Recherche de : " + field);
+            }
+        }
 
         /*APPLYING THEME*/
         public void Theme()
