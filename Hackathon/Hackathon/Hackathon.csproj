@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -91,7 +91,7 @@
     <Compile Include="DataType.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Library.cs" />
-	<Compile Include="LibraryManager.cs" />
+    <Compile Include="LibraryManager.cs" />
     <Compile Include="LibraryWindow.xaml.cs">
       <DependentUpon>LibraryWindow.xaml</DependentUpon>
     </Compile>
@@ -224,6 +224,9 @@
     <Resource Include="Assets\delete_button_light.png" />
     <Resource Include="Assets\edit_button_light.png" />
     <Resource Include="Assets\open_button_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\search_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
