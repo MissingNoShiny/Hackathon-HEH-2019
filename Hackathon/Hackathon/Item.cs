@@ -39,7 +39,7 @@ namespace Hackathon {
             Values.RemoveAt(index);
         }
 
-        public void IsNull() {
+        public bool IsNull() {
             return Values.All(x => x.Value == null);
         }
 
