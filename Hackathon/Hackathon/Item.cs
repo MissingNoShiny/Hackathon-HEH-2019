@@ -30,5 +30,13 @@ namespace Hackathon {
             }
             return false;
         }
+
+        public void AddValue(Attribute value) {
+            Values.Add(value);
+        }
+
+        public void RemoveValue(int index) {
+            Values.RemoveAt(index);
+        }
     }
 }
