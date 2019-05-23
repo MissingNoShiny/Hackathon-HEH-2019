@@ -32,6 +32,7 @@ namespace Hackathon
         public PanelWindow(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+            Owner = mainWindow;
             DataContext = this;
             InitializeComponent();
             this.Show();
@@ -40,13 +41,15 @@ namespace Hackathon
             timer.Tick += Window_Position;
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             timer.Start();
+            EnableBlur();
+            WindowState = mainWindow.WindowState;
         }
         /*BUTTONS CLICK*/
         private void Admin_Button(object sender, RoutedEventArgs e)
         {
             mainWindow.Admin_Mode();
             Owner.Focus();
-            Visibility = Visibility.Collapsed;
+            this.Close();
         }        
         private void About_Button(object sender, RoutedEventArgs e)
         {

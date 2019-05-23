@@ -22,8 +22,8 @@ namespace Hackathon
         public MainWindow()
         {
             InitializeComponent();
-            Width = System.Windows.SystemParameters.PrimaryScreenWidth / 2;
-            Height = System.Windows.SystemParameters.PrimaryScreenHeight / 2;
+            Width = SystemParameters.PrimaryScreenWidth / 2;
+            Height = SystemParameters.PrimaryScreenHeight / 2;
             this.Theme();
             this.Show();            
             Left += 150;
@@ -31,9 +31,6 @@ namespace Hackathon
             LoadCollection(false);
 
             panelWindow = new PanelWindow(this);
-            panelWindow.Owner = this;
-            panelWindow.EnableBlur();
-            panelWindow.WindowState = WindowState;
 
             navigation_button.Width = 50;
             library_list.ItemsSource = Libman.Libraries;
@@ -46,10 +43,11 @@ namespace Hackathon
         }
         /*BUTTONS CLICK*/
         private void Navigation_Button(object sender, RoutedEventArgs e) {
-            if (panelWindow.Visibility == Visibility.Collapsed)
-                panelWindow.Visibility = Visibility.Visible;
+            panelWindow.WindowState = WindowState;
+            if (!panelWindow.IsLoaded)
+                panelWindow = new PanelWindow(this);
             else
-                panelWindow.Visibility = Visibility.Collapsed;
+                panelWindow.Close();
         }
         private void Maximize_Button(object sender, RoutedEventArgs e)
         {
