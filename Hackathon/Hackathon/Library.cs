@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hackathon {
+    [Serializable]
     public class Library {
         public Dictionary<String, DataType> AttributeTypes {
             get; private set;

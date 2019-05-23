@@ -106,7 +106,11 @@ namespace Hackathon
                 return;
             }
             List<String> attributeNames = textBoxes.Select(x => x.Text).ToList();
-            List<DataType> dataTypes = comboBoxes.Select(x => (DataType) x.SelectedItem).ToList();
+            List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String) x.SelectedItem]).ToList();
+            Dictionary<String, DataType> attributeType = attributeNames.Zip(dataTypes, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
+            libraryManager.AddLibrary(new Library(name.Text, attributeNames, attributeType));
+            libraryManager.SaveLibraries();
+            this.Close();
         }
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)

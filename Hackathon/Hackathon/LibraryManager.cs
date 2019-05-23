@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -10,10 +11,14 @@ using System.Threading.Tasks;
 namespace Hackathon {
     public class LibraryManager {
 
-        public const String DefaultLibrariesPath = "/libraries";
+        public const String DefaultLibrariesPath = "../../../libraries/";
 
         public List<Library> Libraries {
             get; private set;
+        }
+
+        public LibraryManager() {
+            Libraries = new List<Library>();
         }
 
         //Opens all found libraries in a given folder
@@ -32,10 +37,10 @@ namespace Hackathon {
         }
 
         //Saves all libraries to a given folder
-        public void SaveLibraries(String folderPath) {
+        public void SaveLibraries(String folderPath = DefaultLibrariesPath) {
             IFormatter formatter = new BinaryFormatter();
             foreach (Library library in Libraries) {
-                String path = folderPath + library.Name + ".libr";
+                String path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + folderPath + library.Name + ".libr";
                 Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
                 formatter.Serialize(stream, library);
             }
@@ -43,7 +48,7 @@ namespace Hackathon {
 
         //Deletes all serialized libraries in a given folder
         public void ClearFolder(String folderPath) {
-            string[] filePaths = Directory.GetFiles(folderPath, "*.libr", SearchOption.TopDirectoryOnly);
+            string[] filePaths = Directory.GetFiles(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + folderPath, "*.libr", SearchOption.TopDirectoryOnly);
             foreach (String path in filePaths)
                 File.Delete(path);
         }
