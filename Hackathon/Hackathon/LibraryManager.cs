@@ -40,10 +40,20 @@ namespace Hackathon {
         }
 
         //Deletes all serialized libraries in a given folder
-        public void clearFolder(String folderPath) {
+        public void ClearFolder(String folderPath) {
             string[] filePaths = Directory.GetFiles(folderPath, "*.libr", SearchOption.TopDirectoryOnly);
             foreach (String path in filePaths)
                 File.Delete(path);
+        }
+
+        //Searches a library in the libraries list
+        public List<Library> Search(String search) {
+            List<Library> match = new List<Library>();
+            foreach(Library lib in Libraries) {
+                if (lib.Name.Contains(search))
+                    match.Add(lib);
+            }
+            return match;
         }
     }
 }
