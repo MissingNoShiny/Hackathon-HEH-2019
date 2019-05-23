@@ -50,10 +50,14 @@ namespace Hackathon
         private void Navigation_Button(object sender, RoutedEventArgs e) {
             panelWindow.WindowState = WindowState;
             if (!panelWindow.IsLoaded)
+            {
                 panelWindow = new PanelWindow(this);
+            }
             else
+            {
                 panelWindow.Close();
-        }
+            }
+            }
         private void Maximize_Button(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
@@ -120,6 +124,7 @@ namespace Hackathon
         }
         public void Admin_Mode()
         {
+            Admin = !Admin;
             if (Admin)
             {
                 //AFFICHE LES BOUTONS MODE AVANCE
@@ -135,16 +140,23 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 add_button.Width = 0;
                 delete_button.Width = 0;
-            }
-            Admin = !Admin;
+            }            
         }
         
         public void Display_Fullscreen (bool fullscreen)
         {
             if (fullscreen)
             {
-                this.WindowStyle = System.Windows.WindowStyle.None;
-                navigation_button.Margin = new Thickness(300, 10, 0, 0);
+                if (panelWindow.IsLoaded)
+                {
+                    this.WindowStyle = System.Windows.WindowStyle.None;
+                    navigation_button.Margin = new Thickness(300, 10, 0, 0);
+                }
+                else
+                {
+                    this.WindowStyle = System.Windows.WindowStyle.None;
+                    navigation_button.Margin = new Thickness(10, 10, 0, 0);
+                }
             }
             else
             {
