@@ -124,6 +124,7 @@ namespace Hackathon
         }
         public void Admin_Mode()
         {
+            Admin = !Admin;
             if (Admin)
             {
                 //AFFICHE LES BOUTONS MODE AVANCE
@@ -139,8 +140,7 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 add_button.Width = 0;
                 delete_button.Width = 0;
-            }
-            Admin = !Admin;
+            }            
         }
         
         public void Display_Fullscreen (bool fullscreen)
