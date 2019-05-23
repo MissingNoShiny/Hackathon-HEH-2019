@@ -42,37 +42,19 @@
             </Button.Background>
         </Button>
         <Grid Margin="0,65,0,0">
-            <ListBox x:Name="collection_list" Width="0" BorderThickness="2" BorderBrush="#44444444" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <Image Source="Assets/exampleitem.png"/>
-                <Image Source="Assets/exampleitem.png"/>
-                <Image Source="Assets/exampleitem.png"/>
-                <Image Source="Assets/exampleitem.png"/>
-                <Image Source="Assets/exampleitem.png"/>
-                <Image Source="Assets/exampleitem.png"/>
-
-            </ListBox>
+            <DataGrid  x:Name="collection_list"></DataGrid>
         </Grid>
-        <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
+        <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/add_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="delete_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,120.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" >
+        <Button x:Name="delete_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,65.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/delete_button.png"/>
             </Button.Background>
-        </Button>
-        <Button x:Name="edit_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,65.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_button" Focusable="False" >
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/edit_button.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="open_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Open_button" Focusable="False" >
+        </Button>        
+        <Button x:Name="open_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Open_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/open_button.png"/>
             </Button.Background>

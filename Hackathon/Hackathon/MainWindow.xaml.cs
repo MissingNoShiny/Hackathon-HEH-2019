@@ -170,7 +170,7 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 page_content.Foreground = new SolidColorBrush(Colors.Black);
-                collection_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                //collection_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 maximize_button.Opacity = 1;
                 maximize_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 maximize_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/maximize_button_light.png")));
@@ -189,7 +189,7 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 page_content.Foreground = new SolidColorBrush(Colors.White);
-                collection_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                //collection_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 maximize_button.Opacity = 0.6;
                 maximize_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 maximize_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/maximize_button.png")));
