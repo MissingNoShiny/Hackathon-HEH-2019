@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hackathon {
     public class Item {
+
         public List<Attribute> Values {
             get; private set;
         }
@@ -13,9 +14,12 @@ namespace Hackathon {
         public Item(List<Attribute> values) {
             Values = values;
         }
-
-        public List<DataType> getDataTypes() {
-            return null;
+        //Return a List of all DataType of the Item attribute
+        public List<DataType> GetDataTypes() {
+            List<DataType> dataType = new List<DataType>();
+            foreach(Attribute attribute in Values)
+                dataType.Add(Values.Type);
+            return dataType;
         }
         //Override Equals to compare Item 
         public override bool Equals(object obj) {

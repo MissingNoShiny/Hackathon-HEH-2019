@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hackathon {
-    public class Attribute {
-
-        public Attribute(Object attribute) {
-            
+    class ImagePath {
+        public String Path {
+            get; private set;
+        }
+        public ImagePath(String path) {
+            Path = path;
         }
     }
 }
