@@ -13,7 +13,7 @@ namespace Hackathon
      ABE_start > ABE_end = code than mimic this visual effect. It comes from Rafael Rivera's GitHub.
      * https://github.com/riverar/sample-win32-acrylicblur */
 
-    public partial class PannelWindow : Window
+    public partial class PanelWindow : Window
     {
         [DllImport("user32.dll")] /*ABE_start*/
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
@@ -27,7 +27,7 @@ namespace Hackathon
 
         private uint _blurBackgroundColor = 0x550000; /*ABE_end*/
 
-        public PannelWindow()
+        public PanelWindow()
         {
             DataContext = this;
             InitializeComponent();
@@ -85,7 +85,7 @@ namespace Hackathon
                 else
                 {
                     var mainWindow = (Application.Current.MainWindow as MainWindow);
-                    mainWindow.Display_Fullscreen(false);
+                    //mainWindow.Display_Fullscreen(false);
                     settings_button.Margin = new Thickness(10, 0, 0, 10);
                     page_title.Margin = new Thickness(25, 50, 75, 0);
                     page_content.Text = "Bibliothèques";

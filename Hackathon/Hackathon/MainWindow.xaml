@@ -14,7 +14,7 @@
         Stylus.IsTapFeedbackEnabled="False"
         >
     <Grid x:Name="window_background" Background="#262626">
-        <Button x:Name="navigation_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#FF2C2A27" Foreground="White" Click="Open_Navigation_Button" Opacity="0.6" Focusable="False">
+        <Button x:Name="navigation_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#FF2C2A27" Foreground="White" Click="Navigation_Button" Opacity="0.6" Focusable="False">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/navigation_button.png"/>
             </Button.Background>
@@ -25,11 +25,6 @@
         <Button x:Name="search_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,20,75.333,0" VerticalAlignment="Top" Height="25" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Search_Button" Opacity="0.6" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/search_button.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="close_navigation_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Close_Navigation_Button" Opacity="0.6">
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/navigation_button.png"/>
             </Button.Background>
         </Button>
         <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="Assets/background_dogs.png" Stretch="Uniform"/>

@@ -18,6 +18,7 @@ namespace Hackathon
     public partial class MainWindow : Window
     {
         LibraryManager Libman = new LibraryManager();
+        PanelWindow panelWindow = new PanelWindow();
         public MainWindow()
         {
             InitializeComponent();
@@ -28,9 +29,12 @@ namespace Hackathon
             Left += 150;
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
-            Open_Panel();
-            navigation_button.Width = 0;
-            close_navigation_button.Width = 50;
+
+            panelWindow.Owner = this;
+            panelWindow.EnableBlur();
+            panelWindow.WindowState = WindowState;
+
+            navigation_button.Width = 50;
             library_list.ItemsSource = Libman.Libraries;
             if (this.WindowState == WindowState.Normal)
             {
@@ -39,6 +43,8 @@ namespace Hackathon
             }
         }
         /*BUTTONS CLICK*/
+
+        /*
         private void Open_Navigation_Button(object sender, RoutedEventArgs e)
         {
             navigation_button.Width = 0;
@@ -53,8 +59,16 @@ namespace Hackathon
             close_navigation_button.Width = 0;
             navigation_button.Focusable = true;
             close_navigation_button.Focusable = false;
-            var pannelwindow = Application.Current.Windows.OfType<PannelWindow>().FirstOrDefault();
+            var pannelwindow = Application.Current.Windows.OfType<PanelWindow>().FirstOrDefault();
             pannelwindow.Close();
+        }
+        */
+
+        private void Navigation_Button(object sender, RoutedEventArgs e) {
+            if (panelWindow.Visibility == Visibility.Collapsed)
+                panelWindow.Visibility = Visibility.Visible;
+            else
+                panelWindow.Visibility = Visibility.Collapsed;
         }
         private void Maximize_Button(object sender, RoutedEventArgs e)
         {
@@ -110,11 +124,13 @@ namespace Hackathon
                 Content_Visibility();                
             }
         }
+
+        /*
         private void Open_Panel()
         {
             if (Left >= 300)
             {
-                PannelWindow pannel = new PannelWindow();
+                PanelWindow pannel = new PanelWindow();
                 pannel.Owner = this;
                 pannel.EnableBlur();
                 pannel.WindowState = this.WindowState;
@@ -130,6 +146,17 @@ namespace Hackathon
             }
             else { Left = 300; Open_Panel(); }
         }
+        */
+
+        private void UpdatePanelWindow() {
+            if (Left >= 300) {
+                if (add_button.Width == 0)
+                    panelWindow.admin_button.Content = "Mode avancé";
+                else
+                    panelWindow.admin_button.Content = "Utilisateur";
+            }
+        }
+
         private void Content_Visibility()
         {
             open_button.Width = 150;
@@ -157,10 +184,6 @@ namespace Hackathon
                 add_button.Width = 0;
                 delete_button.Width = 0;
             }            
-            navigation_button.Width = 50;
-            close_navigation_button.Width = 0;
-            navigation_button.Focusable = true;
-            close_navigation_button.Focusable = false;
         }
         
         public void Display_Fullscreen (bool fullscreen)
@@ -168,12 +191,12 @@ namespace Hackathon
             if (fullscreen)
             {
                 this.WindowStyle = System.Windows.WindowStyle.None;
-                close_navigation_button.Margin = new Thickness(300, 10, 0, 0);
+                navigation_button.Margin = new Thickness(300, 10, 0, 0);
             }
             else
             {
                 this.WindowStyle = System.Windows.WindowStyle.SingleBorderWindow;
-                close_navigation_button.Margin = new Thickness(10, 10, 0, 0);
+                navigation_button.Margin = new Thickness(10, 10, 0, 0);
             }
         }
              
@@ -201,9 +224,6 @@ namespace Hackathon
                 navigation_button.Opacity = 1;
                 navigation_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 navigation_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/navigation_button_light.png")));
-                close_navigation_button.Opacity = 1;
-                close_navigation_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
-                close_navigation_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/navigation_button_light.png")));
             }
             else
             {
@@ -226,9 +246,6 @@ namespace Hackathon
                 navigation_button.Opacity = 0.6;
                 navigation_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 navigation_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/navigation_button.png")));
-                close_navigation_button.Opacity = 0.6;
-                close_navigation_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
-                close_navigation_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/navigation_button.png")));
             }
         }
 

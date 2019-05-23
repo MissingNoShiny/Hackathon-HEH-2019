@@ -49,7 +49,7 @@ namespace Hackathon
             this.Theme();
             var mainWindow = (Application.Current.MainWindow as MainWindow);
             mainWindow.Theme();
-            var pannelwindow = Application.Current.Windows.OfType<PannelWindow>().FirstOrDefault();
+            var pannelwindow = Application.Current.Windows.OfType<PanelWindow>().FirstOrDefault();
             pannelwindow.Theme();
         }
 
