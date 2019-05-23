@@ -25,7 +25,7 @@ namespace Hackathon
             this.Theme();
             this.Show();            
             Left += 150;
-            //CHECK IF LIBRARY
+            //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
             Open_Panel();            
             if (this.WindowState == WindowState.Normal)
@@ -77,10 +77,14 @@ namespace Hackathon
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
-            //CREATE NEW LIBRARY
+            //CREER NOUVELLE BIBLIO
             UpdateLibraryWindow window = new UpdateLibraryWindow();
             window.Owner = this;
             window.WindowState = this.WindowState;
+        }
+        private void Edit_button(object sender, RoutedEventArgs e)
+        {
+            //EDIT SELECTED BIBLIO
         }
 
         private void Delete_button(object sender, RoutedEventArgs e)
@@ -119,7 +123,6 @@ namespace Hackathon
                     pannel.admin_button.Content = "Utilisateur";
                 }
                 pannel.Show();
-                
             }
             else { Left = 300; Open_Panel(); }
         }
@@ -129,10 +132,6 @@ namespace Hackathon
             library_list.Width = this.Width;
             search_box.Width = 150;
             search_button.Width = 25;
-            navigation_button.Width = 50;
-            close_navigation_button.Width = 0;
-            navigation_button.Focusable = true;
-            close_navigation_button.Focusable = false;
             library_list.Width = this.Width;
             library_list.Height = this.Height - 100;
         }
@@ -154,6 +153,10 @@ namespace Hackathon
                 add_button.Width = 0;
                 delete_button.Width = 0;
             }            
+            navigation_button.Width = 50;
+            close_navigation_button.Width = 0;
+            navigation_button.Focusable = true;
+            close_navigation_button.Focusable = false;
         }
         
         public void Display_Fullscreen (bool fullscreen)
