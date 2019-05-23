@@ -103,6 +103,7 @@ namespace Hackathon
             else
             {
                 page_title.Content = "BIBLIOTHÈQUES";
+                Content_Visibility();
                 open_button.Width = 50;
                 library_list.Width = this.Width;
                 library_list.Height = this.Height - 100;
@@ -128,6 +129,17 @@ namespace Hackathon
             }
             else { Left = 300; Open_Panel(); }
         }
+        private void Content_Visibility()
+        {
+            open_button.Width = 150;
+            library_list.Width = this.Width;
+            search_box.Width = 150;
+            search_button.Width = 25;
+            navigation_button.Width = 50;
+            close_navigation_button.Width = 0;
+            navigation_button.Focusable = true;
+            close_navigation_button.Focusable = false;
+        }
         public void Admin_Mode()
         {
             if (add_button.Width == 0)
@@ -137,8 +149,7 @@ namespace Hackathon
                 page_content.Content = "Aucune bibliothèque";
                 add_button.Width = 50;
                 delete_button.Width = 50;
-                open_button.Width = 150;
-                library_list.Width = this.Width;
+                Content_Visibility();
             }
             else
             {
@@ -146,13 +157,7 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 add_button.Width = 0;
                 delete_button.Width = 0;
-            }
-            search_box.Width =150;
-            search_button.Width = 25;
-            navigation_button.Width = 50;
-            close_navigation_button.Width = 0;
-            navigation_button.Focusable = true;
-            close_navigation_button.Focusable = false;
+            }            
         }
         
         public void Display_Fullscreen (bool fullscreen)
