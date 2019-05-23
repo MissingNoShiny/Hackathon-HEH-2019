@@ -17,7 +17,8 @@ namespace Hackathon
 {
     public partial class MainWindow : Window
     {
-        LibraryManager Libman = new LibraryManager();
+
+        private LibraryManager libraryManager;
         PanelWindow panelWindow;
         public bool Admin {
             get; private set;
@@ -34,11 +35,12 @@ namespace Hackathon
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
             LoadCollection(false);
 
+            libraryManager = new LibraryManager();
             panelWindow = new PanelWindow(this);
             Admin = false;
 
             navigation_button.Width = 50;
-            library_list.ItemsSource = Libman.Libraries;
+            library_list.ItemsSource = libraryManager.Libraries;
             if (this.WindowState == WindowState.Normal)
             {
                 maximize_button.Width = 50;
@@ -77,14 +79,14 @@ namespace Hackathon
         private void Open_button(object sender, RoutedEventArgs e)
         {
             //OPEN SELECTED BIBLIO
-            LibraryWindow window = new LibraryWindow();
+            LibraryWindow window = new LibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
             //CREER NOUVELLE BIBLIO
-            UpdateLibraryWindow window = new UpdateLibraryWindow();
+            UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
         }

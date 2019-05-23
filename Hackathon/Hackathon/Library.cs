@@ -21,8 +21,10 @@ namespace Hackathon {
 
         public String Name;
 
-        public Library(String name) {
+        public Library(String name, List<String> attributeNames, Dictionary<String, DataType> attributeTypes) {
             Name = name;
+            AttributeNames = attributeNames;
+            AttributeTypes = attributeTypes;
         }
 
         //Add a given item

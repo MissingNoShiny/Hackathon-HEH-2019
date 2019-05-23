@@ -19,9 +19,11 @@ namespace Hackathon
     /// </summary>
     public partial class LibraryWindow : Window
     {
+        private LibraryManager libraryManager;
         Library library;
-        public LibraryWindow()
+        public LibraryWindow(LibraryManager libraryManager)
         {
+            this.libraryManager = libraryManager;
             InitializeComponent();
             this.Theme();
             this.Show();
@@ -33,7 +35,7 @@ namespace Hackathon
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
             //EDIT STRUCTURE BIBLIO
-            UpdateLibraryWindow window = new UpdateLibraryWindow();
+            UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
         }

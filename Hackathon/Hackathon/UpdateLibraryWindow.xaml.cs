@@ -20,10 +20,21 @@ namespace Hackathon
     /// </summary>
     public partial class UpdateLibraryWindow : Window
     {
-        private int panelIndex = 0;
+        private Dictionary<String, DataType> dataTypesNames = new Dictionary<String, DataType> {
+            ["String"] = DataType.STRING,
+            ["Int"] = DataType.INTEGER,
+            ["Bool"] = DataType.BOOLEAN,
+            ["Date"] = DataType.DATE
+        };
 
-        public UpdateLibraryWindow()
-        {
+        private LibraryManager libraryManager;
+        private List<TextBox> textBoxes;
+        private List<ComboBox> comboBoxes;
+        
+        public UpdateLibraryWindow(LibraryManager libraryManager) {
+            this.libraryManager = libraryManager;
+            textBoxes = new List<TextBox>();
+            comboBoxes = new List<ComboBox>();
             InitializeComponent();
             Theme();
             this.Show();
@@ -34,18 +45,15 @@ namespace Hackathon
         {
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
-            sp.Name = ("sp" + panelIndex);
             sp.Margin = new Thickness(0,5,0,0);
 
             TextBox tb = new TextBox();
-            tb.Name = ("name" + panelIndex);
             tb.Width = 120;
             tb.Height = 23;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
-            
+            textBoxes.Add(tb);
 
             ComboBox cb = new ComboBox();
-            cb.Name = ("choicedata" + panelIndex);
             cb.SelectedIndex = 0;
             cb.Items.Add("String");
             cb.Items.Add("Int");
@@ -54,64 +62,28 @@ namespace Hackathon
             cb.Width = 82;
             cb.HorizontalAlignment = HorizontalAlignment.Center;
             cb.Margin = new Thickness(10, 0, 10, 0);
-            
+            comboBoxes.Add(cb);
            
-
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
             image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png"));
             myBrush.ImageSource = image.Source;
 
             Button btn = new Button();
-            btn.Name = ("del_object" + panelIndex);
             btn.Width = 20;
             btn.Height = 23;
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
-                panelIndex--;
+                textBoxes.Remove(tb);
+                comboBoxes.Remove(cb);
                 stackpanel.Children.Remove(sp);
             };
 
-            panelIndex++;
             sp.Children.Add(tb);
             sp.Children.Add(cb);
             sp.Children.Add(btn);
             this.stackpanel.Children.Add(sp);
-
-            /*
-            TextBox tb = new TextBox();
-            tb.Name = ("name" + a++);
-            tb.Width = 120;
-            tb.Height = 23;
-           
-            
-            this.stackpanel.Children.Add(tb);
-
-            ComboBox cb = new ComboBox();
-            cb.Name = ("choicedata" + b++);
-            cb.SelectedIndex = 0;
-            cb.Items.Add("String");
-            cb.Items.Add("Int");
-            cb.Items.Add("Bool");
-            cb.Items.Add("Date");
-            this.stackpanel1.Children.Add(cb);
-
-            ImageBrush myBrush = new ImageBrush();
-            Image image = new Image();
-            image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png"));
-            myBrush.ImageSource = image.Source;
-
-            Button btn = new Button();
-            btn.Name = ("del_object" + c++);
-            btn.Width = 20;
-            btn.Height = 23;
-            btn.Background = myBrush;
-            
-            
-            
-            this.stackpanel2.Children.Add(btn);
-            */
         }
 
         private void del_object_click(object sender, RoutedEventArgs e)
@@ -121,7 +93,20 @@ namespace Hackathon
 
         private void Save_library_Click(object sender, RoutedEventArgs e)
         {
-
+            if (String.IsNullOrEmpty(name.Text)) {
+                MessageBox.Show("La bibliothèque doit avoir un nom !", "Erreur", MessageBoxButton.OK);
+                return;
+            }
+            if (textBoxes.Count == 0) {
+                MessageBox.Show("La bibliothèue doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
+                return;
+            }
+            if (textBoxes.Any(tb => String.IsNullOrEmpty(tb.Text))) {
+                MessageBox.Show("Tous les attributs doivent avoir un nom !", "Erreur", MessageBoxButton.OK);
+                return;
+            }
+            List<String> attributeNames = textBoxes.Select(x => x.Text).ToList();
+            List<DataType> dataTypes = comboBoxes.Select(x => (DataType) x.SelectedItem).ToList();
         }
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)

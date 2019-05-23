@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 namespace Hackathon {
     public class LibraryManager {
 
+        public const String DefaultLibrariesPath = "/libraries";
+
         public List<Library> Libraries {
             get; private set;
         }
@@ -44,6 +46,10 @@ namespace Hackathon {
             string[] filePaths = Directory.GetFiles(folderPath, "*.libr", SearchOption.TopDirectoryOnly);
             foreach (String path in filePaths)
                 File.Delete(path);
+        }
+
+        public void AddLibrary(Library library) {
+            Libraries.Add(library);
         }
 
         //Searches a library in the libraries list
