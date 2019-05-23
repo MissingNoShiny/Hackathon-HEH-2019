@@ -9,7 +9,7 @@
 
 
     <Grid Background="#262626">
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="54,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="54,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0"/>
         <ComboBox x:Name="choicedata" HorizontalAlignment="Left" Margin="180,90,0,0" VerticalAlignment="Top" Width="82" SelectedIndex="0">
 
             <ComboBoxItem>String</ComboBoxItem>
@@ -20,12 +20,17 @@
         </ComboBox>
         <Label Content="Ajouter une bibliothèque" Foreground="White" FontSize="24" FontFamily="Segoe UI Black" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top"/>
 
-        <Button x:Name="add_object" Padding="0" Content="" HorizontalAlignment="Left" Margin="310,0,0,212" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="add_object_click" Focusable="False" >
+        <Button x:Name="add_object" Padding="0" Content="" HorizontalAlignment="Left" Margin="330,0,0,184" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="add_object_click" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/add_button.png"/>
             </Button.Background>
         </Button>
-        <StackPanel x:Name="stackpanel" HorizontalAlignment="Left" Height="224" Margin="54,118,0,0" VerticalAlignment="Top" Width="120"/>
-        <StackPanel x:Name="stackpanel1" HorizontalAlignment="Left" Height="224" Margin="180,118,0,0" VerticalAlignment="Top" Width="82"/>
+
+        <StackPanel x:Name="stackpanel" HorizontalAlignment="Left" Height="224" Margin="54,118,0,0" VerticalAlignment="Top" Width="120">
+
+        </StackPanel>
+        <StackPanel x:Name="stackpanel1" HorizontalAlignment="Left" Height="224" Margin="180,118,0,0" VerticalAlignment="Top" Width="82" MinWidth="20"/>
+        <StackPanel x:Name="stackpanel2" HorizontalAlignment="Left" Height="224" Margin="267,118,0,0" VerticalAlignment="Top" Width="35"/>
+        <Button x:Name="save_library" Content="Valider" HorizontalAlignment="Left" Margin="307,217,0,0" VerticalAlignment="Top" Width="75" Click="Save_library_Click"/>
     </Grid>
 </Window>

@@ -28,6 +28,7 @@ namespace Hackathon
         }
         int a = 0;
         int b = 0;
+        int c = 0;
 
         private void add_object_click(object sender, RoutedEventArgs e)
         {
@@ -35,6 +36,8 @@ namespace Hackathon
             tb.Name = ("name" + a++);
             tb.Width = 120;
             tb.Height = 23;
+           
+            
             this.stackpanel.Children.Add(tb);
 
             ComboBox cb = new ComboBox();
@@ -45,7 +48,31 @@ namespace Hackathon
             cb.Items.Add("Bool");
             cb.Items.Add("Date");
             this.stackpanel1.Children.Add(cb);
+
+            ImageBrush myBrush = new ImageBrush();
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(@"C:\Users\Ugo\Desktop\HACKATHON\Hackathon-HEH-2019\Hackathon\Hackathon\Assets\delete_button.png"));
+            myBrush.ImageSource = image.Source;
+
+            Button btn = new Button();
+            btn.Name = ("del_object" + c++);
+            btn.Width = 20;
+            btn.Height = 23;
+            btn.Background = myBrush;
+            
+            
+            
+            this.stackpanel2.Children.Add(btn);
         }
-        
+
+        private void del_object_click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Save_library_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
