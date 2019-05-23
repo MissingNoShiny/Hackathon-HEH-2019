@@ -26,10 +26,6 @@ namespace Hackathon
             this.Theme();
             this.Show();
         }
-        private void Open_button(object sender, RoutedEventArgs e)
-        {
-            //OPEN SELECTED BIBLIO
-        }
         private void Add_button(object sender, RoutedEventArgs e)
         {
             //CREER NOUVELLE BIBLIO
