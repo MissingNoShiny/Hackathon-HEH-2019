@@ -21,25 +21,39 @@ namespace Hackathon
     /// </summary>
     public partial class UpdateLibraryWindow : Window
     {
-        private Dictionary<String, DataType> dataTypesNames = new Dictionary<String, DataType> {
+        private static Dictionary<String, DataType> dataTypesNames = new Dictionary<String, DataType> {
             ["String"] = DataType.STRING,
             ["Int"] = DataType.INTEGER,
             ["Bool"] = DataType.BOOLEAN,
             ["Date"] = DataType.DATE
         };
+        private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
 
         private LibraryManager libraryManager;
         private List<TextBlock> textBlocks;
         private List<TextBox> textBoxes;
         private List<ComboBox> comboBoxes;
         private int panelIndex;
+
+        private Library library;
+        private bool edition;
         
         public UpdateLibraryWindow(LibraryManager libraryManager) {
+            initializeWindow();
+            edition = false;
             this.libraryManager = libraryManager;
             textBlocks = new List<TextBlock>();
             textBoxes = new List<TextBox>();
             comboBoxes = new List<ComboBox>();
             panelIndex = 0;
+        }
+
+        public  UpdateLibraryWindow(Library library) {
+            initializeWindow();
+            edition = true;
+        }
+
+        private void initializeWindow() {
             InitializeComponent();
             Theme();
             DispatcherTimer timer = new DispatcherTimer();
@@ -47,24 +61,27 @@ namespace Hackathon
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             timer.Start();
             this.Show();
-            
         }
 
         private void add_object_click(object sender, RoutedEventArgs e)
         {
             if (panelIndex > 9)
                 return;
+            AddRow();
 
+        }
+
+        private void AddRow(String text = "", DataType datatype = DataType.STRING) {
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
-            sp.Margin = new Thickness(0,5,0,0);
+            sp.Margin = new Thickness(0, 5, 0, 0);
 
             TextBlock txb = new TextBlock();
             txb.FontFamily = new FontFamily("Segoe UI");
             txb.FontSize = 13;
             txb.FontWeight = FontWeights.Bold;
             txb.Foreground = new SolidColorBrush(Colors.DimGray);
-            txb.Text = (panelIndex+1).ToString();
+            txb.Text = (panelIndex + 1).ToString();
             txb.Width = 23;
             txb.Height = 23;
             textBlocks.Add(txb);
@@ -73,6 +90,7 @@ namespace Hackathon
             tb.Width = 120;
             tb.Height = 23;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
+            tb.Text = text;
             textBoxes.Add(tb);
 
             ComboBox cb = new ComboBox();
@@ -81,8 +99,9 @@ namespace Hackathon
             cb.Width = 82;
             cb.HorizontalAlignment = HorizontalAlignment.Center;
             cb.Margin = new Thickness(10, 0, 10, 0);
+            cb.SelectedItem = namesDataType[datatype];
             comboBoxes.Add(cb);
-           
+
             ImageBrush myBrush = new ImageBrush();
             Image image = new Image();
             image.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/delete_list_button.png"));
