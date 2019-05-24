@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hackathon"
         mc:Ignorable="d"
-        Title="UpdateLibraryWindow" Height="500" Width="400"
+        Title="UpdateLibraryWindow" Height="477" Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
