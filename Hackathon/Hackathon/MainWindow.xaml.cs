@@ -101,9 +101,12 @@ namespace Hackathon
         {
             //DELETE SELECTED BIBLIO
             if (libraryManager.Libraries.Count != 0) {
+                int selectedlib = library_list.SelectedIndex;
                 MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
-                    //TODO: delete the selected library
+                    libraryManager.Libraries.RemoveAt(selectedlib);
+                    Is_Library_empty();
+                    //TODO: ajouter la suppression de fichier
                 }
             } 
             else {
@@ -131,8 +134,6 @@ namespace Hackathon
             open_button.Width = 150;
             search_box.Width = 150;
             search_button.Width = 25;
-            //library_list.Width = this.Width;
-            //library_list.Height = this.Height - 100;
         }
         public void Admin_Mode()
         {
