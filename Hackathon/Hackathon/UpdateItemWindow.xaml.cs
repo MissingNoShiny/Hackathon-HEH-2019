@@ -41,13 +41,13 @@ namespace Hackathon
             InitializeWindow();
         }
 
-        public UpdateItemWindow(Library library, Item item) {
+        public UpdateItemWindow(Library library, int index) {
             this.library = library;
-            this.item = item;
+            item = library.Items[index];
             edition = true;
             InitializeWindow();
             for (int i = 0; i < textBoxes.Count; i++) {
-                textBoxes[i].Text = item.Values[i].ToString();
+                textBoxes[i].Text = item.Values[i].Value.ToString();
             }
         }
 

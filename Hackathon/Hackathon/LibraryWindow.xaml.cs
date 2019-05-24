@@ -67,7 +67,9 @@ namespace Hackathon
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
             //EDIT ITEM BIBLIO
-            UpdateItemWindow window = new UpdateItemWindow(library);
+            if (item_list.SelectedItem == null)
+                return;
+            UpdateItemWindow window = new UpdateItemWindow(library, item_list.SelectedIndex);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;
@@ -79,10 +81,11 @@ namespace Hackathon
         }
         private void Delete_button(object sender, RoutedEventArgs e)
         {
-            //DELETE SELECTED BIBLIO
+            int index = item_list.SelectedIndex;
             MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cet item ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (dialresult == MessageBoxResult.Yes) {
-                //TODO: delete the selected item
+                library.RemoveItem(index);
+                UpdateItems();
             }
         }
         private void Search_focus(object sender, RoutedEventArgs e)

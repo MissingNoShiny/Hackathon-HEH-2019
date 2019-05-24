@@ -108,19 +108,20 @@ namespace Hackathon
         private void Delete_button(object sender, RoutedEventArgs e)
         {
             //DELETE SELECTED BIBLIO
-            if (libraryManager.Libraries.Count != 0) {
+            if (libraryManager.Libraries.Count != 0 && library_list.SelectedItem != null) {
                 int selectedlib = library_list.SelectedIndex;
                 string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
-                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer " + selectednamelib + " ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
-                    libraryManager.Libraries.RemoveAt(selectedlib);                  
+                    libraryManager.Libraries.RemoveAt(selectedlib);
                     File.Delete(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
                     Is_Library_empty();
                 }
-            } 
-            else {
-                MessageBox.Show("Il n'y a pas de bibliothèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            else if (libraryManager.Libraries.Count == 0)
+                MessageBox.Show("Il n'y a pas de bibliothèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Vous n'avez pas sélectionné de bibliothèque !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /*METHODES*/

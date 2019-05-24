@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace Hackathon
 {
@@ -98,7 +99,7 @@ namespace Hackathon
             tb.HorizontalAlignment = HorizontalAlignment.Left;
             tb.Opacity = 0.5;
             tb.Text = text;
-            if (text != "") tb.Name = text;
+            if (text != "" && text.All(char.IsLetterOrDigit)) tb.Name = text;
             textBoxes.Add(tb);
 
             ComboBox cb = new ComboBox();
@@ -156,6 +157,9 @@ namespace Hackathon
                 MessageBox.Show("Le nom de la bibliothèque ne peut pas dépasser 24 caractères.", "Erreur", MessageBoxButton.OK);
                 return;
             }
+            if (name.Text.All(char.IsLetterOrDigit) == false) {
+                MessageBox.Show("Le nom de la bibliothèque ne peut contenir que des lettres ou des chiffres", "Erreur", MessageBoxButton.OK);
+            }
             if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text) && (!edition || name.Name != name.Text)) {
                 MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
                 return;
@@ -174,6 +178,12 @@ namespace Hackathon
             if (attributeNames.Count != attributeNames.Distinct().Count()) {
                 MessageBox.Show("Tous les attributs doivent avoir un nom différent !", "Erreur", MessageBoxButton.OK);
                 return;
+            }
+            foreach (String name in attributeNames){
+                if (name.All(char.IsLetterOrDigit) == false) {
+                    MessageBox.Show("Les noms d'attributs ne doivent contenir que des lettres ou des chiffres","Erreur", MessageBoxButton.OK);
+                    return;
+                }      
             }
             if (!edition) {
                 List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String)x.SelectedItem]).ToList();
