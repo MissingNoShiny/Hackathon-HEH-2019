@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Hackathon
 {
@@ -109,11 +110,13 @@ namespace Hackathon
             //DELETE SELECTED BIBLIO
             if (libraryManager.Libraries.Count != 0) {
                 int selectedlib = library_list.SelectedIndex;
-                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
+                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
                     libraryManager.Libraries.RemoveAt(selectedlib);
                     Is_Library_empty();
-                    //TODO: ajouter la suppression de fichier
+                    MessageBox.Show(libraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
+                    File.Delete(libraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
                 }
             } 
             else {
