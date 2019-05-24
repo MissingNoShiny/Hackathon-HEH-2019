@@ -73,5 +73,9 @@ namespace Hackathon {
             }
             return match;
         }
+
+        public void RemoveLibFile(Library library) {
+            //TODO:supprime le fichier lié à une valeur de library
+        }
     }
 }

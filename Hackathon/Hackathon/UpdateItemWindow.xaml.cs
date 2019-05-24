@@ -27,6 +27,7 @@ namespace Hackathon
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Window_Position;
             timer.Interval = TimeSpan.FromSeconds(0.0001);
+            img_object.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/defaultimage.png"));
             timer.Start();
         }
         private void Add_picture_Click(object sender, RoutedEventArgs e)
@@ -38,10 +39,7 @@ namespace Hackathon
             if (OFD.ShowDialog() == true)
             {
                 img_object.Source = new BitmapImage(new Uri(OFD.FileName));
-            }
-            img_object.Width = 220;
-            img_object.Height = 170;
-            
+            }            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
