@@ -113,14 +113,13 @@ namespace Hackathon
                 string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
                 MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
-                    libraryManager.Libraries.RemoveAt(selectedlib);
-                    Is_Library_empty();
-                    MessageBox.Show(libraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
+                    libraryManager.Libraries.RemoveAt(selectedlib);                  
                     File.Delete(libraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
+                    Is_Library_empty();
                 }
             } 
             else {
-                MessageBox.Show("Il n'y a pas de biblithèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Il n'y a pas de bibliothèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
