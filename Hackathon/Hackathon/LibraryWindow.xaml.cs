@@ -126,8 +126,8 @@ namespace Hackathon
         {
             if (this.WindowState != WindowState.Maximized)
             {
-                item_list.Width = this.Width;
-                item_list.Height = this.Height - 100;
+                item_list.Width = this.Width-14;
+                item_list.Height = this.Height - 140;
                 item_list.Margin = new Thickness(0, 7, 0, 70);
                 rectangle_grid.Width = this.Width;
             }
@@ -166,8 +166,8 @@ namespace Hackathon
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            item_list.Width = window_background.Width;
-            item_list.Height = window_background.Height - 100;
+            item_list.Width = rectangle_grid.Width;
+            item_list.Height = image_back.Height - 140;
             rectangle_grid.Width = 2000;
         }
 
