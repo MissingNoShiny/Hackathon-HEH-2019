@@ -181,7 +181,7 @@ namespace Hackathon
             for (int i = 0; i < library.Items.Count; i++) {
                 Item item = library.Items[i];
                 foreach(Attribute value in item.Values)
-                    item_list.Items.Add(value);     
+                    item_list.Items.Add(value.ToString());  
             }
         }
 
