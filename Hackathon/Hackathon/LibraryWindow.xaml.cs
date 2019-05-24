@@ -44,8 +44,6 @@ namespace Hackathon
             window.Width = this.Width - 16;
             window.Height = this.Height - 38;
             window.Show();
-          
-
         }
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
@@ -62,6 +60,14 @@ namespace Hackathon
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
             //EDIT ITEM BIBLIO
+            UpdateItemWindow window = new UpdateItemWindow();
+            window.Owner = this;
+            window.WindowState = this.WindowState;
+            window.Left = this.Left + 8;
+            window.Top = this.Top + 30;
+            window.Width = this.Width - 16;
+            window.Height = this.Height - 38;
+            window.Show();
         }
         private void Delete_button(object sender, RoutedEventArgs e)
         {
@@ -159,6 +165,11 @@ namespace Hackathon
             item_list.Width = this.Width;
             item_list.Height = this.Height - 100;
             rectangle_grid.Width = 2000;
+        }
+
+        private void Close_window(object sender, RoutedEventArgs e)
+        {
+            Owner.Focus();
         }
     }
 }
