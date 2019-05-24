@@ -143,6 +143,10 @@ namespace Hackathon
                 return;
             }
             List<String> attributeNames = textBoxes.Select(x => x.Text).ToList();
+            if (attributeNames.Count != attributeNames.Distinct().Count()) {
+                MessageBox.Show("Tous les attributs doivent avoir un nom différent !", "Erreur", MessageBoxButton.OK);
+                return;
+            }
             List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String) x.SelectedItem]).ToList();
             Dictionary<String, DataType> attributeType = attributeNames.Zip(dataTypes, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
             libraryManager.AddLibrary(new Library(name.Text, attributeNames, attributeType));
@@ -152,6 +156,7 @@ namespace Hackathon
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
         {
+            Owner.Focus();
             this.Close();
         }
 
