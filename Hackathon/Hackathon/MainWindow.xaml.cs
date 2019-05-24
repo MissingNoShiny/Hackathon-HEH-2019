@@ -261,7 +261,7 @@ namespace Hackathon
         private void Resize_window(object sender, SizeChangedEventArgs e)
         {
             //IF library >0
-            if (this.WindowState != WindowState.Maximized)
+            if (this.WindowState == WindowState.Normal)
             {
                 library_list.Width = this.Width;
                 library_list.Height = this.Height - 100;
