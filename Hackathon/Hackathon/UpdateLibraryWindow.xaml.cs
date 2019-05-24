@@ -137,6 +137,7 @@ namespace Hackathon
                 return;
             }
             List<int> emptyTextBoxes = Enumerable.Range(0, textBoxes.Count).Where(i => String.IsNullOrEmpty(textBoxes[i].Text)).ToList();
+            emptyTextBoxes = emptyTextBoxes.Select(x => { x += 1; return x; }).ToList();
             if (emptyTextBoxes.Count > 0) {
                 MessageBox.Show("Tous les attributs doivent avoir un nom !\nLes attributs suivants n'en ont pas : " + String.Join(", ", emptyTextBoxes), "Erreur", MessageBoxButton.OK);
                 return;
