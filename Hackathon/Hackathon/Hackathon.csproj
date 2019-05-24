@@ -258,5 +258,8 @@
   <ItemGroup>
     <Resource Include="Assets\defaultimage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\viewimage_light.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
