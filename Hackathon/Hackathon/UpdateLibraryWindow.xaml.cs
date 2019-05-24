@@ -152,6 +152,7 @@ namespace Hackathon
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
         {
+            Owner.Focus();
             this.Close();
         }
 
