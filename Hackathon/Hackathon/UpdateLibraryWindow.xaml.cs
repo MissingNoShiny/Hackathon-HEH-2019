@@ -130,6 +130,8 @@ namespace Hackathon
             {
                 window_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
+                nameText.Foreground = new SolidColorBrush(Colors.Black);
+                info.Foreground = new SolidColorBrush(Colors.Black);
                 cancel_library.Foreground = new SolidColorBrush(Colors.Black);
                 cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
                 save_library.Foreground = new SolidColorBrush(Colors.Black);
