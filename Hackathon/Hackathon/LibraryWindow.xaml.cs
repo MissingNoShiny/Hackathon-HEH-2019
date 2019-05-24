@@ -36,7 +36,16 @@ namespace Hackathon
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
-            //CREER NOUVELLE BIBLIO
+            UpdateItemWindow window = new UpdateItemWindow();
+            window.Owner = this;
+            window.WindowState = this.WindowState;
+            window.Left = this.Left + 8;
+            window.Top = this.Top + 30;
+            window.Width = this.Width - 16;
+            window.Height = this.Height - 38;
+            window.Show();
+          
+
         }
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
