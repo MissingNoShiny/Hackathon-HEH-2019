@@ -67,7 +67,9 @@ namespace Hackathon
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
             //EDIT ITEM BIBLIO
-            UpdateItemWindow window = new UpdateItemWindow(library);
+            if (item_list.SelectedItem == null)
+                return;
+            UpdateItemWindow window = new UpdateItemWindow(library, item_list.SelectedIndex);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;
