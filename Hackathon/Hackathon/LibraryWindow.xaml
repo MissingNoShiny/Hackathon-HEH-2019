@@ -28,9 +28,9 @@
             <AccessText TextWrapping="WrapWithOverflow" Text="Vous ne possédez pas de bibliothèque. Pour éditer, veuillez passer en mode avancé. Un login peut être requis."/>
         </Label>
         <Grid Margin="0,65,0.333,0.333" Grid.ColumnSpan="4">
-            <DataGrid  x:Name="item_list"  MinRowHeight="50" RowBackground="White" BorderThickness="1,1,1,0" Background="#77777777" BorderBrush="Black" Opacity="0.1"></DataGrid>
+            <DataGrid  x:Name="item_list"  MinRowHeight="50" RowBackground="White" BorderThickness="1,1,1,0" Background="#77777777" BorderBrush="Black" Opacity="0.5"></DataGrid>
         </Grid>
-        <Rectangle x:Name="rectangle_grid" Fill="#77777777" HorizontalAlignment="Left" Height="70.5" Margin="0,0,0,0.333" Stroke="Black" VerticalAlignment="Bottom" Opacity="0.1" Width="693" Grid.ColumnSpan="4"/>
+        <Rectangle x:Name="rectangle_grid" Fill="#77777777" HorizontalAlignment="Left" Height="70.5" Margin="0,0,0,0.333" Stroke="Black" VerticalAlignment="Bottom" Opacity="0.5" Width="693" Grid.ColumnSpan="4"/>
         <Button x:Name="edit_struct_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_struct_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/edit_struct_button.png"/>

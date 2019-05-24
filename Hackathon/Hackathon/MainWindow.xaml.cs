@@ -43,6 +43,7 @@ namespace Hackathon
 
             navigation_button.Width = 50;
             library_list.ItemsSource = libraryManager.Libraries;
+            Is_Library_empty();
             if (this.WindowState == WindowState.Normal)
             {
                 maximize_button.Width = 50;
@@ -97,9 +98,14 @@ namespace Hackathon
         private void Delete_button(object sender, RoutedEventArgs e)
         {
             //DELETE SELECTED BIBLIO
-            MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (dialresult == MessageBoxResult.Yes) {
-                //TODO: delete the selected library
+            if (libraryManager.Libraries.Count != 0) {
+                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                if (dialresult == MessageBoxResult.Yes) {
+                    //TODO: delete the selected library
+                }
+            } 
+            else {
+                MessageBox.Show("Il n'y a pas de biblithèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -123,8 +129,8 @@ namespace Hackathon
             open_button.Width = 150;
             search_box.Width = 150;
             search_button.Width = 25;
-            library_list.Width = this.Width;
-            library_list.Height = this.Height - 100;
+            //library_list.Width = this.Width;
+            //library_list.Height = this.Height - 100;
         }
         public void Admin_Mode()
         {
@@ -133,7 +139,7 @@ namespace Hackathon
             {
                 //AFFICHE LES BOUTONS MODE AVANCE
                 page_title.Content = "MODE AVANCÉ";
-                page_content.Content = "Aucune bibliothèque";
+                Is_Library_empty();
                 add_button.Width = 50;
                 delete_button.Width = 50;
                 Content_Visibility();
@@ -142,6 +148,7 @@ namespace Hackathon
             {
                 //REPASSE EN VUE USER  !!REEXECUTER LOADCOLLECTION!!
                 page_title.Content = "BIBLIOTHÈQUES";
+                Is_Library_empty();
                 add_button.Width = 0;
                 delete_button.Width = 0;
             }
@@ -274,8 +281,8 @@ namespace Hackathon
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            library_list.Width = this.Width;
-            library_list.Height = this.Height - 100;
+            library_list.Width = window_background.Width;
+            library_list.Height = window_background.Height - 100;
             rectangle_grid.Width = 2000;
             maximize_button.Width = 0;
             maximize_button.Focusable = false;
@@ -287,6 +294,26 @@ namespace Hackathon
             if (Admin) {
                 library_list.ItemsSource = new List<int>();
                 library_list.ItemsSource = libraryManager.Libraries;
+                Is_Library_empty();
+            }
+        }
+
+        private void Is_Library_empty() {//Verify the emptiness of the library list and hide some elements if it's empty
+            if(libraryManager.Libraries.Count == 0) {
+                library_list.Width = 0;
+                rectangle_grid.Width = 0;
+                if (Admin) {
+                    page_content.Content = "Aucune bibliothèque";
+                } 
+                else {
+                    page_content.Content = "Vous ne possédez pas de bibliothèque. Pour éditer, veuillez passer en mode avancé.";
+                }
+            } 
+            else {
+                library_list.Width = this.Width;
+                rectangle_grid.Width = this.Width;
+                library_list.Height = this.Height - 100;
+                page_content.Content = "";
             }
         }
 

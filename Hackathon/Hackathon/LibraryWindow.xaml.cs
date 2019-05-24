@@ -162,8 +162,8 @@ namespace Hackathon
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            item_list.Width = this.Width;
-            item_list.Height = this.Height - 100;
+            item_list.Width = window_background.Width;
+            item_list.Height = window_background.Height - 100;
             rectangle_grid.Width = 2000;
         }
 

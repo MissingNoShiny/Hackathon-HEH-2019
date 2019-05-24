@@ -31,8 +31,8 @@ namespace Hackathon
         {
             OpenFileDialog OFD = new OpenFileDialog();
             OFD.Title = "Selectionne une image";
-            OFD.Filter = "jpeg |*.jpeg | jpg |*.jpg |png |*.png";
-            
+            OFD.Filter = "*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+
             if (OFD.ShowDialog() == true)
             {
                 img_object.Source = new BitmapImage(new Uri(OFD.FileName));
@@ -41,6 +41,16 @@ namespace Hackathon
             img_object.Height = 170;
             
         }
-        
-}
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            Owner.Focus();
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            //SAVE changes
+        }
+    }
 }
