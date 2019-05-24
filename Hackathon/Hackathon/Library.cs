@@ -51,12 +51,9 @@ namespace Hackathon {
 
         //Replaces an item with another
         public void ModifyItem(Item oldi, Item newi) {
-            foreach (Item item_temp in Items) {
-                if (oldi.Equals(item_temp)) {
-                    RemoveItem(oldi);
-                    AddItem(newi);
-                }
-            }
+            if (!Items.Contains(oldi))
+                return;
+            Items[Items.IndexOf(oldi)] = newi;
         }
 
         public void AddAttribute(String attribute, DataType type) {

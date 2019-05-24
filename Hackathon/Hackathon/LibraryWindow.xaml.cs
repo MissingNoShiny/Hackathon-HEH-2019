@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Hackathon
     {
         private Library library;
         private LibraryManager libraryManager;
+        private DataTable dataTable;
         public LibraryWindow(LibraryManager libraryManager, Library library)
         {
             this.libraryManager = libraryManager;
@@ -28,8 +30,10 @@ namespace Hackathon
             InitializeComponent();
             this.Theme();
             var mainWindow = (Application.Current.MainWindow as MainWindow);
+            dataTable = new DataTable();
+            item_list.DataContext = dataTable.DefaultView;
 
-            AddItem();
+            UpdateItems();
 
             if (mainWindow.Admin){
                 edit_struct_button.Width = 50;
@@ -63,7 +67,9 @@ namespace Hackathon
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
             //EDIT ITEM BIBLIO
-            UpdateItemWindow window = new UpdateItemWindow(library);
+            if (item_list.SelectedItem == null)
+                return;
+            UpdateItemWindow window = new UpdateItemWindow(library, item_list.SelectedIndex);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;
@@ -126,8 +132,8 @@ namespace Hackathon
         {
             if (this.WindowState != WindowState.Maximized)
             {
-                item_list.Width = this.Width;
-                item_list.Height = this.Height - 100;
+                item_list.Width = this.Width-14;
+                item_list.Height = this.Height - 140;
                 item_list.Margin = new Thickness(0, 7, 0, 70);
                 rectangle_grid.Width = this.Width;
             }
@@ -166,8 +172,8 @@ namespace Hackathon
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            item_list.Width = window_background.Width;
-            item_list.Height = window_background.Height - 100;
+            item_list.Width = rectangle_grid.Width;
+            item_list.Height = image_back.Height - 140;
             rectangle_grid.Width = 2000;
         }
 
@@ -176,27 +182,27 @@ namespace Hackathon
             Owner.Focus();
         }
 
-        private void AddItem() {
-            CreateColumn();
+        
+        private void UpdateItems() {
+
+            CreateColumns();
+            dataTable.Rows.Clear();
             for (int i = 0; i < library.Items.Count; i++) {
                 Item item = library.Items[i];
-                foreach(Attribute value in item.Values)
-                    item_list.Items.Add(value.ToString());  
+                dataTable.Rows.Add(item.Values.Select(x => x.Value.ToString()).ToList().ToArray());
             }
         }
 
-        private void CreateColumn() {
-            if (item_list.Columns.Count == 0) {
-                foreach (String name in library.AttributeNames) {
-                    DataGridTextColumn textColumn = new DataGridTextColumn();
-                    textColumn.Header = name;
-                    item_list.Columns.Add(textColumn);
-                }
-            }  
+        private void CreateColumns() {
+            dataTable.Columns.Clear();
+            foreach (String name in library.AttributeNames) {
+                DataColumn dc = new DataColumn(name, typeof(String));
+                dataTable.Columns.Add(dc);
+            }
         }
         private void LibraryWindowActivated(object sender, EventArgs e)
         {
-            AddItem();
+            UpdateItems();
         }
     }
 }
