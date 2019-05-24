@@ -146,7 +146,7 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 add_button.Width = 0;
                 delete_button.Width = 0;
-            }            
+            }
         }
         
         public void Display_Fullscreen (bool fullscreen)
@@ -269,6 +269,13 @@ namespace Hackathon
             library_list.Height = this.Height - 100;
             library_list.Margin = new Thickness(0, 7, 0, 70);
             rectangle_grid.Width = this.Width;
+        }
+
+        private void Window_Activated(object sender, EventArgs e) {
+            if (Admin) {
+                library_list.ItemsSource = new List<int>();
+                library_list.ItemsSource = libraryManager.Libraries;
+            }
         }
     }
 }
