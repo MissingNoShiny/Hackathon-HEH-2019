@@ -263,6 +263,8 @@ namespace Hackathon
             //IF library >0
             library_list.Width = this.Width;
             library_list.Height = this.Height - 100;
+            library_list.Margin = new Thickness(0, 7, 0, 70);
+            rectangle_grid.Width = this.Width;
         }
     }
 }

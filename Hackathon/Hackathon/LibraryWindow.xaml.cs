@@ -103,6 +103,8 @@ namespace Hackathon
         {
             item_list.Width = this.Width;
             item_list.Height = this.Height - 100;
+            item_list.Margin = new Thickness(0, 7, 0, 70);
+            rectangle_grid.Width = this.Width;
         }
 
         /*APPLYING THEME*/
