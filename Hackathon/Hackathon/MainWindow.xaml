@@ -11,7 +11,7 @@
         MaxHeight="1500"
         WindowStartupLocation="CenterScreen"
         Left="500"
-        Stylus.IsTapFeedbackEnabled="False" SizeChanged="Resize_window" StateChanged="Window_maximized"
+        Stylus.IsTapFeedbackEnabled="False" SizeChanged="Resize_window" StateChanged="Window_maximized" Activated="Window_Activated"
         >
     <Grid x:Name="window_background" Background="#262626">
         <Label x:Name="page_title" Background="Transparent" FontFamily="Segoe UI Black" Margin="70,20,0,0" Foreground="White" FontSize="20">
