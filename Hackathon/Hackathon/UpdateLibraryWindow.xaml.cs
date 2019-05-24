@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +29,14 @@ namespace Hackathon
         };
 
         private LibraryManager libraryManager;
+        private List<TextBlock> textBlocks;
         private List<TextBox> textBoxes;
         private List<ComboBox> comboBoxes;
         private int panelIndex;
         
         public UpdateLibraryWindow(LibraryManager libraryManager) {
             this.libraryManager = libraryManager;
+            textBlocks = new List<TextBlock>();
             textBoxes = new List<TextBox>();
             comboBoxes = new List<ComboBox>();
             panelIndex = 0;
@@ -58,9 +60,14 @@ namespace Hackathon
             sp.Margin = new Thickness(0,5,0,0);
 
             TextBlock txb = new TextBlock();
+            txb.FontFamily = new FontFamily("Segoe UI");
+            txb.FontSize = 13;
+            txb.FontWeight = FontWeights.Bold;
+            txb.Foreground = new SolidColorBrush(Colors.DimGray);
             txb.Text = (panelIndex+1).ToString();
             txb.Width = 23;
             txb.Height = 23;
+            textBlocks.Add(txb);
 
             TextBox tb = new TextBox();
             tb.Width = 120;
@@ -87,7 +94,12 @@ namespace Hackathon
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
+                int index = Int32.Parse(txb.Text);
+                foreach (TextBlock textBlock in textBlocks.GetRange(index, textBlocks.Count - index)) {
+                    textBlock.Text = (Int32.Parse(textBlock.Text) - 1).ToString();
+                }
                 panelIndex--;
+                textBlocks.Remove(txb);
                 textBoxes.Remove(tb);
                 comboBoxes.Remove(cb);
                 stackpanel.Children.Remove(sp);
@@ -114,9 +126,11 @@ namespace Hackathon
             }
             if (name.Text.Length > 24) {
                 MessageBox.Show("Le nom de la bibliothèque ne peut pas dépasser 24 caractères.", "Erreur", MessageBoxButton.OK);
+                return;
             }
             if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text)) {
                 MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
+                return;
             }
             if (textBoxes.Count == 0) {
                 MessageBox.Show("La bibliothèque doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
