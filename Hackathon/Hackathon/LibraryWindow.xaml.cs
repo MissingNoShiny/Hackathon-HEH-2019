@@ -178,6 +178,7 @@ namespace Hackathon
             item_list.ItemsSource = new List<int>();
             foreach (Item item in library.Items) 
                 item_list.ItemsSource = item.Values;
+
         }
         private void LibraryWindowActivated(object sender, EventArgs e)
         {

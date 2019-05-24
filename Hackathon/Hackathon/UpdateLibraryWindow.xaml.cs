@@ -182,6 +182,7 @@ namespace Hackathon
             libraryManager.AddLibrary(tempLibrary);
             tempLibrary.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
+            Owner.Focus();
         }
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
