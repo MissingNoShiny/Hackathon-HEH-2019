@@ -18,7 +18,9 @@ namespace Hackathon {
             ["ImagePath"] = DataType.PATH
         };
         public DataType Type;
-        public Object Value;
+        public Object Value {
+            get; private set;
+        }
          
         public Attribute(Object attribute) {
             String className = attribute.GetType().Name;

@@ -175,10 +175,22 @@ namespace Hackathon
         }
 
         private void AddItem() {
-            item_list.ItemsSource = new List<int>();
-            foreach (Item item in library.Items) 
-                item_list.ItemsSource = item.Values;
+            CreateColumn();
+            for (int i = 0; i < library.Items.Count; i++) {
+                Item item = library.Items[i];
+                foreach(Attribute value in item.Values)
+                    item_list.Items.Add(value);     
+            }
+        }
 
+        private void CreateColumn() {
+            if (item_list.Columns.Count == 0) {
+                foreach (String name in library.AttributeNames) {
+                    DataGridTextColumn textColumn = new DataGridTextColumn();
+                    textColumn.Header = name;
+                    item_list.Columns.Add(textColumn);
+                }
+            }  
         }
         private void LibraryWindowActivated(object sender, EventArgs e)
         {
