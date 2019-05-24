@@ -21,23 +21,23 @@
             <Button.Background>
                 <ImageBrush ImageSource="Assets/back_button.png"/>
             </Button.Background>
-        </Button>        
+        </Button>
         <Button x:Name="save_library" Content="" HorizontalAlignment="Right" Margin="0,0,10.333,10" VerticalAlignment="Bottom" Width="50" BorderBrush="#44444444" Click="Save_library_Click" Height="50">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/validation_button.png"/>
             </Button.Background>
         </Button>
         <Grid x:Name="page_content" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="63,3,63,0.333">
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="91,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
-               
-        <StackPanel x:Name="stackpanel" HorizontalAlignment="Center" Height="350" Margin="0,117,0,5" VerticalAlignment="Center" Width="250"/>
-        <TextBlock x:Name="nameText" HorizontalAlignment="Left" Margin="44,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="44" Text="NOM :" FontWeight="Bold"/>
+            <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="91,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
+
+            <StackPanel x:Name="stackpanel" HorizontalAlignment="Center" Height="350" Margin="-14,112,-16.4,10" VerticalAlignment="Center" Width="280"/>
+            <TextBlock x:Name="nameText" HorizontalAlignment="Left" Margin="44,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="44" Text="NOM :" FontWeight="Bold"/>
             <TextBlock x:Name="info"  Text="Créez jusqu'à 10 attributs" Margin="0,0,70,25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" FontSize="16"></TextBlock>
             <Button x:Name="add_object" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,9.667,10" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="add_object_click" Focusable="False" >
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/add_button.png"/>
                 </Button.Background>
-            </Button>            
+            </Button>
         </Grid>
     </Grid>
 </Window>

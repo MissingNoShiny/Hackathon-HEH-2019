@@ -114,9 +114,11 @@ namespace Hackathon
             }
             if (name.Text.Length > 24) {
                 MessageBox.Show("Le nom de la bibliothèque ne peut pas dépasser 24 caractères.", "Erreur", MessageBoxButton.OK);
+                return;
             }
             if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text)) {
                 MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
+                return;
             }
             if (textBoxes.Count == 0) {
                 MessageBox.Show("La bibliothèque doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
