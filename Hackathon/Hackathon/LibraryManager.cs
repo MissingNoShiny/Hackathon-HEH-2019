@@ -23,7 +23,7 @@ namespace Hackathon {
 
         //Opens all found libraries in a given folder
         public void OpenLibraries(String folderPath) {
-            string[] filePaths = Directory.GetFiles(folderPath, "*.libr", SearchOption.TopDirectoryOnly);
+            string[] filePaths = Directory.GetFiles(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + folderPath, "*.libr", SearchOption.TopDirectoryOnly);
             foreach (String path in filePaths)
                 OpenLibrary(path);
         }
