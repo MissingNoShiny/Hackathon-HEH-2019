@@ -29,9 +29,13 @@ namespace Hackathon
             ["Date"] = DataType.DATE
         };
         private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
+        private List<TextBox> textBoxes;
+        private Library library;
         public UpdateItemWindow(Library library)
         {
             InitializeComponent();
+            this.library = library;
+            textBoxes = new List<TextBox>();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Window_Position;
             timer.Interval = TimeSpan.FromSeconds(0.0001);
@@ -55,6 +59,8 @@ namespace Hackathon
                 tb.Width = 60;
                 tb.Height = 23;
                 tb.HorizontalAlignment = HorizontalAlignment.Left;
+                tb.Name = attributeName;
+                textBoxes.Add(tb);
 
                 TextBlock dataTypeTB = new TextBlock();
                 dataTypeTB.FontFamily = new FontFamily("Segoe UI");
@@ -92,7 +98,47 @@ namespace Hackathon
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            //SAVE changes
+            List<Attribute> attributes = new List<Attribute>();
+            foreach (TextBox textBox in textBoxes) {
+                String value = textBox.Text;
+                switch (library.AttributeTypes[textBox.Name]) {
+                    case DataType.STRING:
+                        attributes.Add(new Attribute(value));
+                        break;
+                    case DataType.INTEGER:
+                        try {
+                            attributes.Add(new Attribute(Int32.Parse(value)));
+                        } catch (Exception ex) {
+                            attributes.Add(null);
+                        }
+                        break;
+                    case DataType.BOOLEAN:
+                        try {
+                            attributes.Add(new Attribute(Boolean.Parse(value)));
+                        } catch (Exception ex) {
+                            attributes.Add(null);
+                        }
+                        break;
+                    case DataType.DATE:
+                        try {
+                            attributes.Add(new Attribute(DateTime.Parse(value)));
+                        } catch (Exception ex) {
+                            attributes.Add(null);
+                        }
+                        break;
+                }
+            }
+            List<String> badTextBoxes = new List<String>();
+            for (int i = 0; i < attributes.Count; i++) {
+                if (attributes[i] == null)
+                    badTextBoxes.Add(textBoxes[i].Name);
+            }
+            if (badTextBoxes.Count > 0) {
+                MessageBox.Show("Les valeurs suivantes ne sont pas au bon format : " + String.Join(", ", badTextBoxes), "Erreur", MessageBoxButton.OK);
+                return;
+            }
+            library.AddItem(new Item(attributes));
+            this.Close();
         }
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)

@@ -44,8 +44,9 @@ namespace Hackathon
             this.libraryManager = libraryManager;
         }
 
-        public  UpdateLibraryWindow(Library library) {
+        public UpdateLibraryWindow(Library library) {
             initializeWindow();
+            page_title.Content = "ÉDITER UNE BIBLIOTHÈQUE";
             edition = true;
             this.library = library;
             name.Text = library.Name;
