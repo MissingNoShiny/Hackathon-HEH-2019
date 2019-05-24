@@ -46,8 +46,8 @@ namespace Hackathon
             library_list.Columns[0].MaxWidth = 0;
             library_list.Columns[1].MaxWidth = 0;
             library_list.Columns[2].MaxWidth = 0;
-            library_list.Columns[3].MinWidth = this.Width * 0.9;
-            library_list.Columns[4].MinWidth = this.Width * 0.1;
+            library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
+            library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
 
             Is_Library_empty();
 
@@ -323,8 +323,8 @@ namespace Hackathon
                 }
             } 
             else {
-                library_list.Width = this.Width;
-                rectangle_grid.Width = this.Width;
+                library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
+                library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
                 library_list.Height = this.Height - 100;
                 page_content.Content = "";
             }

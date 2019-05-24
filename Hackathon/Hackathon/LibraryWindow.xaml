@@ -11,7 +11,7 @@
         MaxHeight="1500"
         WindowStartupLocation="CenterScreen"
         Left="500"
-        Stylus.IsTapFeedbackEnabled="False" SizeChanged="Resize_window" StateChanged="Window_maximized" Unloaded="Close_window"
+        Stylus.IsTapFeedbackEnabled="False" SizeChanged="Resize_window" StateChanged="Window_maximized" Unloaded="Close_window" Activated="LibraryWindowActivated"
         >
     <Grid x:Name="window_background" Background="#262626">
         <Grid.ColumnDefinitions>
