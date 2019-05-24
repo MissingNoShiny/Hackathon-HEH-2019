@@ -42,15 +42,15 @@ namespace Hackathon
             initializeWindow();
             edition = false;
             this.libraryManager = libraryManager;
-            textBlocks = new List<TextBlock>();
-            textBoxes = new List<TextBox>();
-            comboBoxes = new List<ComboBox>();
-            panelIndex = 0;
         }
 
         public  UpdateLibraryWindow(Library library) {
             initializeWindow();
             edition = true;
+            this.library = library;
+            name.Text = library.Name;
+            foreach (String attributeName in library.AttributeNames)
+                AddRow(attributeName, library.AttributeTypes[attributeName]);
         }
 
         private void initializeWindow() {
@@ -61,6 +61,10 @@ namespace Hackathon
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             timer.Start();
             this.Show();
+            textBlocks = new List<TextBlock>();
+            textBoxes = new List<TextBox>();
+            comboBoxes = new List<ComboBox>();
+            panelIndex = 0;
         }
 
         private void add_object_click(object sender, RoutedEventArgs e)
