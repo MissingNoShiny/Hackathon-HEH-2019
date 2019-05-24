@@ -47,8 +47,8 @@ namespace Hackathon
             library_list.Columns[0].MaxWidth = 0;
             library_list.Columns[1].MaxWidth = 0;
             library_list.Columns[2].MaxWidth = 0;
-            library_list.Columns[3].MinWidth = library_list.Width * 0.7;
-            library_list.Columns[4].MinWidth = library_list.Width * 0.3;
+            library_list.Columns[3].Width = library_list.Width * 0.7;
+            library_list.Columns[4].Width = library_list.Width * 0.3;
 
             Is_Library_empty();
 
