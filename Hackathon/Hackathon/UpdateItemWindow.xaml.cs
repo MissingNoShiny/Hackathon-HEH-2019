@@ -94,7 +94,9 @@ namespace Hackathon
             {
                 imagePath = new Uri(OFD.FileName);
                 img_object.Source = new BitmapImage(imagePath);
-            }            
+            }
+            img_object.Width = 150;
+            img_object.Height = 150;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
