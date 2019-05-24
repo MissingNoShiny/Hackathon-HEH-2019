@@ -208,7 +208,7 @@ namespace Hackathon
             UpdateItems();
         }
 
-        private void View_image_button(object sender, RoutedEventArgs e)
+        private void Viewimage_button(object sender, RoutedEventArgs e)
         {
             if (library.Items[item_list.SelectedIndex].ImagePath == null)
                 return;
@@ -222,7 +222,6 @@ namespace Hackathon
             ImageBrush brush = new ImageBrush();
             brush.ImageSource = im;
             pic.Background = brush;
-            
         }
     }
 }
