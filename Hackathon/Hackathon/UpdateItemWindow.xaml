@@ -15,7 +15,7 @@
         >
     <Grid x:Name="windowitem_background" Background="#262626">
         <Label x:Name="page_title" Content="CRÉER UN ÉLÉMENT" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" HorizontalAlignment="Left" Margin="75,25,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="img_object" HorizontalAlignment="Left" Height="170" Margin="290,69,0,0" VerticalAlignment="Top" Width="220"/>
+        <Image x:Name="img_object" HorizontalAlignment="Right" Height="150" Margin="0,66,16,0" VerticalAlignment="Top" Width="150"/>
         <Button x:Name="add_picture" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" BorderBrush="#44444444" Click="Add_picture_Click" Height="50" Margin="0,0,116,10">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/uploadimage_button.png"/>
