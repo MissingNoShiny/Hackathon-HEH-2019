@@ -33,11 +33,12 @@ namespace Hackathon
             this.Show();            
             Left += 150;
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
-            LoadCollection(false);
+            
 
             libraryManager = new LibraryManager();
             panelWindow = new PanelWindow(this);
             Admin = false;
+            LoadCollection(libraryManager.Libraries.Count > 0);
 
             navigation_button.Width = 50;
             library_list.ItemsSource = libraryManager.Libraries;
@@ -111,6 +112,7 @@ namespace Hackathon
             }
             else
             {
+                libraryManager.OpenLibrary(LibraryManager.DefaultLibrariesPath);
                 page_title.Content = "BIBLIOTHÈQUES";
                 Content_Visibility();                
             }
@@ -261,7 +263,7 @@ namespace Hackathon
         private void Resize_window(object sender, SizeChangedEventArgs e)
         {
             //IF library >0
-            if (this.WindowState != WindowState.Maximized)
+            if (this.WindowState == WindowState.Normal)
             {
                 library_list.Width = this.Width;
                 library_list.Height = this.Height - 100;
@@ -287,5 +289,6 @@ namespace Hackathon
                 library_list.ItemsSource = libraryManager.Libraries;
             }
         }
+
     }
 }
