@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Hackathon
 {
@@ -24,5 +25,22 @@ namespace Hackathon
             InitializeComponent();
         }
 
-    }
+        
+
+        private void Add_picture_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog();
+            OFD.Title = "Selectionne une image";
+            OFD.Filter = "jpeg |*.jpeg | jpg |*.jpg |png |*.png";
+            
+            if (OFD.ShowDialog() == true)
+            {
+                img_object.Source = new BitmapImage(new Uri(OFD.FileName));
+            }
+            img_object.Width = 220;
+            img_object.Height = 170;
+            
+        }
+        
+}
 }
