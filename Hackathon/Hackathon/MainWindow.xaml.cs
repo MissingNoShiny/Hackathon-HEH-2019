@@ -302,10 +302,10 @@ namespace Hackathon
             //IF library >0
             if (this.WindowState == WindowState.Normal)
             {
-                library_list.Width = this.Width-25;
+                library_list.Width = this.Width-14;
                 library_list.Height = this.Height - 140;
                 library_list.Margin = new Thickness(0, 7, 0, 70);
-                rectangle_grid.Width = library_list.Width;
+                rectangle_grid.Width = this.Width;
             }
         }
 
