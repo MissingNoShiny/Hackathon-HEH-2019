@@ -144,6 +144,7 @@ namespace Hackathon
             }
             library.AddItem(new Item(attributes));
             this.Close();
+            Owner.Focus();
         }
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
