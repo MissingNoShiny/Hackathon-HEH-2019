@@ -112,5 +112,20 @@ namespace Hackathon
             this.Width = Owner.Width - 16;
             this.WindowState = Owner.WindowState;
         }
+        /*APPLYING THEME*/
+        public void Theme()
+        {
+            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            {
+                windowitem_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
+                page_title.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_library.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
+                save_changes.Foreground = new SolidColorBrush(Colors.Black);
+                save_changes.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/save_button_light.png")));
+                add_picture.Foreground = new SolidColorBrush(Colors.Black);
+                add_picture.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/save_button_light.png")));
+            }
+        }
     }
 }
