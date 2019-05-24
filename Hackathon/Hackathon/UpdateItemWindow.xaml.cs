@@ -31,11 +31,28 @@ namespace Hackathon
         private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
         private List<TextBox> textBoxes;
         private Library library;
+        private Item item;
+        private bool edition;
         private Uri imagePath;
         public UpdateItemWindow(Library library)
         {
-            InitializeComponent();
             this.library = library;
+            edition = false;
+            InitializeWindow();
+        }
+
+        public UpdateItemWindow(Library library, Item item) {
+            this.library = library;
+            this.item = item;
+            edition = true;
+            InitializeWindow();
+            for (int i = 0; i < textBoxes.Count; i++) {
+                textBoxes[i].Text = item.Values[i].ToString();
+            }
+        }
+
+        private void InitializeWindow() {
+            InitializeComponent();
             textBoxes = new List<TextBox>();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Window_Position;
@@ -84,6 +101,7 @@ namespace Hackathon
                 stackPanel.Children.Add(sp);
             }
         }
+
         private void Add_picture_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog OFD = new OpenFileDialog();
@@ -155,12 +173,20 @@ namespace Hackathon
                 return;
             }
             try {
-                if (imagePath != null)
-                    library.AddItem(new Item(attributes, imagePath));
-                else
-                    library.AddItem(new Item(attributes));               
+                if (edition) {
+                    if (item.ImagePath != imagePath)
+                        library.ModifyItem(item, new Item(attributes, imagePath));
+                    else
+                        library.ModifyItem(item, new Item(attributes));
+                } else {
+                    if (imagePath != null)
+                        library.AddItem(new Item(attributes, imagePath));
+                    else
+                        library.AddItem(new Item(attributes));
+                }       
             } catch (Exception ex) {
-                MessageBox.Show("Une erreur s'est produite lors de l'ajout de l'objet.", "Erreur", MessageBoxButton.OK);
+                String action = edition ? "édition" : "ajout";
+                MessageBox.Show($"Une erreur s'est produite lors de l'{action} de l'objet.", "Erreur", MessageBoxButton.OK);
                 return;
             }
             library.Save(LibraryManager.DefaultLibrariesPath);
