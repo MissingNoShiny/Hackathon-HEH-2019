@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Hackathon
 {
@@ -46,8 +47,8 @@ namespace Hackathon
             library_list.Columns[0].MaxWidth = 0;
             library_list.Columns[1].MaxWidth = 0;
             library_list.Columns[2].MaxWidth = 0;
-            library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-            library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+            library_list.Columns[3].MinWidth = library_list.Width * 0.9;
+            library_list.Columns[4].MinWidth = library_list.Width * 0.1;
 
             Is_Library_empty();
 
@@ -109,11 +110,13 @@ namespace Hackathon
             //DELETE SELECTED BIBLIO
             if (libraryManager.Libraries.Count != 0) {
                 int selectedlib = library_list.SelectedIndex;
-                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
+                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
                     libraryManager.Libraries.RemoveAt(selectedlib);
                     Is_Library_empty();
-                    //TODO: ajouter la suppression de fichier
+                    MessageBox.Show(libraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
+                    File.Delete(libraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
                 }
             } 
             else {
