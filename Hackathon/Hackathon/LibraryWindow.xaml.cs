@@ -207,5 +207,10 @@ namespace Hackathon
         {
             UpdateItems();
         }
+
+        private void View_image_button(object sender, RoutedEventArgs e)
+        {
+            //VIEW SELECTED ITEM IMAGE
+        }
     }
 }
