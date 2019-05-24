@@ -63,9 +63,9 @@
                 <ImageBrush ImageSource="Assets/search_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="viewimage_button" Padding="20,0,50,4" Content="Ouvrir" HorizontalAlignment="Left" Margin="10,0,0,10.333" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Viewimage_button" Focusable="False" FontWeight="Bold" Grid.ColumnSpan="2" >
+        <Button x:Name="viewimage_button" Padding="20,0,50,4" Content="Image" HorizontalAlignment="Left" Margin="10,0,0,10.333" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Viewimage_button" Focusable="False" FontWeight="Bold" Grid.ColumnSpan="2" >
             <Button.Background>
-                <ImageBrush ImageSource="Assets/viewimage_light.png"/>
+                <ImageBrush ImageSource="Assets/viewimage.png"/>
             </Button.Background>
         </Button>
     </Grid>
