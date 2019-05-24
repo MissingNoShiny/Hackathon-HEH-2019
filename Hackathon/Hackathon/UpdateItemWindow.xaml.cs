@@ -41,6 +41,7 @@ namespace Hackathon
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             img_object.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/defaultimage.png"));
             timer.Start();
+            Theme();
             foreach (String attributeName in library.AttributeNames) {
                 StackPanel sp = new StackPanel();
                 sp.Orientation = Orientation.Horizontal;
@@ -141,8 +142,15 @@ namespace Hackathon
                 MessageBox.Show("Les valeurs suivantes ne sont pas au bon format : " + String.Join(", ", badTextBoxes), "Erreur", MessageBoxButton.OK);
                 return;
             }
-            library.AddItem(new Item(attributes));
+            try {
+                library.AddItem(new Item(attributes));
+            } catch (Exception ex) {
+                MessageBox.Show("Une erreur s'est produite lors de l'ajout de l'objet.", "Erreur", MessageBoxButton.OK);
+            }
+            Console.WriteLine("NOMBRE D'OBJETS " + library.ItemCount.ToString());
+            library.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
+            Owner.Focus();
         }
 
         private void Cancel_library_Click(object sender, RoutedEventArgs e)
@@ -157,6 +165,23 @@ namespace Hackathon
             this.Height = Owner.Height - 38;
             this.Width = Owner.Width - 16;
             this.WindowState = Owner.WindowState;
+        }
+        /*APPLYING THEME*/
+        public void Theme()
+        {
+            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            {
+                windowitem_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
+                page_title.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_library.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
+                save_changes.Foreground = new SolidColorBrush(Colors.Black);
+                save_changes.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/validation_button_light.png")));
+                add_picture.Foreground = new SolidColorBrush(Colors.Black);
+                add_picture.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/uploadimage_button_light.png")));
+                cancel_changes.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_changes.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Hackathon
             ["Bool"] = DataType.BOOLEAN,
             ["Date"] = DataType.DATE
         };
-        private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
+        public static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
 
         private LibraryManager libraryManager;
         private List<TextBlock> textBlocks;
@@ -120,15 +120,18 @@ namespace Hackathon
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
-                int index = Int32.Parse(txb.Text);
-                foreach (TextBlock textBlock in textBlocks.GetRange(index, textBlocks.Count - index)) {
-                    textBlock.Text = (Int32.Parse(textBlock.Text) - 1).ToString();
+                MessageBoxResult delette = MessageBox.Show("Etes vous sur de vouloir supprimer cette colonne ?", "Attention !", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (delette == MessageBoxResult.Yes) {
+                    int index = Int32.Parse(txb.Text);
+                    foreach (TextBlock textBlock in textBlocks.GetRange(index, textBlocks.Count - index)) {
+                        textBlock.Text = (Int32.Parse(textBlock.Text) - 1).ToString();
+                    }
+                    panelIndex--;
+                    textBlocks.Remove(txb);
+                    textBoxes.Remove(tb);
+                    comboBoxes.Remove(cb);
+                    stackpanel.Children.Remove(sp);
                 }
-                panelIndex--;
-                textBlocks.Remove(txb);
-                textBoxes.Remove(tb);
-                comboBoxes.Remove(cb);
-                stackpanel.Children.Remove(sp);
             };
 
             sp.Children.Add(txb);
@@ -175,8 +178,9 @@ namespace Hackathon
             }
             List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String) x.SelectedItem]).ToList();
             Dictionary<String, DataType> attributeType = attributeNames.Zip(dataTypes, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
-            libraryManager.AddLibrary(new Library(name.Text, attributeNames, attributeType));
-            libraryManager.SaveLibraries();
+            Library tempLibrary = new Library(name.Text, attributeNames, attributeType);
+            libraryManager.AddLibrary(tempLibrary);
+            tempLibrary.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Hackathon
 {
@@ -46,8 +47,8 @@ namespace Hackathon
             library_list.Columns[0].MaxWidth = 0;
             library_list.Columns[1].MaxWidth = 0;
             library_list.Columns[2].MaxWidth = 0;
-            library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-            library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+            library_list.Columns[3].MinWidth = library_list.Width * 0.9;
+            library_list.Columns[4].MinWidth = library_list.Width * 0.1;
 
             Is_Library_empty();
 
@@ -109,11 +110,13 @@ namespace Hackathon
             //DELETE SELECTED BIBLIO
             if (libraryManager.Libraries.Count != 0) {
                 int selectedlib = library_list.SelectedIndex;
-                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
+                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
                     libraryManager.Libraries.RemoveAt(selectedlib);
                     Is_Library_empty();
-                    //TODO: ajouter la suppression de fichier
+                    MessageBox.Show(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
+                    File.Delete(LibraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
                 }
             } 
             else {
@@ -246,7 +249,7 @@ namespace Hackathon
 
         private void Search_unfocus(object sender, RoutedEventArgs e)
         {
-            if (search_box.Text == "")
+            if (search_box.Text == "" && library_list.ItemsSource == libraryManager.Libraries)
             {
                 search_box.Text = "Rechercher";
                 search_box.Opacity = 0.4;
@@ -270,10 +273,28 @@ namespace Hackathon
 
         private void Search_field(string field)
         {
-            if (search_box.Text != "" && search_box.Width > 0)
+            if (search_box.Width > 0)
             {
-                //lance la recherche
-                MessageBox.Show("Recherche de : "+field);
+                if (search_box.Text == "") {
+                    library_list.ItemsSource = new List<int>();
+                    library_list.ItemsSource = libraryManager.Libraries;
+                    library_list.Columns[0].MaxWidth = 0;
+                    library_list.Columns[1].MaxWidth = 0;
+                    library_list.Columns[2].MaxWidth = 0;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                }
+                else {
+                    library_list.ItemsSource = new List<int>();
+                    library_list.ItemsSource = libraryManager.Search(field);
+                    library_list.Columns[0].MaxWidth = 0;
+                    library_list.Columns[1].MaxWidth = 0;
+                    library_list.Columns[2].MaxWidth = 0;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                }
+                
+
             }
         }
 
