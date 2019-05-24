@@ -99,6 +99,10 @@ namespace Hackathon
         private void Delete_button(object sender, RoutedEventArgs e)
         {
             //DELETE SELECTED BIBLIO
+            MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (dialresult == MessageBoxResult.Yes) {
+                //TODO: delete the selected library
+            }
         }
 
         /*METHODES*/

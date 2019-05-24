@@ -57,6 +57,10 @@ namespace Hackathon
         private void Delete_button(object sender, RoutedEventArgs e)
         {
             //DELETE SELECTED BIBLIO
+            MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cet item ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (dialresult == MessageBoxResult.Yes) {
+                //TODO: delete the selected item
+            }
         }
         private void Search_focus(object sender, RoutedEventArgs e)
         {
