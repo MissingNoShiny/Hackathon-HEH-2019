@@ -36,7 +36,14 @@ namespace Hackathon
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
-            //CREER NOUVELLE BIBLIO
+            UpdateItemWindow window = new UpdateItemWindow();
+            window.Owner = this;
+            window.WindowState = this.WindowState;
+            window.Left = this.Left + 8;
+            window.Top = this.Top + 30;
+            window.Width = this.Width - 16;
+            window.Height = this.Height - 38;
+            window.Show();
         }
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
@@ -105,10 +112,13 @@ namespace Hackathon
         }
         private void Resize_window(object sender, SizeChangedEventArgs e)
         {
-            item_list.Width = this.Width;
-            item_list.Height = this.Height - 100;
-            item_list.Margin = new Thickness(0, 7, 0, 70);
-            rectangle_grid.Width = this.Width;
+            if (this.WindowState != WindowState.Maximized)
+            {
+                item_list.Width = this.Width;
+                item_list.Height = this.Height - 100;
+                item_list.Margin = new Thickness(0, 7, 0, 70);
+                rectangle_grid.Width = this.Width;
+            }
         }
 
         /*APPLYING THEME*/
@@ -140,6 +150,13 @@ namespace Hackathon
                 delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
                 add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button.png")));                
             }
+        }
+
+        private void Window_maximized(object sender, EventArgs e)
+        {
+            item_list.Width = this.Width;
+            item_list.Height = this.Height - 100;
+            rectangle_grid.Width = 2000;
         }
     }
 }

@@ -29,12 +29,14 @@ namespace Hackathon
         };
 
         private LibraryManager libraryManager;
+        private List<TextBlock> textBlocks;
         private List<TextBox> textBoxes;
         private List<ComboBox> comboBoxes;
         private int panelIndex;
         
         public UpdateLibraryWindow(LibraryManager libraryManager) {
             this.libraryManager = libraryManager;
+            textBlocks = new List<TextBlock>();
             textBoxes = new List<TextBox>();
             comboBoxes = new List<ComboBox>();
             panelIndex = 0;
@@ -65,6 +67,7 @@ namespace Hackathon
             txb.Text = (panelIndex+1).ToString();
             txb.Width = 23;
             txb.Height = 23;
+            textBlocks.Add(txb);
 
             TextBox tb = new TextBox();
             tb.Width = 120;
@@ -91,7 +94,12 @@ namespace Hackathon
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
+                int index = Int32.Parse(txb.Text);
+                foreach (TextBlock textBlock in textBlocks.GetRange(index, textBlocks.Count - index)) {
+                    textBlock.Text = (Int32.Parse(textBlock.Text) - 1).ToString();
+                }
                 panelIndex--;
+                textBlocks.Remove(txb);
                 textBoxes.Remove(tb);
                 comboBoxes.Remove(cb);
                 stackpanel.Children.Remove(sp);
@@ -128,8 +136,10 @@ namespace Hackathon
                 MessageBox.Show("La bibliothèque doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
                 return;
             }
-            if (textBoxes.Any(tb => String.IsNullOrEmpty(tb.Text))) {
-                MessageBox.Show("Tous les attributs doivent avoir un nom !", "Erreur", MessageBoxButton.OK);
+            List<int> emptyTextBoxes = Enumerable.Range(0, textBoxes.Count).Where(i => String.IsNullOrEmpty(textBoxes[i].Text)).ToList();
+            emptyTextBoxes = emptyTextBoxes.Select(x => { x += 1; return x; }).ToList();
+            if (emptyTextBoxes.Count > 0) {
+                MessageBox.Show("Tous les attributs doivent avoir un nom !\nLes attributs suivants n'en ont pas : " + String.Join(", ", emptyTextBoxes), "Erreur", MessageBoxButton.OK);
                 return;
             }
             List<String> attributeNames = textBoxes.Select(x => x.Text).ToList();
