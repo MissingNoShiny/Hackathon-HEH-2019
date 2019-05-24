@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Hackathon {
     public class LibraryManager {
 
-        public String DefaultLibrariesPath {
+        public static String DefaultLibrariesPath {
             get; private set;
         }
 
@@ -45,11 +45,8 @@ namespace Hackathon {
 
         //Saves all libraries to a given folder
         public void SaveLibraries() {
-            IFormatter formatter = new BinaryFormatter();
             foreach (Library library in Libraries) {
-                String path = DefaultLibrariesPath + library.Name + ".libr";
-                Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
-                formatter.Serialize(stream, library);
+                library.Save(DefaultLibrariesPath);
             }
         }
 
