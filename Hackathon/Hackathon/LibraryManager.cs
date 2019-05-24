@@ -30,7 +30,6 @@ namespace Hackathon {
         public void OpenLibraries() {
             string[] filePaths = Directory.GetFiles(DefaultLibrariesPath, "*.libr", SearchOption.TopDirectoryOnly);
             foreach (String path in filePaths) {
-                Console.WriteLine(path);
                 OpenLibrary(path);
             }
         }
