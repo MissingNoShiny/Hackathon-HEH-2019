@@ -66,6 +66,7 @@ namespace Hackathon
             window.Top = this.Top + 30;
             window.Width = this.Width - 16;
             window.Height = this.Height - 38;
+            window.page_title.Content = "ÉDITER UN ÉLÉMENT";
             window.Show();
         }
         private void Delete_button(object sender, RoutedEventArgs e)
