@@ -153,6 +153,8 @@ namespace Hackathon
                 search_box.Background = new SolidColorBrush(Colors.White);
                 search_box.Foreground = new SolidColorBrush(Colors.Black);
                 item_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                viewimage_button.BorderBrush = new SolidColorBrush(Colors.Black);
+                viewimage_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/viewimage_light.png")));
                 edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_struct_button_light.png")));
                 edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button_light.png")));
                 delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
@@ -166,6 +168,8 @@ namespace Hackathon
                 search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 search_box.Foreground = new SolidColorBrush(Colors.White);
                 item_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                viewimage_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                viewimage_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/viewimage.png")));
                 edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_struct_button.png")));
                 edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button.png")));
                 delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
