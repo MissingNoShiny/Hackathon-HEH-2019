@@ -47,8 +47,8 @@ namespace Hackathon
             library_list.Columns[0].MaxWidth = 0;
             library_list.Columns[1].MaxWidth = 0;
             library_list.Columns[2].MaxWidth = 0;
-            library_list.Columns[3].MinWidth = library_list.Width * 0.9;
-            library_list.Columns[4].MinWidth = library_list.Width * 0.1;
+            library_list.Columns[3].MinWidth = library_list.Width * 0.7;
+            library_list.Columns[4].MinWidth = library_list.Width * 0.3;
 
             Is_Library_empty();
 
@@ -280,8 +280,8 @@ namespace Hackathon
                     library_list.Columns[0].MaxWidth = 0;
                     library_list.Columns[1].MaxWidth = 0;
                     library_list.Columns[2].MaxWidth = 0;
-                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.7;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.3;
                 }
                 else {
                     library_list.ItemsSource = new List<int>();
@@ -289,8 +289,8 @@ namespace Hackathon
                     library_list.Columns[0].MaxWidth = 0;
                     library_list.Columns[1].MaxWidth = 0;
                     library_list.Columns[2].MaxWidth = 0;
-                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.7;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.3;
                 }
                 
 
@@ -302,8 +302,8 @@ namespace Hackathon
             //IF library >0
             if (this.WindowState == WindowState.Normal)
             {
-                library_list.Width = this.Width;
-                library_list.Height = this.Height - 100;
+                library_list.Width = this.Width-25;
+                library_list.Height = this.Height - 140;
                 library_list.Margin = new Thickness(0, 7, 0, 70);
                 rectangle_grid.Width = library_list.Width;
             }
@@ -312,7 +312,7 @@ namespace Hackathon
         private void Window_maximized(object sender, EventArgs e)
         {
             library_list.Width = window_background.Width;
-            library_list.Height = window_background.Height - 100;
+            library_list.Height = window_background.Height - 140;
             rectangle_grid.Width = library_list.Width;
             maximize_button.Width = 0;
             maximize_button.Focusable = false;
@@ -322,7 +322,7 @@ namespace Hackathon
 
         private void Window_Activated(object sender, EventArgs e) {
             if (Admin) {
-                library_list.Width = this.Width;
+                library_list.Width = this.Width-25;
                 library_list.ItemsSource = new List<int>();
                 library_list.ItemsSource = libraryManager.Libraries;
                 library_list.Columns[0].MaxWidth = 0;
@@ -345,9 +345,9 @@ namespace Hackathon
                 }
             } 
             else {
-                library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-                library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
-                library_list.Height = this.Height - 100;
+                library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.7;
+                library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.3;
+                library_list.Height = this.Height - 140;
                 page_content.Content = "";
             }
         }

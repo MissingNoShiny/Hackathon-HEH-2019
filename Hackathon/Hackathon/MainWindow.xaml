@@ -37,7 +37,7 @@
             </Button.Background>
         </Button>
         <Grid Margin="0,65,0,0">
-            <DataGrid  x:Name="library_list" MinRowHeight="50" RowBackground="White" Width="0" Background="#77777777" BorderBrush="Black" BorderThickness="1,1,1,0" Opacity="0.5" CanUserResizeColumns="False" CanUserReorderColumns="False" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" Foreground="Black" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" >
+            <DataGrid  x:Name="library_list" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinRowHeight="50" RowBackground="White" Background="#77777777" BorderBrush="Black" BorderThickness="1,1,1,0" Opacity="0.5" CanUserResizeColumns="False" CanUserReorderColumns="False" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" Foreground="Black" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="347,0,346.333,67.333" HeadersVisibility="Column" >
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
 
