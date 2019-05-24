@@ -142,11 +142,6 @@ namespace Hackathon
             panelIndex++;
         }
 
-        private void del_object_click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void Save_library_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(name.Text)) {
