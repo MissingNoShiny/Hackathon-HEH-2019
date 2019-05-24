@@ -114,7 +114,7 @@ namespace Hackathon
                 MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
                     libraryManager.Libraries.RemoveAt(selectedlib);                  
-                    File.Delete(libraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
+                    File.Delete(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
                     Is_Library_empty();
                 }
             } 
@@ -336,6 +336,7 @@ namespace Hackathon
             if(libraryManager.Libraries.Count == 0) {
                 library_list.Width = 0;
                 rectangle_grid.Width = 0;
+                page_content.Width = Double.NaN;
                 if (Admin) {
                     page_content.Content = "Aucune bibliothèque";
                 } 
