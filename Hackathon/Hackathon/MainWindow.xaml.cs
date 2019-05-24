@@ -89,10 +89,11 @@ namespace Hackathon
             UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
-        }
-        private void Edit_button(object sender, RoutedEventArgs e)
-        {
-            //EDIT SELECTED BIBLIO
+            window.Left = this.Left+8;
+            window.Top = this.Top+30;
+            window.Width = this.Width-16;
+            window.Height = this.Height-38;
+            panelWindow.Close();
         }
 
         private void Delete_button(object sender, RoutedEventArgs e)
@@ -118,7 +119,6 @@ namespace Hackathon
         private void Content_Visibility()
         {
             open_button.Width = 150;
-            library_list.Width = this.Width;
             search_box.Width = 150;
             search_button.Width = 25;
             library_list.Width = this.Width;
@@ -256,6 +256,13 @@ namespace Hackathon
                 //lance la recherche
                 MessageBox.Show("Recherche de : "+field);
             }
+        }
+
+        private void Resize_window(object sender, SizeChangedEventArgs e)
+        {
+            //IF library >0
+            library_list.Width = this.Width;
+            library_list.Height = this.Height - 100;
         }
     }
 }

@@ -31,6 +31,7 @@ namespace Hackathon
                 edit_struct_button.Width = 50;
                 edit_struct_button.Focusable = true;
             }
+            this.Title = "NOM DE LA BIBLIO";
             this.Show();
         }
         private void Add_button(object sender, RoutedEventArgs e)
@@ -43,6 +44,10 @@ namespace Hackathon
             UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
             window.Owner = this;
             window.WindowState = this.WindowState;
+            window.Left = this.Left + 8;
+            window.Top = this.Top + 30;
+            window.Width = this.Width - 16;
+            window.Height = this.Height - 38;
             window.page_title.Content = "ÉDITER UNE BIBLIOTHÈQUE";
         }
         private void Edit_item_button(object sender, RoutedEventArgs e)
@@ -93,6 +98,11 @@ namespace Hackathon
                 //lance la recherche
                 MessageBox.Show("Recherche de : " + field);
             }
+        }
+        private void Resize_window(object sender, SizeChangedEventArgs e)
+        {
+            item_list.Width = this.Width;
+            item_list.Height = this.Height - 100;
         }
 
         /*APPLYING THEME*/
