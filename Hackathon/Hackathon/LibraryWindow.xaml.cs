@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Hackathon
     {
         private Library library;
         private LibraryManager libraryManager;
+        private DataTable dataTable;
         public LibraryWindow(LibraryManager libraryManager, Library library)
         {
             this.libraryManager = libraryManager;
@@ -28,8 +30,10 @@ namespace Hackathon
             InitializeComponent();
             this.Theme();
             var mainWindow = (Application.Current.MainWindow as MainWindow);
+            dataTable = new DataTable();
+            item_list.DataContext = dataTable.DefaultView;
 
-            AddItem();
+            UpdateItems();
 
             if (mainWindow.Admin){
                 edit_struct_button.Width = 50;
@@ -176,27 +180,27 @@ namespace Hackathon
             Owner.Focus();
         }
 
-        private void AddItem() {
-            CreateColumn();
+        
+        private void UpdateItems() {
+
+            CreateColumns();
+            dataTable.Rows.Clear();
             for (int i = 0; i < library.Items.Count; i++) {
                 Item item = library.Items[i];
-                foreach(Attribute value in item.Values)
-                    item_list.Items.Add(value);     
+                dataTable.Rows.Add(item.Values.Select(x => x.Value.ToString()).ToList().ToArray());
             }
         }
 
-        private void CreateColumn() {
-            if (item_list.Columns.Count == 0) {
-                foreach (String name in library.AttributeNames) {
-                    DataGridTextColumn textColumn = new DataGridTextColumn();
-                    textColumn.Header = name;
-                    item_list.Columns.Add(textColumn);
-                }
-            }  
+        private void CreateColumns() {
+            dataTable.Columns.Clear();
+            foreach (String name in library.AttributeNames) {
+                DataColumn dc = new DataColumn(name, typeof(String));
+                dataTable.Columns.Add(dc);
+            }
         }
         private void LibraryWindowActivated(object sender, EventArgs e)
         {
-            AddItem();
+            UpdateItems();
         }
     }
 }
