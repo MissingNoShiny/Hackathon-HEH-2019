@@ -49,6 +49,10 @@ namespace Hackathon {
             Items.Remove(item);
         }
 
+        public void RemoveItem(int index) {
+            Items.RemoveAt(index);
+        }
+
         //Replaces an item with another
         public void ModifyItem(Item oldi, Item newi) {
             if (!Items.Contains(oldi))
