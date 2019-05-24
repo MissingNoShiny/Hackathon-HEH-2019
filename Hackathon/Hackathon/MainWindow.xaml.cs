@@ -63,10 +63,6 @@ namespace Hackathon
         private void Maximize_Button(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
-            maximize_button.Width = 0;
-            maximize_button.Focusable = false;
-            minimize_button.Width = 50;
-            minimize_button.Focusable = true;
         }
         private void Minimize_Button(object sender, RoutedEventArgs e)
         {
@@ -265,10 +261,24 @@ namespace Hackathon
         private void Resize_window(object sender, SizeChangedEventArgs e)
         {
             //IF library >0
+            if (this.WindowState != WindowState.Maximized)
+            {
+                library_list.Width = this.Width;
+                library_list.Height = this.Height - 100;
+                library_list.Margin = new Thickness(0, 7, 0, 70);
+                rectangle_grid.Width = this.Width;
+            }
+        }
+
+        private void Window_maximized(object sender, EventArgs e)
+        {
             library_list.Width = this.Width;
             library_list.Height = this.Height - 100;
-            library_list.Margin = new Thickness(0, 7, 0, 70);
-            rectangle_grid.Width = this.Width;
+            rectangle_grid.Width = 2000;
+            maximize_button.Width = 0;
+            maximize_button.Focusable = false;
+            minimize_button.Width = 50;
+            minimize_button.Focusable = true;
         }
     }
 }
