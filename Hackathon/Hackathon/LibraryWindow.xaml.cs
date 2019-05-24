@@ -19,11 +19,10 @@ namespace Hackathon
     /// </summary>
     public partial class LibraryWindow : Window
     {
-        private LibraryManager libraryManager;
         private Library library;
-        public LibraryWindow(LibraryManager libraryManager)
+        public LibraryWindow(Library library)
         {
-            this.libraryManager = libraryManager;
+            this.library = library;
             InitializeComponent();
             this.Theme();
             var mainWindow = (Application.Current.MainWindow as MainWindow);
@@ -48,7 +47,7 @@ namespace Hackathon
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
             //EDIT STRUCTURE BIBLIO
-            UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
+            UpdateLibraryWindow window = new UpdateLibraryWindow(library);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;
@@ -67,6 +66,7 @@ namespace Hackathon
             window.Top = this.Top + 30;
             window.Width = this.Width - 16;
             window.Height = this.Height - 38;
+            window.page_title.Content = "ÉDITER UN ÉLÉMENT";
             window.Show();
         }
         private void Delete_button(object sender, RoutedEventArgs e)

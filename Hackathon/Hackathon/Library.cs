@@ -24,7 +24,12 @@ namespace Hackathon {
             get; private set;
         }
 
+        public int ItemCount {
+            get => Items.Count;
+        }
+
         public Library(String name, List<String> attributeNames, Dictionary<String, DataType> attributeTypes) {
+            Items = new List<Item>();
             Name = name;
             AttributeNames = attributeNames;
             AttributeTypes = attributeTypes;

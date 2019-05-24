@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,11 @@ namespace Hackathon
         public UpdateItemWindow()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += Window_Position;
+            timer.Interval = TimeSpan.FromSeconds(0.0001);
+            timer.Start();
         }
-
-        
-
         private void Add_picture_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog OFD = new OpenFileDialog();
@@ -51,6 +53,20 @@ namespace Hackathon
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             //SAVE changes
+        }
+
+        private void Cancel_library_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            Owner.Focus();
+        }
+        private void Window_Position(object sender, EventArgs e)
+        {
+            this.Top = Owner.Top + 30;
+            this.Left = Owner.Left + 8;
+            this.Height = Owner.Height - 38;
+            this.Width = Owner.Width - 16;
+            this.WindowState = Owner.WindowState;
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hackathon {
+
+    [Serializable]
     public class Item {
 
         public List<Attribute> Values {

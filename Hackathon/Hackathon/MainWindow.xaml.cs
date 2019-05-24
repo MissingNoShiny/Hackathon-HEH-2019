@@ -81,7 +81,9 @@ namespace Hackathon
         private void Open_button(object sender, RoutedEventArgs e)
         {
             //OPEN SELECTED BIBLIO
-            LibraryWindow window = new LibraryWindow(libraryManager);
+            if (library_list.SelectedItem == null)
+                return;
+            LibraryWindow window = new LibraryWindow((Library) library_list.SelectedItem);
             window.Owner = this;
             window.WindowState = this.WindowState;
         }
