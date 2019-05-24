@@ -44,12 +44,13 @@ namespace Hackathon
             this.libraryManager = libraryManager;
         }
 
-        public UpdateLibraryWindow(Library library) {
+        public UpdateLibraryWindow(LibraryManager libraryManager, Library library) {
             initializeWindow();
             page_title.Content = "ÉDITER UNE BIBLIOTHÈQUE";
             edition = true;
+            this.libraryManager = libraryManager;
             this.library = library;
-            name.Text = library.Name;
+            name.Text = name.Name = library.Name;
             foreach (String attributeName in library.AttributeNames)
                 AddRow(attributeName, library.AttributeTypes[attributeName]);
         }
@@ -97,6 +98,7 @@ namespace Hackathon
             tb.HorizontalAlignment = HorizontalAlignment.Left;
             tb.Opacity = 0.5;
             tb.Text = text;
+            if (text != "") tb.Name = text;
             textBoxes.Add(tb);
 
             ComboBox cb = new ComboBox();
@@ -120,18 +122,20 @@ namespace Hackathon
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
-                MessageBoxResult delette = MessageBox.Show("Etes vous sur de vouloir supprimer cette colonne ?", "Attention !", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (delette == MessageBoxResult.Yes) {
-                    int index = Int32.Parse(txb.Text);
-                    foreach (TextBlock textBlock in textBlocks.GetRange(index, textBlocks.Count - index)) {
-                        textBlock.Text = (Int32.Parse(textBlock.Text) - 1).ToString();
-                    }
-                    panelIndex--;
-                    textBlocks.Remove(txb);
-                    textBoxes.Remove(tb);
-                    comboBoxes.Remove(cb);
-                    stackpanel.Children.Remove(sp);
+                if (edition && !cb.IsEnabled) {
+                    MessageBoxResult dr = MessageBox.Show("Attention, cette action entraînera la suppression de données !\nVoulez-vous continuer ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                    if (dr == MessageBoxResult.No) return;
+                    library.RemoveAttribute(tb.Name);
                 }
+                int index = Int32.Parse(txb.Text);
+                foreach (TextBlock textBlock in textBlocks.GetRange(index, textBlocks.Count - index)) {
+                    textBlock.Text = (Int32.Parse(textBlock.Text) - 1).ToString();
+                }
+                panelIndex--;
+                textBlocks.Remove(txb);
+                textBoxes.Remove(tb);
+                comboBoxes.Remove(cb);
+                stackpanel.Children.Remove(sp);
             };
 
             sp.Children.Add(txb);
@@ -157,7 +161,7 @@ namespace Hackathon
                 MessageBox.Show("Le nom de la bibliothèque ne peut pas dépasser 24 caractères.", "Erreur", MessageBoxButton.OK);
                 return;
             }
-            if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text)) {
+            if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text) && (!edition || name.Name != name.Text)) {
                 MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
                 return;
             }
@@ -176,11 +180,22 @@ namespace Hackathon
                 MessageBox.Show("Tous les attributs doivent avoir un nom différent !", "Erreur", MessageBoxButton.OK);
                 return;
             }
-            List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String) x.SelectedItem]).ToList();
-            Dictionary<String, DataType> attributeType = attributeNames.Zip(dataTypes, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
-            Library tempLibrary = new Library(name.Text, attributeNames, attributeType);
-            libraryManager.AddLibrary(tempLibrary);
-            tempLibrary.Save(LibraryManager.DefaultLibrariesPath);
+            if (!edition) {
+                List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String)x.SelectedItem]).ToList();
+                Dictionary<String, DataType> attributeType = attributeNames.Zip(dataTypes, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
+                Library tempLibrary = new Library(name.Text, attributeNames, attributeType);
+                libraryManager.AddLibrary(tempLibrary);
+                tempLibrary.Save(LibraryManager.DefaultLibrariesPath);
+            } else {
+                for (int i = 0; i < textBoxes.Count; i++) {
+                    if (String.IsNullOrEmpty(textBoxes[i].Name))
+                        library.AddAttribute(textBoxes[i].Text, dataTypesNames[(String)comboBoxes[i].SelectedItem]);
+                    else if (textBoxes[i].Name != textBoxes[i].Text)
+                        library.RenameAttribute(textBoxes[i].Name, textBoxes[i].Text);
+                }
+                library.Save(LibraryManager.DefaultLibrariesPath);
+            }
+            
             this.Close();
         }
 
