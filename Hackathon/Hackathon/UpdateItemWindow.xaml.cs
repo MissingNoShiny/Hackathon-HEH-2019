@@ -41,6 +41,7 @@ namespace Hackathon
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             img_object.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/defaultimage.png"));
             timer.Start();
+            Theme();
             foreach (String attributeName in library.AttributeNames) {
                 StackPanel sp = new StackPanel();
                 sp.Orientation = Orientation.Horizontal;
@@ -168,9 +169,11 @@ namespace Hackathon
                 cancel_library.Foreground = new SolidColorBrush(Colors.Black);
                 cancel_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
                 save_changes.Foreground = new SolidColorBrush(Colors.Black);
-                save_changes.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/save_button_light.png")));
+                save_changes.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/validation_button_light.png")));
                 add_picture.Foreground = new SolidColorBrush(Colors.Black);
-                add_picture.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/save_button_light.png")));
+                add_picture.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/uploadimage_button_light.png")));
+                cancel_changes.Foreground = new SolidColorBrush(Colors.Black);
+                cancel_changes.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
             }
         }
     }
