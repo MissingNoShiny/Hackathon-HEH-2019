@@ -31,11 +31,13 @@ namespace Hackathon
         private LibraryManager libraryManager;
         private List<TextBox> textBoxes;
         private List<ComboBox> comboBoxes;
+        private int panelIndex;
         
         public UpdateLibraryWindow(LibraryManager libraryManager) {
             this.libraryManager = libraryManager;
             textBoxes = new List<TextBox>();
             comboBoxes = new List<ComboBox>();
+            panelIndex = 0;
             InitializeComponent();
             Theme();
             DispatcherTimer timer = new DispatcherTimer();
@@ -48,9 +50,17 @@ namespace Hackathon
 
         private void add_object_click(object sender, RoutedEventArgs e)
         {
+            if (panelIndex > 9)
+                return;
+
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
             sp.Margin = new Thickness(0,5,0,0);
+
+            TextBlock txb = new TextBlock();
+            txb.Text = (panelIndex+1).ToString();
+            txb.Width = 23;
+            txb.Height = 23;
 
             TextBox tb = new TextBox();
             tb.Width = 120;
@@ -60,10 +70,7 @@ namespace Hackathon
 
             ComboBox cb = new ComboBox();
             cb.SelectedIndex = 0;
-            cb.Items.Add("String");
-            cb.Items.Add("Int");
-            cb.Items.Add("Bool");
-            cb.Items.Add("Date");
+            dataTypesNames.Keys.ToList().ForEach(x => cb.Items.Add(x));
             cb.Width = 82;
             cb.HorizontalAlignment = HorizontalAlignment.Center;
             cb.Margin = new Thickness(10, 0, 10, 0);
@@ -80,15 +87,18 @@ namespace Hackathon
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
+                panelIndex--;
                 textBoxes.Remove(tb);
                 comboBoxes.Remove(cb);
                 stackpanel.Children.Remove(sp);
             };
 
+            sp.Children.Add(txb);
             sp.Children.Add(tb);
             sp.Children.Add(cb);
             sp.Children.Add(btn);
             this.stackpanel.Children.Add(sp);
+            panelIndex++;
         }
 
         private void del_object_click(object sender, RoutedEventArgs e)
@@ -102,8 +112,14 @@ namespace Hackathon
                 MessageBox.Show("La bibliothèque doit avoir un nom !", "Erreur", MessageBoxButton.OK);
                 return;
             }
+            if (name.Text.Length > 24) {
+                MessageBox.Show("Le nom de la bibliothèque ne peut pas dépasser 24 caractères.", "Erreur", MessageBoxButton.OK);
+            }
+            if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text)) {
+                MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
+            }
             if (textBoxes.Count == 0) {
-                MessageBox.Show("La bibliothèue doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
+                MessageBox.Show("La bibliothèque doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
                 return;
             }
             if (textBoxes.Any(tb => String.IsNullOrEmpty(tb.Text))) {
