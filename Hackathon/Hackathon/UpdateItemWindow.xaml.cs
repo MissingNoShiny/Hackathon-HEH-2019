@@ -31,10 +31,28 @@ namespace Hackathon
         private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
         private List<TextBox> textBoxes;
         private Library library;
+        private Item item;
+        private bool edition;
+        private Uri imagePath;
         public UpdateItemWindow(Library library)
         {
-            InitializeComponent();
             this.library = library;
+            edition = false;
+            InitializeWindow();
+        }
+
+        public UpdateItemWindow(Library library, Item item) {
+            this.library = library;
+            this.item = item;
+            edition = true;
+            InitializeWindow();
+            for (int i = 0; i < textBoxes.Count; i++) {
+                textBoxes[i].Text = item.Values[i].ToString();
+            }
+        }
+
+        private void InitializeWindow() {
+            InitializeComponent();
             textBoxes = new List<TextBox>();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Window_Position;
@@ -83,6 +101,7 @@ namespace Hackathon
                 stackPanel.Children.Add(sp);
             }
         }
+
         private void Add_picture_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog OFD = new OpenFileDialog();
@@ -91,8 +110,11 @@ namespace Hackathon
 
             if (OFD.ShowDialog() == true)
             {
-                img_object.Source = new BitmapImage(new Uri(OFD.FileName));
-            }            
+                imagePath = new Uri(OFD.FileName);
+                img_object.Source = new BitmapImage(imagePath);
+            }
+            img_object.Width = 150;
+            img_object.Height = 150;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -106,6 +128,14 @@ namespace Hackathon
             List<Attribute> attributes = new List<Attribute>();
             foreach (TextBox textBox in textBoxes) {
                 String value = textBox.Text;
+                if (String.IsNullOrEmpty(value)) {
+                    MessageBox.Show("Tous les attributs doivent avoir une valeur ! La valeur suivante ne respecte pas cette condition :\n" + textBox.Name, "Erreur", MessageBoxButton.OK);
+                    return;
+                }
+                if (value.Length > 24) {
+                    MessageBox.Show("Les valeurs ne peuvent pas dépasser 24 caractères. La valeur suivante ne respecte pas cette condition :\n" + textBox.Name, "Erreur", MessageBoxButton.OK);
+                    return;
+                }
                 switch (library.AttributeTypes[textBox.Name]) {
                     case DataType.STRING:
                         attributes.Add(new Attribute(value));
@@ -143,11 +173,22 @@ namespace Hackathon
                 return;
             }
             try {
-                library.AddItem(new Item(attributes));
+                if (edition) {
+                    if (item.ImagePath != imagePath)
+                        library.ModifyItem(item, new Item(attributes, imagePath));
+                    else
+                        library.ModifyItem(item, new Item(attributes));
+                } else {
+                    if (imagePath != null)
+                        library.AddItem(new Item(attributes, imagePath));
+                    else
+                        library.AddItem(new Item(attributes));
+                }       
             } catch (Exception ex) {
-                MessageBox.Show("Une erreur s'est produite lors de l'ajout de l'objet.", "Erreur", MessageBoxButton.OK);
+                String action = edition ? "édition" : "ajout";
+                MessageBox.Show($"Une erreur s'est produite lors de l'{action} de l'objet.", "Erreur", MessageBoxButton.OK);
+                return;
             }
-            Console.WriteLine("NOMBRE D'OBJETS " + library.ItemCount.ToString());
             library.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
             Owner.Focus();

@@ -20,8 +20,10 @@ namespace Hackathon
     public partial class LibraryWindow : Window
     {
         private Library library;
-        public LibraryWindow(Library library)
+        private LibraryManager libraryManager;
+        public LibraryWindow(LibraryManager libraryManager, Library library)
         {
+            this.libraryManager = libraryManager;
             this.library = library;
             InitializeComponent();
             this.Theme();
@@ -50,7 +52,7 @@ namespace Hackathon
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
             //EDIT STRUCTURE BIBLIO
-            UpdateLibraryWindow window = new UpdateLibraryWindow(library);
+            UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager, library);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;

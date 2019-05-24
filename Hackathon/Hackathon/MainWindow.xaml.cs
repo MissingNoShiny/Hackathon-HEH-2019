@@ -47,8 +47,8 @@ namespace Hackathon
             library_list.Columns[0].MaxWidth = 0;
             library_list.Columns[1].MaxWidth = 0;
             library_list.Columns[2].MaxWidth = 0;
-            library_list.Columns[3].MinWidth = library_list.Width * 0.9;
-            library_list.Columns[4].MinWidth = library_list.Width * 0.1;
+            library_list.Columns[3].Width = library_list.Width * 0.7;
+            library_list.Columns[4].Width = library_list.Width * 0.3;
 
             Is_Library_empty();
 
@@ -88,7 +88,7 @@ namespace Hackathon
             //OPEN SELECTED BIBLIO
             if (library_list.SelectedItem == null)
                 return;
-            LibraryWindow window = new LibraryWindow((Library) library_list.SelectedItem);
+            LibraryWindow window = new LibraryWindow(libraryManager, (Library) library_list.SelectedItem);
             window.Owner = this;
             window.WindowState = this.WindowState;
         }
@@ -113,14 +113,13 @@ namespace Hackathon
                 string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
                 MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
-                    libraryManager.Libraries.RemoveAt(selectedlib);
+                    libraryManager.Libraries.RemoveAt(selectedlib);                  
+                    File.Delete(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
                     Is_Library_empty();
-                    MessageBox.Show(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
-                    File.Delete(LibraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
                 }
             } 
             else {
-                MessageBox.Show("Il n'y a pas de biblithèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Il n'y a pas de bibliothèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -281,8 +280,8 @@ namespace Hackathon
                     library_list.Columns[0].MaxWidth = 0;
                     library_list.Columns[1].MaxWidth = 0;
                     library_list.Columns[2].MaxWidth = 0;
-                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.7;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.3;
                 }
                 else {
                     library_list.ItemsSource = new List<int>();
@@ -290,8 +289,8 @@ namespace Hackathon
                     library_list.Columns[0].MaxWidth = 0;
                     library_list.Columns[1].MaxWidth = 0;
                     library_list.Columns[2].MaxWidth = 0;
-                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.7;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.3;
                 }
                 
 
@@ -303,8 +302,8 @@ namespace Hackathon
             //IF library >0
             if (this.WindowState == WindowState.Normal)
             {
-                library_list.Width = this.Width;
-                library_list.Height = this.Height - 100;
+                library_list.Width = this.Width-14;
+                library_list.Height = this.Height - 140;
                 library_list.Margin = new Thickness(0, 7, 0, 70);
                 rectangle_grid.Width = this.Width;
             }
@@ -313,8 +312,8 @@ namespace Hackathon
         private void Window_maximized(object sender, EventArgs e)
         {
             library_list.Width = window_background.Width;
-            library_list.Height = window_background.Height - 100;
-            rectangle_grid.Width = 2000;
+            library_list.Height = window_background.Height - 140;
+            rectangle_grid.Width = library_list.Width;
             maximize_button.Width = 0;
             maximize_button.Focusable = false;
             minimize_button.Width = 50;
@@ -323,7 +322,7 @@ namespace Hackathon
 
         private void Window_Activated(object sender, EventArgs e) {
             if (Admin) {
-                //library_list.Width = this.Width;
+                library_list.Width = this.Width-25;
                 library_list.ItemsSource = new List<int>();
                 library_list.ItemsSource = libraryManager.Libraries;
                 library_list.Columns[0].MaxWidth = 0;
@@ -338,6 +337,7 @@ namespace Hackathon
             if(libraryManager.Libraries.Count == 0) {
                 library_list.Width = 0;
                 rectangle_grid.Width = 0;
+                page_content.Width = Double.NaN;
                 if (Admin) {
                     page_content.Content = "Aucune bibliothèque";
                 } 
@@ -346,9 +346,9 @@ namespace Hackathon
                 }
             } 
             else {
-                library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
-                library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
-                library_list.Height = this.Height - 100;
+                library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.7;
+                library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.3;
+                library_list.Height = this.Height - 140;
                 page_content.Content = "";
             }
         }
