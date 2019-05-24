@@ -88,7 +88,7 @@ namespace Hackathon
             //OPEN SELECTED BIBLIO
             if (library_list.SelectedItem == null)
                 return;
-            LibraryWindow window = new LibraryWindow((Library) library_list.SelectedItem);
+            LibraryWindow window = new LibraryWindow(libraryManager, (Library) library_list.SelectedItem);
             window.Owner = this;
             window.WindowState = this.WindowState;
         }

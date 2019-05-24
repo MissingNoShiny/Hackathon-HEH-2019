@@ -106,6 +106,14 @@ namespace Hackathon
             List<Attribute> attributes = new List<Attribute>();
             foreach (TextBox textBox in textBoxes) {
                 String value = textBox.Text;
+                if (String.IsNullOrEmpty(value)) {
+                    MessageBox.Show("Tous les attributs doivent avoir une valeur ! La valeur suivante ne respecte pas cette condition :\n" + textBox.Name, "Erreur", MessageBoxButton.OK);
+                    return;
+                }
+                if (value.Length > 24) {
+                    MessageBox.Show("Les valeurs ne peuvent pas dépasser 24 caractères. La valeur suivante ne respecte pas cette condition :\n" + textBox.Name, "Erreur", MessageBoxButton.OK);
+                    return;
+                }
                 switch (library.AttributeTypes[textBox.Name]) {
                     case DataType.STRING:
                         attributes.Add(new Attribute(value));
@@ -146,8 +154,8 @@ namespace Hackathon
                 library.AddItem(new Item(attributes));
             } catch (Exception ex) {
                 MessageBox.Show("Une erreur s'est produite lors de l'ajout de l'objet.", "Erreur", MessageBoxButton.OK);
+                return;
             }
-            Console.WriteLine("NOMBRE D'OBJETS " + library.ItemCount.ToString());
             library.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
             Owner.Focus();

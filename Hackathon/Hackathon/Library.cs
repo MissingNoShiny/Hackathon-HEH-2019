@@ -80,6 +80,15 @@ namespace Hackathon {
             AttributeNames.Remove(attributeName);
         }
 
+        public void RenameAttribute(String oldName, String newName) {
+            if (!AttributeNames.Contains(oldName) && !AttributeNames.Contains(newName))
+                return;
+            AttributeNames[AttributeNames.IndexOf(oldName)] = newName;
+            AttributeTypes[newName] = AttributeTypes[oldName];
+            AttributeTypes.Remove(oldName);
+
+        }
+
         //Reorganizes attributes order, given the new order
         public void ReorganizeAttributes(List<String> newAttributeNames) {
             if (new HashSet<String>(newAttributeNames) != new HashSet<string>(AttributeNames)
