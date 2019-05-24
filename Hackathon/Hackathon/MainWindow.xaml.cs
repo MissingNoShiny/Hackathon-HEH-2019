@@ -113,14 +113,13 @@ namespace Hackathon
                 string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Name;
                 MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer "+ selectednamelib +" ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
-                    libraryManager.Libraries.RemoveAt(selectedlib);
+                    libraryManager.Libraries.RemoveAt(selectedlib);                  
+                    File.Delete(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
                     Is_Library_empty();
-                    MessageBox.Show(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
-                    File.Delete(LibraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
                 }
             } 
             else {
-                MessageBox.Show("Il n'y a pas de biblithèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Il n'y a pas de bibliothèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -337,6 +336,7 @@ namespace Hackathon
             if(libraryManager.Libraries.Count == 0) {
                 library_list.Width = 0;
                 rectangle_grid.Width = 0;
+                page_content.Width = Double.NaN;
                 if (Admin) {
                     page_content.Content = "Aucune bibliothèque";
                 } 
