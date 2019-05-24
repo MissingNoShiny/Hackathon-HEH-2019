@@ -44,8 +44,6 @@ namespace Hackathon
             window.Width = this.Width - 16;
             window.Height = this.Height - 38;
             window.Show();
-          
-
         }
         private void Edit_struct_button(object sender, RoutedEventArgs e)
         {
