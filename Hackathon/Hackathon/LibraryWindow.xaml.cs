@@ -69,6 +69,8 @@ namespace Hackathon
             //EDIT ITEM BIBLIO
             if (item_list.SelectedItem == null)
                 return;
+            if (item_list.SelectedIndex < 0 || item_list.SelectedIndex > library.Items.Count - 1)
+                return;
             UpdateItemWindow window = new UpdateItemWindow(library, item_list.SelectedIndex);
             window.Owner = this;
             window.WindowState = this.WindowState;
