@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,27 +40,22 @@ namespace Hackathon {
 
         //Add a given item
         public void AddItem(Item item) {
-            foreach (Item item_temp in Items) {
-                if (!item.Equals(item_temp))
-                    Items.Add(item);
-            } 
+            if (!Items.Contains(item))
+                Items.Add(item);
         }
 
         //Removes a given item
         public void RemoveItem(Item item) {
-            foreach (Item item_temp in Items) {
-                if (item.Equals(item_temp)) 
-                    Items.Remove(item_temp); 
-            }
+            Items.Remove(item);
         }
 
         //Replaces an item with another
         public void ModifyItem(Item oldi, Item newi) {
-            foreach(Item item_temp in Items) {
+            foreach (Item item_temp in Items) {
                 if (oldi.Equals(item_temp)) {
                     RemoveItem(oldi);
                     AddItem(newi);
-                } 
+                }
             }
         }
 
@@ -98,14 +96,21 @@ namespace Hackathon {
         public List<Item> Search(String search) {
             List<Item> match = new List<Item>();
             foreach (Item item in Items) {
-                for(int i = 0; i < AttributeNames.Count; i++) {
+                for (int i = 0; i < AttributeNames.Count; i++) {
                     if (AttributeNames[i].Contains(search)) {
                         match.Add(item);
                         break;
-                    }   
+                    }
                 }
             }
             return match;
+        }
+
+        public void Save(String path) {
+            IFormatter formatter = new BinaryFormatter();
+            String npath = path + Name + ".libr";
+            Stream stream = new FileStream(npath, FileMode.Create, FileAccess.Write);
+            formatter.Serialize(stream, this);
         }
     }
 }

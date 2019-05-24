@@ -27,7 +27,7 @@ namespace Hackathon
             ["Bool"] = DataType.BOOLEAN,
             ["Date"] = DataType.DATE
         };
-        private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
+        public static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
 
         private LibraryManager libraryManager;
         private List<TextBlock> textBlocks;
@@ -44,8 +44,9 @@ namespace Hackathon
             this.libraryManager = libraryManager;
         }
 
-        public  UpdateLibraryWindow(Library library) {
+        public UpdateLibraryWindow(Library library) {
             initializeWindow();
+            page_title.Content = "ÉDITER UNE BIBLIOTHÈQUE";
             edition = true;
             this.library = library;
             name.Text = library.Name;
@@ -94,6 +95,7 @@ namespace Hackathon
             tb.Width = 120;
             tb.Height = 23;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
+            tb.Opacity = 0.5;
             tb.Text = text;
             textBoxes.Add(tb);
 
@@ -176,8 +178,9 @@ namespace Hackathon
             }
             List<DataType> dataTypes = comboBoxes.Select(x => dataTypesNames[(String) x.SelectedItem]).ToList();
             Dictionary<String, DataType> attributeType = attributeNames.Zip(dataTypes, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
-            libraryManager.AddLibrary(new Library(name.Text, attributeNames, attributeType));
-            libraryManager.SaveLibraries();
+            Library tempLibrary = new Library(name.Text, attributeNames, attributeType);
+            libraryManager.AddLibrary(tempLibrary);
+            tempLibrary.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
         }
 

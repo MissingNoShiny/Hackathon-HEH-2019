@@ -28,7 +28,7 @@
             </Button.Background>
         </Button>
         <Grid x:Name="page_content" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="63,3,63,0.333">
-            <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="91,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
+            <TextBox x:Name="name" Opacity="0.5" HorizontalAlignment="Left" Height="23" Margin="91,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
 
             <StackPanel x:Name="stackpanel" HorizontalAlignment="Center" Height="350" Margin="-14,112,-16.4,10" VerticalAlignment="Center" Width="280"/>
             <TextBlock x:Name="nameText" HorizontalAlignment="Left" Margin="44,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="44" Text="NOM :" FontWeight="Bold"/>
