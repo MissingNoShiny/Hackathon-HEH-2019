@@ -48,12 +48,15 @@ namespace Hackathon
                 attNameTB.FontWeight = FontWeights.Bold;
                 attNameTB.Foreground = new SolidColorBrush(Colors.DimGray);
                 attNameTB.Text = attributeName;
-                attNameTB.Width = 50;
+                attNameTB.Width = 100;
                 attNameTB.Height = 23;
+                attNameTB.Margin = new Thickness(0, 0, 10, 0);
+                attNameTB.TextAlignment = TextAlignment.Right;
 
                 TextBox tb = new TextBox();
-                tb.Width = 60;
+                tb.Width = 120;
                 tb.Height = 23;
+                tb.Opacity = 0.5;
                 tb.HorizontalAlignment = HorizontalAlignment.Left;
 
                 TextBlock dataTypeTB = new TextBlock();
@@ -64,6 +67,7 @@ namespace Hackathon
                 dataTypeTB.Text = namesDataType[library.AttributeTypes[attributeName]];
                 dataTypeTB.Width = 50;
                 dataTypeTB.Height = 23;
+                dataTypeTB.Margin = new Thickness(10, 0, 0, 0);
                 dataTypeTB.TextAlignment = TextAlignment.Right;
 
                 sp.Children.Add(attNameTB);

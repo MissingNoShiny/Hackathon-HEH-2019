@@ -94,6 +94,7 @@ namespace Hackathon
             tb.Width = 120;
             tb.Height = 23;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
+            tb.Opacity = 0.5;
             tb.Text = text;
             textBoxes.Add(tb);
 
