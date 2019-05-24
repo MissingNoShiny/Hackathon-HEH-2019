@@ -115,8 +115,8 @@ namespace Hackathon
                 if (dialresult == MessageBoxResult.Yes) {
                     libraryManager.Libraries.RemoveAt(selectedlib);
                     Is_Library_empty();
-                    MessageBox.Show(libraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
-                    File.Delete(libraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
+                    MessageBox.Show(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
+                    File.Delete(LibraryManager.DefaultLibrariesPath+ selectednamelib + ".libr");
                 }
             } 
             else {
