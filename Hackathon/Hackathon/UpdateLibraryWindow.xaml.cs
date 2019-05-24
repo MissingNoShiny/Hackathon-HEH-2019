@@ -136,8 +136,9 @@ namespace Hackathon
                 MessageBox.Show("La bibliothèque doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
                 return;
             }
-            if (textBoxes.Any(tb => String.IsNullOrEmpty(tb.Text))) {
-                MessageBox.Show("Tous les attributs doivent avoir un nom !", "Erreur", MessageBoxButton.OK);
+            List<int> emptyTextBoxes = Enumerable.Range(0, textBoxes.Count).Where(i => String.IsNullOrEmpty(textBoxes[i].Text)).ToList();
+            if (emptyTextBoxes.Count > 0) {
+                MessageBox.Show("Tous les attributs doivent avoir un nom !\nLes attributs suivants n'en ont pas : " + String.Join(", ", emptyTextBoxes), "Erreur", MessageBoxButton.OK);
                 return;
             }
             List<String> attributeNames = textBoxes.Select(x => x.Text).ToList();
