@@ -21,7 +21,15 @@ namespace Hackathon
     /// </summary>
     public partial class UpdateItemWindow : Window
     {
-        public UpdateItemWindow()
+
+        private static Dictionary<String, DataType> dataTypesNames = new Dictionary<String, DataType> {
+            ["String"] = DataType.STRING,
+            ["Int"] = DataType.INTEGER,
+            ["Bool"] = DataType.BOOLEAN,
+            ["Date"] = DataType.DATE
+        };
+        private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
+        public UpdateItemWindow(Library library)
         {
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
@@ -29,6 +37,40 @@ namespace Hackathon
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             img_object.Source = new BitmapImage(new Uri("pack://application:,,,/Assets/defaultimage.png"));
             timer.Start();
+            foreach (String attributeName in library.AttributeNames) {
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                sp.Margin = new Thickness(0, 5, 0, 0);
+
+                TextBlock attNameTB = new TextBlock();
+                attNameTB.FontFamily = new FontFamily("Segoe UI");
+                attNameTB.FontSize = 13;
+                attNameTB.FontWeight = FontWeights.Bold;
+                attNameTB.Foreground = new SolidColorBrush(Colors.DimGray);
+                attNameTB.Text = attributeName;
+                attNameTB.Width = 50;
+                attNameTB.Height = 23;
+
+                TextBox tb = new TextBox();
+                tb.Width = 60;
+                tb.Height = 23;
+                tb.HorizontalAlignment = HorizontalAlignment.Left;
+
+                TextBlock dataTypeTB = new TextBlock();
+                dataTypeTB.FontFamily = new FontFamily("Segoe UI");
+                dataTypeTB.FontSize = 13;
+                dataTypeTB.FontWeight = FontWeights.Bold;
+                dataTypeTB.Foreground = new SolidColorBrush(Colors.DimGray);
+                dataTypeTB.Text = namesDataType[library.AttributeTypes[attributeName]];
+                dataTypeTB.Width = 50;
+                dataTypeTB.Height = 23;
+                dataTypeTB.TextAlignment = TextAlignment.Right;
+
+                sp.Children.Add(attNameTB);
+                sp.Children.Add(tb);
+                sp.Children.Add(dataTypeTB);
+                stackPanel.Children.Add(sp);
+            }
         }
         private void Add_picture_Click(object sender, RoutedEventArgs e)
         {

@@ -33,12 +33,12 @@ namespace Hackathon
                 edit_struct_button.Width = 50;
                 edit_struct_button.Focusable = true;
             }
-            this.Title = "NOM DE LA BIBLIO";
+            this.Title = library.Name;
             this.Show();
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
-            UpdateItemWindow window = new UpdateItemWindow();
+            UpdateItemWindow window = new UpdateItemWindow(library);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;
@@ -62,7 +62,7 @@ namespace Hackathon
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
             //EDIT ITEM BIBLIO
-            UpdateItemWindow window = new UpdateItemWindow();
+            UpdateItemWindow window = new UpdateItemWindow(library);
             window.Owner = this;
             window.WindowState = this.WindowState;
             window.Left = this.Left + 8;
