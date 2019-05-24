@@ -30,7 +30,7 @@ namespace Hackathon
                 edit_struct_button.Width = 50;
                 edit_struct_button.Focusable = true;
             }
-            this.Title = "NOM DE LA BIBLIO";
+            this.Title = library.Name;
             this.Show();
         }
         private void Add_button(object sender, RoutedEventArgs e)

@@ -104,6 +104,7 @@ namespace Hackathon
             cb.HorizontalAlignment = HorizontalAlignment.Center;
             cb.Margin = new Thickness(10, 0, 10, 0);
             cb.SelectedItem = namesDataType[datatype];
+            cb.IsEnabled = String.IsNullOrEmpty(text);
             comboBoxes.Add(cb);
 
             ImageBrush myBrush = new ImageBrush();
