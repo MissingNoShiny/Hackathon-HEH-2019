@@ -210,7 +210,19 @@ namespace Hackathon
 
         private void View_image_button(object sender, RoutedEventArgs e)
         {
-            //VIEW SELECTED ITEM IMAGE
+            if (library.Items[item_list.SelectedIndex].ImagePath == null)
+                return;
+            Window pic = new Window();
+            pic.Show();
+
+            BitmapImage im = new BitmapImage(library.Items[item_list.SelectedIndex].ImagePath);
+            Image i = new Image();
+            i.Source = im;
+
+            ImageBrush brush = new ImageBrush();
+            brush.ImageSource = im;
+            pic.Background = brush;
+            
         }
     }
 }
