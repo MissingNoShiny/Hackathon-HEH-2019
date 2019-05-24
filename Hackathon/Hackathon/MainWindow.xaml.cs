@@ -114,7 +114,7 @@ namespace Hackathon
         {
             if (!nocollection)
             {
-                MessageBox.Show("DIdin't work !");
+                MessageBox.Show("Didn't work !");
                 page_title.Content = "BIENVENUE";
                 page_content.Width= Double.NaN;
             }
@@ -284,8 +284,8 @@ namespace Hackathon
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            library_list.Width = this.Width;
-            library_list.Height = this.Height - 100;
+            library_list.Width = window_background.Width;
+            library_list.Height = window_background.Height - 100;
             rectangle_grid.Width = 2000;
             maximize_button.Width = 0;
             maximize_button.Focusable = false;
