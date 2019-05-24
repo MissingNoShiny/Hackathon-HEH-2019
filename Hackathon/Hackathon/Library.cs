@@ -20,7 +20,9 @@ namespace Hackathon {
             get; private set;
         }
 
-        public String Name;
+        public String Name {
+            get; private set;
+        }
 
         public Library(String name, List<String> attributeNames, Dictionary<String, DataType> attributeTypes) {
             Name = name;

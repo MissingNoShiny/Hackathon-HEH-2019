@@ -43,6 +43,9 @@ namespace Hackathon
 
             navigation_button.Width = 50;
             library_list.ItemsSource = libraryManager.Libraries;
+            library_list.Columns[0].MaxWidth = 0;
+            library_list.Columns[1].MaxWidth = 0;
+            library_list.Columns[2].MaxWidth = 0;
             Is_Library_empty();
             if (this.WindowState == WindowState.Normal)
             {
@@ -293,7 +296,7 @@ namespace Hackathon
         private void Window_Activated(object sender, EventArgs e) {
             if (Admin) {
                 library_list.ItemsSource = new List<int>();
-                library_list.ItemsSource = libraryManager.Libraries;
+                library_list.ItemsSource = libraryManager.Libraries;              
                 Is_Library_empty();
             }
         }
