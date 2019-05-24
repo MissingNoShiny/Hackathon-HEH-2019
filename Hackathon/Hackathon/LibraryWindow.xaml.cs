@@ -26,6 +26,9 @@ namespace Hackathon
             InitializeComponent();
             this.Theme();
             var mainWindow = (Application.Current.MainWindow as MainWindow);
+
+            AddItem();
+
             if (mainWindow.Admin){
                 edit_struct_button.Width = 50;
                 edit_struct_button.Focusable = true;
@@ -170,6 +173,16 @@ namespace Hackathon
         private void Close_window(object sender, RoutedEventArgs e)
         {
             Owner.Focus();
+        }
+
+        private void AddItem() {
+            item_list.ItemsSource = new List<int>();
+            foreach (Item item in library.Items) 
+                item_list.ItemsSource = item.Values;
+        }
+        private void LibraryWindowActivated(object sender, EventArgs e)
+        {
+            AddItem();
         }
     }
 }
