@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,11 +30,13 @@ namespace Hackathon
         private LibraryManager libraryManager;
         private List<TextBox> textBoxes;
         private List<ComboBox> comboBoxes;
+        private int panelIndex;
         
         public UpdateLibraryWindow(LibraryManager libraryManager) {
             this.libraryManager = libraryManager;
             textBoxes = new List<TextBox>();
             comboBoxes = new List<ComboBox>();
+            panelIndex = 0;
             InitializeComponent();
             Theme();
             this.Show();
@@ -46,6 +48,11 @@ namespace Hackathon
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
             sp.Margin = new Thickness(0,5,0,0);
+
+            TextBlock txb = new TextBlock();
+            txb.Text = panelIndex.ToString();
+            txb.Width = 23;
+            txb.Height = 23;
 
             TextBox tb = new TextBox();
             tb.Width = 120;
@@ -72,15 +79,18 @@ namespace Hackathon
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
+                panelIndex--;
                 textBoxes.Remove(tb);
                 comboBoxes.Remove(cb);
                 stackpanel.Children.Remove(sp);
             };
 
+            sp.Children.Add(txb);
             sp.Children.Add(tb);
             sp.Children.Add(cb);
             sp.Children.Add(btn);
             this.stackpanel.Children.Add(sp);
+            panelIndex++;
         }
 
         private void del_object_click(object sender, RoutedEventArgs e)
