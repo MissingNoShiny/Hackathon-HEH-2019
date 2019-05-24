@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 
 namespace Hackathon {
+    [Serializable]
     public class Attribute {
 
         private readonly Dictionary<String, DataType> dataTypeNames = new Dictionary<string, DataType> {

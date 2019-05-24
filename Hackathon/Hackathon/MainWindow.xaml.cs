@@ -248,7 +248,7 @@ namespace Hackathon
 
         private void Search_unfocus(object sender, RoutedEventArgs e)
         {
-            if (search_box.Text == "")
+            if (search_box.Text == "" && library_list.ItemsSource == libraryManager.Libraries)
             {
                 search_box.Text = "Rechercher";
                 search_box.Opacity = 0.4;
@@ -272,10 +272,28 @@ namespace Hackathon
 
         private void Search_field(string field)
         {
-            if (search_box.Text != "" && search_box.Width > 0)
+            if (search_box.Width > 0)
             {
-                //lance la recherche
-                MessageBox.Show("Recherche de : "+field);
+                if (search_box.Text == "") {
+                    library_list.ItemsSource = new List<int>();
+                    library_list.ItemsSource = libraryManager.Libraries;
+                    library_list.Columns[0].MaxWidth = 0;
+                    library_list.Columns[1].MaxWidth = 0;
+                    library_list.Columns[2].MaxWidth = 0;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                }
+                else {
+                    library_list.ItemsSource = new List<int>();
+                    library_list.ItemsSource = libraryManager.Search(field);
+                    library_list.Columns[0].MaxWidth = 0;
+                    library_list.Columns[1].MaxWidth = 0;
+                    library_list.Columns[2].MaxWidth = 0;
+                    library_list.Columns[3].MinWidth = this.rectangle_grid.Width * 0.9;
+                    library_list.Columns[4].MinWidth = this.rectangle_grid.Width * 0.1;
+                }
+                
+
             }
         }
 
@@ -304,6 +322,7 @@ namespace Hackathon
 
         private void Window_Activated(object sender, EventArgs e) {
             if (Admin) {
+                library_list.Width = this.Width;
                 library_list.ItemsSource = new List<int>();
                 library_list.ItemsSource = libraryManager.Libraries;
                 library_list.Columns[0].MaxWidth = 0;

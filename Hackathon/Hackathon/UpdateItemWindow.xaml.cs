@@ -142,7 +142,13 @@ namespace Hackathon
                 MessageBox.Show("Les valeurs suivantes ne sont pas au bon format : " + String.Join(", ", badTextBoxes), "Erreur", MessageBoxButton.OK);
                 return;
             }
-            library.AddItem(new Item(attributes));
+            try {
+                library.AddItem(new Item(attributes));
+            } catch (Exception ex) {
+                MessageBox.Show("Une erreur s'est produite lors de l'ajout de l'objet.", "Erreur", MessageBoxButton.OK);
+            }
+            Console.WriteLine("NOMBRE D'OBJETS " + library.ItemCount.ToString());
+            library.Save(LibraryManager.DefaultLibrariesPath);
             this.Close();
             Owner.Focus();
         }
