@@ -37,9 +37,9 @@
             </Button.Background>
         </Button>
         <Grid Margin="0,65,0,0">
-            <DataGrid  x:Name="library_list" MinRowHeight="50" RowBackground="White" Width="0" Background="#77777777" BorderBrush="Black" BorderThickness="1,1,1,0" Opacity="0.2" ></DataGrid>
+            <DataGrid  x:Name="library_list" MinRowHeight="50" RowBackground="White" Width="0" Background="#77777777" BorderBrush="Black" BorderThickness="1,1,1,0" Opacity="0.5" ></DataGrid>
         </Grid>
-        <Rectangle x:Name="rectangle_grid" Fill="#77777777" HorizontalAlignment="Left" Height="70.5" Margin="0,0,0,0.333" Stroke="Black" VerticalAlignment="Bottom" Opacity="0.2" Width="693"/>
+        <Rectangle x:Name="rectangle_grid" Fill="#77777777" HorizontalAlignment="Left" Height="70.5" Margin="0,0,0,0.333" Stroke="Black" VerticalAlignment="Bottom" Opacity="0.5" Width="693"/>
         <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/add_button.png"/>
