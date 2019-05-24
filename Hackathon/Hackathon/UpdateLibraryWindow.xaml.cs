@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +58,10 @@ namespace Hackathon
             sp.Margin = new Thickness(0,5,0,0);
 
             TextBlock txb = new TextBlock();
+            txb.FontFamily = new FontFamily("Segoe UI");
+            txb.FontSize = 13;
+            txb.FontWeight = FontWeights.Bold;
+            txb.Foreground = new SolidColorBrush(Colors.DimGray);
             txb.Text = (panelIndex+1).ToString();
             txb.Width = 23;
             txb.Height = 23;
