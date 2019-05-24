@@ -36,5 +36,6 @@
                 <ImageBrush ImageSource="Assets/back_button.png"/>
             </Button.Background>
         </Button>
+        <StackPanel HorizontalAlignment="Left" Height="346" Margin="75,66,0,0" VerticalAlignment="Top" Width="209"/>
     </Grid>
 </Window>
