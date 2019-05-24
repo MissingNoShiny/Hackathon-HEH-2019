@@ -31,6 +31,7 @@ namespace Hackathon
         private static Dictionary<DataType, String> namesDataType = dataTypesNames.ToDictionary((x) => x.Value, (x) => x.Key);
         private List<TextBox> textBoxes;
         private Library library;
+        private Uri imagePath;
         public UpdateItemWindow(Library library)
         {
             InitializeComponent();
@@ -91,7 +92,8 @@ namespace Hackathon
 
             if (OFD.ShowDialog() == true)
             {
-                img_object.Source = new BitmapImage(new Uri(OFD.FileName));
+                imagePath = new Uri(OFD.FileName);
+                img_object.Source = new BitmapImage(imagePath);
             }            
         }
 
@@ -151,7 +153,10 @@ namespace Hackathon
                 return;
             }
             try {
-                library.AddItem(new Item(attributes));
+                if (imagePath != null)
+                    library.AddItem(new Item(attributes, imagePath));
+                else
+                    library.AddItem(new Item(attributes));               
             } catch (Exception ex) {
                 MessageBox.Show("Une erreur s'est produite lors de l'ajout de l'objet.", "Erreur", MessageBoxButton.OK);
                 return;

@@ -13,9 +13,19 @@ namespace Hackathon {
             get; private set;
         }
 
+        public Uri ImagePath {
+            get; set;
+        }
+
         public Item(List<Attribute> values) {
             Values = values;
         }
+
+        public Item(List<Attribute> values, Uri imagePath) {
+            Values = values;
+            imagePath = ImagePath;
+        }
+
         //Return a List of all DataType of the Item attribute
         public List<DataType> GetDataTypes() {
             List<DataType> dataType = new List<DataType>();
