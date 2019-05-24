@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,12 +33,12 @@ namespace Hackathon
             this.Show();            
             Left += 150;
             //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
-            
 
             libraryManager = new LibraryManager();
+            libraryManager.OpenLibraries();
+
             panelWindow = new PanelWindow(this);
             Admin = false;
-            libraryManager.OpenLibraries(LibraryManager.DefaultLibrariesPath);
             LoadCollection(libraryManager.Libraries.Count > 0);
 
             navigation_button.Width = 50;
@@ -108,14 +108,11 @@ namespace Hackathon
         {
             if (!nocollection)
             {
-                MessageBox.Show("DIdin't work !");
                 page_title.Content = "BIENVENUE";
                 page_content.Width= Double.NaN;
             }
             else
             {
-                libraryManager.OpenLibrary(LibraryManager.DefaultLibrariesPath);
-                MessageBox.Show("Work !");
                 page_title.Content = "BIBLIOTHÈQUES";
                 Content_Visibility();                
             }

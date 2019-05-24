@@ -20,7 +20,7 @@ namespace Hackathon
     public partial class LibraryWindow : Window
     {
         private LibraryManager libraryManager;
-        Library library;
+        private Library library;
         public LibraryWindow(LibraryManager libraryManager)
         {
             this.libraryManager = libraryManager;
