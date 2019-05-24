@@ -38,6 +38,7 @@ namespace Hackathon
             libraryManager = new LibraryManager();
             panelWindow = new PanelWindow(this);
             Admin = false;
+            libraryManager.OpenLibraries(LibraryManager.DefaultLibrariesPath);
             LoadCollection(libraryManager.Libraries.Count > 0);
 
             navigation_button.Width = 50;
@@ -107,12 +108,14 @@ namespace Hackathon
         {
             if (!nocollection)
             {
+                MessageBox.Show("DIdin't work !");
                 page_title.Content = "BIENVENUE";
                 page_content.Width= Double.NaN;
             }
             else
             {
                 libraryManager.OpenLibrary(LibraryManager.DefaultLibrariesPath);
+                MessageBox.Show("Work !");
                 page_title.Content = "BIBLIOTHÈQUES";
                 Content_Visibility();                
             }
