@@ -255,5 +255,8 @@
     <Resource Include="Assets\uploadimage_button.png" />
     <Resource Include="Assets\uploadimage_button_light.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\defaultimage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -43,7 +43,14 @@ namespace Hackathon
 
             navigation_button.Width = 50;
             library_list.ItemsSource = libraryManager.Libraries;
+            library_list.Columns[0].MaxWidth = 0;
+            library_list.Columns[1].MaxWidth = 0;
+            library_list.Columns[2].MaxWidth = 0;
+            library_list.Columns[3].MinWidth = this.Width * 0.9;
+            library_list.Columns[4].MinWidth = this.Width * 0.1;
+
             Is_Library_empty();
+
             if (this.WindowState == WindowState.Normal)
             {
                 maximize_button.Width = 50;
@@ -101,9 +108,12 @@ namespace Hackathon
         {
             //DELETE SELECTED BIBLIO
             if (libraryManager.Libraries.Count != 0) {
+                int selectedlib = library_list.SelectedIndex;
                 MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette bibliothèque ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
                 if (dialresult == MessageBoxResult.Yes) {
-                    //TODO: delete the selected library
+                    libraryManager.Libraries.RemoveAt(selectedlib);
+                    Is_Library_empty();
+                    //TODO: ajouter la suppression de fichier
                 }
             } 
             else {
@@ -131,8 +141,6 @@ namespace Hackathon
             open_button.Width = 150;
             search_box.Width = 150;
             search_button.Width = 25;
-            //library_list.Width = this.Width;
-            //library_list.Height = this.Height - 100;
         }
         public void Admin_Mode()
         {
@@ -296,6 +304,9 @@ namespace Hackathon
             if (Admin) {
                 library_list.ItemsSource = new List<int>();
                 library_list.ItemsSource = libraryManager.Libraries;
+                library_list.Columns[0].MaxWidth = 0;
+                library_list.Columns[1].MaxWidth = 0;
+                library_list.Columns[2].MaxWidth = 0;
                 Is_Library_empty();
             }
         }
