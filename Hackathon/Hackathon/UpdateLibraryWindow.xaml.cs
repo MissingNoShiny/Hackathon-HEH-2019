@@ -50,12 +50,15 @@ namespace Hackathon
 
         private void add_object_click(object sender, RoutedEventArgs e)
         {
+            if (panelIndex > 9)
+                return;
+
             StackPanel sp = new StackPanel();
             sp.Orientation = Orientation.Horizontal;
             sp.Margin = new Thickness(0,5,0,0);
 
             TextBlock txb = new TextBlock();
-            txb.Text = panelIndex.ToString();
+            txb.Text = (panelIndex+1).ToString();
             txb.Width = 23;
             txb.Height = 23;
 
