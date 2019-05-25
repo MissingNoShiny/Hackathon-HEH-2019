@@ -237,8 +237,8 @@
     <Resource Include="Assets\search_button.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\cancel_button.png" />
-    <Resource Include="Assets\cancel_button_light.png" />
+    <Resource Include="Assets\expert_button.png" />
+    <Resource Include="Assets\expert_button_light.png" />
     <Resource Include="Assets\validation_button.png" />
     <Resource Include="Assets\validation_button_light.png" />
   </ItemGroup>

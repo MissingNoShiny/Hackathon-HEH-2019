@@ -52,6 +52,20 @@ namespace Hackathon
             var pannelwindow = Application.Current.Windows.OfType<PanelWindow>().FirstOrDefault();
             pannelwindow.Theme();
         }
+        private void Expert_Button(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.Advanced == "User")
+            {
+                Properties.Settings.Default.Advanced = "Admin";
+            }
+            else
+            {
+                Properties.Settings.Default.Advanced = "User";
+            }
+            Properties.Settings.Default.Save();
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            mainWindow.Admin_Mode();
+        }
 
         /*METHODES*/
         public void Content_Display(int content)
@@ -91,8 +105,11 @@ namespace Hackathon
                 ui.Foreground = new SolidColorBrush(Colors.Black);
                 ui_list.Foreground = new SolidColorBrush(Colors.Black);
                 theme_set.Foreground = new SolidColorBrush(Colors.Black);
+                admin_set.Foreground = new SolidColorBrush(Colors.Black);
                 theme_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 theme_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/theme_button_light.png")));
+                admin_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                admin_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/expert_button_light.png")));
                 back_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 back_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
             }
@@ -101,8 +118,11 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 theme_set.Foreground = new SolidColorBrush(Colors.White);
+                admin_set.Foreground = new SolidColorBrush(Colors.White);
                 theme_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 theme_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/theme_button.png")));
+                admin_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
+                admin_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/expert_button.png")));
                 back_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 back_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button.png")));
             }
@@ -128,6 +148,6 @@ namespace Hackathon
             base.OnPreviewMouseMove(e);
             if (e.StylusDevice == null)
                 Cursor = Cursors.Arrow;
-        }
+        }       
     }
 }

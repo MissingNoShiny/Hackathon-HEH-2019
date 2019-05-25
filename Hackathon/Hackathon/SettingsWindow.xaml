@@ -80,20 +80,26 @@
                 <ImageBrush ImageSource="Assets/back_button.png"/>
             </Button.Background>
         </Button>
-        <Grid x:Name="about_list" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid x:Name="about_list" Width="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock x:Name="dev" HorizontalAlignment="Left" Margin="50,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Développeurs" FontFamily="Segoe UI Black" FontSize="20"/>
             <TextBlock x:Name="dev_list" HorizontalAlignment="Right" Margin="100,40,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI" FontSize="16" TextAlignment="Right"><Run Text="Briquet Florian"/><LineBreak/><Run Text="Jeuniaux Nicolas"/><LineBreak/><Run Text="Larcin Vincent"/></TextBlock>
             <TextBlock x:Name="ui" HorizontalAlignment="Left" Margin="50,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Text="Interface" FontFamily="Segoe UI Black" FontSize="20"/>
             <TextBlock x:Name="ui_list" HorizontalAlignment="Right" Margin="100,170,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI" FontSize="16" TextAlignment="Right"><Run Text="Brzeziak Ugo"/><LineBreak/><Run Text="Vitali Luca"/></TextBlock>
 
         </Grid>
-        <Grid x:Name="settings_list" Width="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 0, 30">
-            <Button x:Name="theme_button" Focusable="False" Padding="0" HorizontalAlignment="Center" Margin="0,0,60.667,0" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#77777777" Foreground="White" Click="Theme_Button" Opacity="0.5" >
+        <Grid x:Name="settings_list" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 0, 0, 30">
+            <Button x:Name="theme_button" Focusable="False" Padding="0" HorizontalAlignment="Center" Margin="0,0,60.667,60" VerticalAlignment="Center" Height="50" Width="50" FontSize="24" BorderBrush="#77777777" Foreground="White" Click="Theme_Button" Opacity="0.5" >
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/theme_button.png"/>
                 </Button.Background>
             </Button>
-            <TextBlock x:Name="theme_set" FontWeight="Bold" HorizontalAlignment="Center" Margin="60,0,0,0" VerticalAlignment="Center"  Foreground="White" FontSize="16">Thème</TextBlock>
+            <TextBlock x:Name="theme_set" FontWeight="Bold" HorizontalAlignment="Center" Margin="60,0,0,60" VerticalAlignment="Center"  Foreground="White" FontSize="16">Thème</TextBlock>
+            <Button x:Name="admin_button" Focusable="False" Padding="0" HorizontalAlignment="Center" Margin="0,60,60.667,0" VerticalAlignment="Center" Height="50" Width="50" FontSize="24" BorderBrush="#77777777" Foreground="White" Click="Expert_Button" Opacity="0.5" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/expert_button.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock x:Name="admin_set" FontWeight="Bold" HorizontalAlignment="Center" Margin="100,60,0,0" VerticalAlignment="Center"  Foreground="White" FontSize="16">Profil Expert</TextBlock>
         </Grid>
     </Grid>
 </Window>

@@ -49,8 +49,12 @@ namespace Hackathon
             library_list.Columns[4].MaxWidth = 300;
 
             Is_Library_empty();
+            if (Hackathon.Properties.Settings.Default.Advanced == "Admin")
+            {
+                Admin_Mode();
+            }
 
-            if (this.WindowState == WindowState.Normal)
+                if (this.WindowState == WindowState.Normal)
             {
                 maximize_button.Width = 50;
                 maximize_button.Focusable = true;

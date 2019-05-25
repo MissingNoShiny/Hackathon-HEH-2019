@@ -69,6 +69,51 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>                                
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="Purple"/>
+                                <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="Purple"/>
+                                <Setter Property="BorderThickness" TargetName="border" Value="2"/>                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -80,6 +125,7 @@
   Grid.ColumnSpan="3"
   CornerRadius="0"
   Background="#77777777"
+Opacity="0.5"
   BorderBrush="#404040"
   BorderThickness="0" />
                 <Border 
@@ -168,7 +214,7 @@
           MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <Border 
             x:Name="DropDownBorder"
-            Background="#77777777"
+            Background="#AAAAAAAA"
             BorderThickness="1"
             BorderBrush="#888888"/>
                                     <ScrollViewer Margin="0" SnapsToDevicePixels="True">
@@ -247,10 +293,10 @@
             </Button.Background>
         </Button>
         <Grid x:Name="page_content" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="63,3,63,0.333">
-            <TextBox x:Name="name" FontSize="18" Background="#77777777" HorizontalAlignment="Left" Height="25" Margin="75,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
+            <TextBox x:Name="name" FontSize="18" Background="#77777777" HorizontalAlignment="Left" Height="25" Margin="75,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Padding="0" RenderTransformOrigin="0.525,-0.609"/>
 
-            <StackPanel x:Name="stackpanel" HorizontalAlignment="Center" Height="350" Margin="-14,112,-16.4,10" VerticalAlignment="Center" Width="320"/>
-            <TextBlock x:Name="nameText" HorizontalAlignment="Left" Margin="25,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="44" Text="NOM :" FontWeight="Bold"/>
+            <StackPanel x:Name="stackpanel" HorizontalAlignment="Center" Height="350" Margin="-14,100,-16.4,20" VerticalAlignment="Center" Width="320"/>
+            <TextBlock x:Name="nameText" HorizontalAlignment="Left" Margin="25,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Width="44" Text="NOM :" FontWeight="Bold"/>
             <TextBlock x:Name="info"  Text="Créez jusqu'à 10 attributs" Margin="0,0,70,25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" FontSize="16"></TextBlock>
             <Button x:Name="add_object" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,9.667,10" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="add_object_click" Focusable="False" >
                 <Button.Background>
