@@ -106,6 +106,28 @@ namespace Hackathon
                 back_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 back_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button.png")));
             }
-        }       
+        }
+        /*DISABLE Touch Cursor*/
+        protected override void OnPreviewTouchDown(TouchEventArgs e)
+        {
+            base.OnPreviewTouchDown(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnPreviewTouchMove(TouchEventArgs e)
+        {
+            base.OnPreviewTouchMove(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnGotMouseCapture(MouseEventArgs e)
+        {
+            base.OnGotMouseCapture(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnPreviewMouseMove(MouseEventArgs e)
+        {
+            base.OnPreviewMouseMove(e);
+            if (e.StylusDevice == null)
+                Cursor = Cursors.Arrow;
+        }
     }
 }

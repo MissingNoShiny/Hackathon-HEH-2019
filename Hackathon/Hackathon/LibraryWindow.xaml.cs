@@ -212,5 +212,27 @@ namespace Hackathon
             brush.ImageSource = im;
             pic.Background = brush;
         }
+        /*DISABLE Touch Cursor*/
+        protected override void OnPreviewTouchDown(TouchEventArgs e)
+        {
+            base.OnPreviewTouchDown(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnPreviewTouchMove(TouchEventArgs e)
+        {
+            base.OnPreviewTouchMove(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnGotMouseCapture(MouseEventArgs e)
+        {
+            base.OnGotMouseCapture(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnPreviewMouseMove(MouseEventArgs e)
+        {
+            base.OnPreviewMouseMove(e);
+            if (e.StylusDevice == null)
+                Cursor = Cursors.Arrow;
+        }
     }
 }

@@ -154,6 +154,28 @@ namespace Hackathon
             SetWindowCompositionAttribute(windowHelper.Handle, ref data);
             Marshal.FreeHGlobal(accentPtr);
         }
+        /*DISABLE Touch Cursor*/
+        protected override void OnPreviewTouchDown(TouchEventArgs e)
+        {
+            base.OnPreviewTouchDown(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnPreviewTouchMove(TouchEventArgs e)
+        {
+            base.OnPreviewTouchMove(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnGotMouseCapture(MouseEventArgs e)
+        {
+            base.OnGotMouseCapture(e);
+            Cursor = Cursors.None;
+        }
+        protected override void OnPreviewMouseMove(MouseEventArgs e)
+        {
+            base.OnPreviewMouseMove(e);
+            if (e.StylusDevice == null)
+                Cursor = Cursors.Arrow;
+        }
     }
     
     internal enum AccentState
@@ -186,5 +208,5 @@ namespace Hackathon
     internal enum WindowCompositionAttribute
     {
         WCA_ACCENT_POLICY = 19
-    }    //ABE_end
+    }    //ABE_end         
 }
