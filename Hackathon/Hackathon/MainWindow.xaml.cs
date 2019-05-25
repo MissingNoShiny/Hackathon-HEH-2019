@@ -144,7 +144,6 @@ namespace Hackathon
             Admin = !Admin;
             if (Admin)
             {
-                //AFFICHE LES BOUTONS MODE AVANCE
                 page_title.Content = "MODE AVANCÉ";
                 Is_Library_empty();
                 add_button.Width = 50;
@@ -153,7 +152,6 @@ namespace Hackathon
             }
             else
             {
-                //REPASSE EN VUE USER  !!REEXECUTER LOADCOLLECTION!!
                 page_title.Content = "BIBLIOTHÈQUES";
                 Is_Library_empty();
                 add_button.Width = 0;
@@ -191,6 +189,7 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 page_content.Foreground = new SolidColorBrush(Colors.Black);
+                library_list.Foreground = new SolidColorBrush(Colors.Black);
                 search_box.Background= new SolidColorBrush(Colors.White);
                 search_box.Foreground = new SolidColorBrush(Colors.Black);
                 library_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
@@ -213,6 +212,7 @@ namespace Hackathon
                 window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 page_content.Foreground = new SolidColorBrush(Colors.White);
+                library_list.Foreground = new SolidColorBrush(Colors.White);
                 search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
                 search_box.Foreground = new SolidColorBrush(Colors.White);
                 library_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
@@ -288,7 +288,6 @@ namespace Hackathon
                 library_list.Width = this.Width-14;
                 library_list.Height = this.Height - 140;
                 library_list.Margin = new Thickness(0, 7, 0, 70);
-                rectangle_grid.Width = this.Width;
             }
         }
 
@@ -296,7 +295,6 @@ namespace Hackathon
         {
             library_list.Width = window_background.Width;
             library_list.Height = window_background.Height - 140;
-            rectangle_grid.Width = this.Width;
             library_list.RowHeight = 75;
             maximize_button.Width = 0;
             maximize_button.Focusable = false;
@@ -321,7 +319,6 @@ namespace Hackathon
         private void Is_Library_empty() {//Verify the emptiness of the library list and hide some elements if it's empty
             if(libraryManager.Libraries.Count == 0) {
                 library_list.Width = 0;
-                rectangle_grid.Width = 0;
                 page_content.Width = Double.NaN;
                 if (Admin) {
                     page_content.Text = "Aucune bibliothèque";
