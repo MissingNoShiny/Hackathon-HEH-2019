@@ -39,18 +39,13 @@ namespace Hackathon
                 edit_struct_button.Width = 50;
                 edit_struct_button.Focusable = true;
             }
-            this.Title = library.Name;
+            this.Title = library.Nom;
             this.Show();
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
             UpdateItemWindow window = new UpdateItemWindow(library);
             window.Owner = this;
-            window.WindowState = this.WindowState;
-            window.Left = this.Left + 8;
-            window.Top = this.Top + 30;
-            window.Width = this.Width - 16;
-            window.Height = this.Height - 38;
             window.Show();
         }
         private void Edit_struct_button(object sender, RoutedEventArgs e)
@@ -58,11 +53,6 @@ namespace Hackathon
             //EDIT STRUCTURE BIBLIO
             UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager, library);
             window.Owner = this;
-            window.WindowState = this.WindowState;
-            window.Left = this.Left + 8;
-            window.Top = this.Top + 30;
-            window.Width = this.Width - 16;
-            window.Height = this.Height - 38;
         }
         private void Edit_item_button(object sender, RoutedEventArgs e)
         {
@@ -73,11 +63,6 @@ namespace Hackathon
                 return;
             UpdateItemWindow window = new UpdateItemWindow(library, item_list.SelectedIndex);
             window.Owner = this;
-            window.WindowState = this.WindowState;
-            window.Left = this.Left + 8;
-            window.Top = this.Top + 30;
-            window.Width = this.Width - 16;
-            window.Height = this.Height - 38;
             window.page_title.Content = "ÉDITER UN ÉLÉMENT";
             window.Show();
         }

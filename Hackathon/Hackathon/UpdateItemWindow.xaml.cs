@@ -201,11 +201,20 @@ namespace Hackathon
         }
         private void Window_Position(object sender, EventArgs e)
         {
-            this.Top = Owner.Top + 30;
-            this.Left = Owner.Left + 8;
-            this.Height = Owner.Height - 38;
-            this.Width = Owner.Width - 16;
-            this.WindowState = Owner.WindowState;
+            if (Owner.WindowState != WindowState.Maximized)
+            {
+                this.Top = Owner.Top + 30;
+                this.Left = Owner.Left + 8;
+                this.Height = Owner.Height - 38;
+                this.Width = Owner.Width - 16;
+            }
+            else
+            {
+                this.Top = 0;
+                this.Left = 0;
+                this.Height = Owner.Height;
+                this.Width = Owner.Width;
+            }
         }
         /*APPLYING THEME*/
         public void Theme()

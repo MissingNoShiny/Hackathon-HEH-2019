@@ -65,7 +65,7 @@ namespace Hackathon {
         public List<Library> Search(String search) {
             List<Library> match = new List<Library>();
             foreach(Library lib in Libraries) {
-                if (lib.Name.Contains(search))
+                if (lib.Nom.Contains(search))
                     match.Add(lib);
             }
             return match;

@@ -28,7 +28,7 @@
             <AccessText TextWrapping="WrapWithOverflow" Text="Vous ne possédez pas de bibliothèque. Pour éditer, veuillez passer en mode avancé. Un login peut être requis."/>
         </Label>
         <Grid Margin="0,65,0.333,0.333" Grid.ColumnSpan="4">
-            <DataGrid  x:Name="item_list"  MinRowHeight="50" RowBackground="White" BorderThickness="1,1,1,0" Background="#77777777" BorderBrush="Black" Opacity="0.5" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" ItemsSource="{Binding}">
+            <DataGrid  x:Name="item_list" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinRowHeight="50" RowBackground="#CCCCCC" BorderThickness="1,1,1,0" Background="#77777777" BorderBrush="Black" Opacity="0.5" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" HorizontalGridLinesBrush="#77777777" VerticalGridLinesBrush="#77777777" Foreground="Black" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="347,0,346.333,67.333" HeadersVisibility="Column" ItemsSource="{Binding}">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
 

@@ -23,17 +23,17 @@ namespace Hackathon {
             get; private set;
         }
 
-        public String Name {
+        public String Nom {//was Name
             get; private set;
         }
 
-        public int ItemCount {
+        public int Éléments {//was ItemsCount
             get => Items.Count;
         }
 
         public Library(String name, List<String> attributeNames, Dictionary<String, DataType> attributeTypes) {
             Items = new List<Item>();
-            Name = name;
+            Nom = name;
             AttributeNames = attributeNames;
             AttributeTypes = attributeTypes;
         }
@@ -118,7 +118,7 @@ namespace Hackathon {
 
         public void Save(String path) {
             IFormatter formatter = new BinaryFormatter();
-            String npath = path + Name + ".libr";
+            String npath = path + Nom + ".libr";
             Stream stream = new FileStream(npath, FileMode.Create, FileAccess.Write);
             formatter.Serialize(stream, this);
         }

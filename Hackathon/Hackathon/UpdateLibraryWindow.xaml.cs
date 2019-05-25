@@ -51,7 +51,7 @@ namespace Hackathon
             edition = true;
             this.libraryManager = libraryManager;
             this.library = library;
-            name.Text = name.Name = library.Name;
+            name.Text = name.Name = library.Nom;
             foreach (String attributeName in library.AttributeNames)
                 AddRow(attributeName, library.AttributeTypes[attributeName]);
         }
@@ -95,9 +95,9 @@ namespace Hackathon
 
             TextBox tb = new TextBox();
             tb.Width = 120;
-            tb.Height = 23;
+            tb.Height = 25;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
-            tb.Opacity = 0.5;
+            tb.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
             tb.Text = text;
             if (text != "" && text.All(char.IsLetterOrDigit)) tb.Name = text;
             textBoxes.Add(tb);
@@ -160,7 +160,7 @@ namespace Hackathon
             if (name.Text.All(char.IsLetterOrDigit) == false) {
                 MessageBox.Show("Le nom de la bibliothèque ne peut contenir que des lettres ou des chiffres", "Erreur", MessageBoxButton.OK);
             }
-            if (libraryManager.Libraries.Select(x => x.Name).Contains(name.Text) && (!edition || name.Name != name.Text)) {
+            if (libraryManager.Libraries.Select(x => x.Nom).Contains(name.Text) && (!edition || name.Name != name.Text)) {
                 MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
                 return;
             }
@@ -229,11 +229,20 @@ namespace Hackathon
         }
         private void Window_Position(object sender, EventArgs e)
         {
-            this.Top = Owner.Top + 30;
-            this.Left = Owner.Left+8;
-            this.Height = Owner.Height - 38;
-            this.Width = Owner.Width-16;
-            this.WindowState = Owner.WindowState;
+            if (Owner.WindowState != WindowState.Maximized)
+            {
+                this.Top = Owner.Top + 30;
+                this.Left = Owner.Left + 8;
+                this.Height = Owner.Height - 38;
+                this.Width = Owner.Width - 16;
+            }
+            else
+            {
+                this.Top = 0;
+                this.Left = 0;
+                this.Height = Owner.Height;
+                this.Width = Owner.Width;
+            }                        
         }
     }
 }
