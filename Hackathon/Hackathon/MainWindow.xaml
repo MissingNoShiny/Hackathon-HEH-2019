@@ -44,7 +44,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -86,7 +86,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -119,7 +119,7 @@
         <Label x:Name="page_title" Background="Transparent" FontFamily="Segoe UI Black" Margin="70,20,0,0" Foreground="White" FontSize="20">
         </Label>
         <TextBox x:Name="search_box" Opacity="0.4" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#444444" Foreground="White" TextWrapping="Wrap" Text="Rechercher" Width="0" Margin="0,20,75.333,0" FontSize="16" GotFocus="Search_focus" LostFocus="Search_unfocus" KeyDown="Enter_search_key"/>
-        <Button x:Name="search_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,20,75.333,0" VerticalAlignment="Top" Height="25" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Search_Button" Opacity="0.6" Focusable="False" >
+        <Button x:Name="search_button" Padding="0" BorderThickness="0,0,1,0" Content="" HorizontalAlignment="Right" Margin="0,20,75.333,0" VerticalAlignment="Top" Height="25" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Search_Button" Opacity="0.6" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/search_button.png"/>
             </Button.Background>

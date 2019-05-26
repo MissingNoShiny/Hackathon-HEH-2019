@@ -118,8 +118,8 @@ namespace Hackathon
             myBrush.ImageSource = image.Source;
 
             Button btn = new Button();
-            btn.Width = 20;
-            btn.Height = 23;
+            btn.Width = 25;
+            btn.Height = 25;
             btn.Background = myBrush;
             btn.HorizontalAlignment = HorizontalAlignment.Right;
             btn.Click += delegate {
