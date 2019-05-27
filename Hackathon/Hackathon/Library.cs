@@ -27,7 +27,7 @@ namespace Hackathon {
             get; private set;
         }
 
-        public int Éléments {//was ItemsCount
+        public int Nombre {//was ItemsCount
             get => Items.Count;
         }
 

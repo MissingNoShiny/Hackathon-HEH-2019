@@ -65,6 +65,7 @@ namespace Hackathon
             Properties.Settings.Default.Save();
             var mainWindow = (Application.Current.MainWindow as MainWindow);
             mainWindow.Admin_Mode();
+            Theme();
         }
 
         /*METHODES*/
@@ -96,7 +97,10 @@ namespace Hackathon
         /*APPLYING THEME*/
         private void Theme()
         {
-            if (Properties.Settings.Default.Theme == "Light")
+            if (Properties.Settings.Default.Advanced == "User")
+            { admin_set.Text = "Utilisateur"; }
+            else { admin_set.Text = "Avancé"; }
+                if (Properties.Settings.Default.Theme == "Light")
             {
                 window_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);

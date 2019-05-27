@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Hackathon"
         mc:Ignorable="d"
         Title="" Height="507" Width="700"
-        MinWidth="400"
+        MinWidth="500"
         MinHeight="507"
         MaxHeight="1500"        
         WindowStartupLocation="CenterScreen"
@@ -136,18 +136,40 @@
                 <ImageBrush ImageSource="Assets/minimize_button.png"/>
             </Button.Background>
         </Button>
-        <Grid Margin="0,65,0,0">
-            <DataGrid  x:Name="library_list" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinRowHeight="50" RowBackground="#77777777" Background="Transparent" BorderBrush="Black" BorderThickness="1,0,1,0" Opacity="0.5" CanUserResizeColumns="False" CanUserReorderColumns="False" HorizontalGridLinesBrush="#77777777" VerticalGridLinesBrush="#77777777" Foreground="Black" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="347,0,346.333,67.333" HeadersVisibility="Column" >
+        <Grid Margin="0,65,0,0" >
+            <DataGrid  x:Name="library_list" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinRowHeight="50" RowBackground="#77777777" Background="Transparent" BorderBrush="Black" BorderThickness="1,0,0,0" Opacity="1" CanUserResizeColumns="False" CanUserReorderColumns="False" HorizontalGridLinesBrush="#77777777" VerticalGridLinesBrush="#77777777" Foreground="Black" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="347,0,346.333,67.333" HeadersVisibility="None" >
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter  Property="FontWeight" Value="Bold"></Setter>
+                        <Setter Property="FontFamily" Value="Segoe UI Black"></Setter>
                         <Setter Property="Background" Value="Transparent" />
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
                     </Style>
                     <Style TargetType="DataGridCell">
-                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        <Setter Property="FontSize" Value="22"></Setter>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="0,10,0,0"/>
+                        <Setter Property="BorderThickness" Value="0"/>                        
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                        </Style.Resources>
                     </Style>
                 </DataGrid.Resources>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter  Property="FontWeight" Value="Bold"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter  Property="FontWeight" Value="Bold"></Setter>
+                                <Setter  Property="Opacity" Value="1"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter  Property="Opacity" Value="0.6"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
         <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >

@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -47,6 +49,10 @@ namespace Hackathon
             library_list.Columns[2].MaxWidth = 0;
             library_list.Columns[3].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
             library_list.Columns[4].MaxWidth = 300;
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += Content_Load;
+            timer.Interval = TimeSpan.FromSeconds(0.5);
+            timer.Start();
 
             Is_Library_empty();
             if (Hackathon.Properties.Settings.Default.Advanced == "Admin")
@@ -61,8 +67,24 @@ namespace Hackathon
             }
             Application.Current.MainWindow = this;
         }
-        /*BUTTONS CLICK*/
-        private void Navigation_Button(object sender, RoutedEventArgs e) {
+
+        //CONTENT
+        private void Content_Load(object sender, EventArgs e)
+        {
+            if (library_list.SelectedItem == null)
+            {
+                delete_button.Width = 0;
+                open_button.Width = 0;
+            }
+            else
+            {
+                delete_button.Width = 50;
+                open_button.Width = 150;
+            }
+        }
+
+            /*BUTTONS CLICK*/
+            private void Navigation_Button(object sender, RoutedEventArgs e) {
             panelWindow.WindowState = WindowState;
             if (!panelWindow.IsLoaded)
             {
@@ -102,24 +124,36 @@ namespace Hackathon
             window.Owner = this;
             panelWindow.Close();
         }
+        public void Delete_action()
+        {
+                    
+            File.Delete(LibraryManager.DefaultLibrariesPath + libraryManager.Libraries.ElementAt(library_list.SelectedIndex).Nom + ".libr");
+            libraryManager.Libraries.RemoveAt(library_list.SelectedIndex);
+            Is_Library_empty();
+                    library_list.Items.Refresh();
+        }
 
         private void Delete_button(object sender, RoutedEventArgs e)
         {
-            //DELETE SELECTED BIBLIO
-            if (libraryManager.Libraries.Count != 0 && library_list.SelectedItem != null) {
-                int selectedlib = library_list.SelectedIndex;
-                string selectednamelib = libraryManager.Libraries.ElementAt(selectedlib).Nom;
-                MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer " + selectednamelib + " ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-                if (dialresult == MessageBoxResult.Yes) {
-                    libraryManager.Libraries.RemoveAt(selectedlib);
-                    File.Delete(LibraryManager.DefaultLibrariesPath + selectednamelib + ".libr");
-                    Is_Library_empty();
-                }
+            WarningWindow warning = new WarningWindow();
+            warning.Owner = this;
+            warning.object_content.Text= libraryManager.Libraries.ElementAt(library_list.SelectedIndex).Nom;
+            if (this.WindowState == WindowState.Normal)
+            {
+                warning.Width = Width / 1.5;
+                warning.Left = Left + warning.Width / 4;
+                warning.Height = Height / 2;
+                warning.Top = Top + warning.Height / 2;
             }
-            else if (libraryManager.Libraries.Count == 0)
-                MessageBox.Show("Il n'y a pas de bibliothèque à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("Vous n'avez pas sélectionné de bibliothèque !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Information);
+            panelWindow.Close();
+            this.Opacity = 0.5;
+            BlurEffect blur;
+            blur = new BlurEffect();
+            blur.Radius = 15;
+            this.Effect = blur;
+            warning.ShowDialog();
+            this.Opacity = 1;
+            this.Effect = null;
         }
 
         /*METHODES*/
@@ -139,7 +173,6 @@ namespace Hackathon
 
         private void Content_Visibility()
         {
-            open_button.Width = 150;
             search_box.Width = 150;
             search_button.Width = 25;
         }
@@ -151,7 +184,6 @@ namespace Hackathon
                 page_title.Content = "MODE AVANCÉ";
                 Is_Library_empty();
                 add_button.Width = 50;
-                delete_button.Width = 50;
                 Content_Visibility();
             }
             else
@@ -159,7 +191,6 @@ namespace Hackathon
                 page_title.Content = "BIBLIOTHÈQUES";
                 Is_Library_empty();
                 add_button.Width = 0;
-                delete_button.Width = 0;
             }
         }
         
@@ -286,7 +317,6 @@ namespace Hackathon
 
         private void Resize_window(object sender, SizeChangedEventArgs e)
         {
-            //IF library >0
             if (this.WindowState == WindowState.Normal)
             {
                 library_list.Width = this.Width-14;
@@ -332,7 +362,7 @@ namespace Hackathon
                 }
             } 
             else {
-                library_list.Height = this.Height - 140;
+                library_list.Height = this.Height - 160;
                 page_content.Text = "";
             }
         }
