@@ -35,7 +35,6 @@ namespace Hackathon
             this.Theme();
             this.Show();            
             Left += 150;
-            //CHECK IF COLLECTION(s) > DISPLAY WelcomeScreen
 
             libraryManager = new LibraryManager();
             libraryManager.OpenLibraries();
@@ -339,13 +338,16 @@ namespace Hackathon
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            library_list.Width = window_background.Width;
-            library_list.Height = window_background.Height - 140;
-            library_list.RowHeight = 75;
-            maximize_button.Width = 0;
-            maximize_button.Focusable = false;
-            minimize_button.Width = 50;
-            minimize_button.Focusable = true;
+            if (this.WindowState == WindowState.Maximized)
+            {
+                library_list.Width = window_background.Width;
+                library_list.Height = window_background.Height - 140;
+                library_list.RowHeight = 75;
+                maximize_button.Width = 0;
+                maximize_button.Focusable = false;
+                minimize_button.Width = 50;
+                minimize_button.Focusable = true;
+            }
         }
 
         private void Is_Library_empty() {//Verify the emptiness of the library list and hide some elements if it's empty

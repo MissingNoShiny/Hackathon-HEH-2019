@@ -75,7 +75,7 @@
     <Grid>
         <Border x:Name="window_titlebar" BorderThickness="1 1 0 1" BorderBrush="#77777777" Background="#44444444" Opacity="0.3" CornerRadius="0"></Border>
         <TextBlock x:Name="page_content" Padding="10 5 300 9" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" Background="#22222222" FontSize="12" Foreground="White" TextAlignment="Center"
-        Text="Bibliothèques" Width="300"/>
+        Text="myCollections" Width="300"/>
 
         <Label x:Name="window_background" Padding="0 50 300 0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" Background="#44444444" Opacity="0.6" FontSize="12" Foreground="White"  Height="2000" Margin="0,30,0,-2000"></Label>
 
