@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Text.RegularExpressions;
 
-namespace Hackathon
+namespace Gooboi
 {
     /// <summary>
     /// Logique d'interaction pour UpdateLibraryWindow.xaml
@@ -216,7 +216,7 @@ namespace Hackathon
         /*APPLYING THEME*/
         public void Theme()
         {
-            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            if (Gooboi.Properties.Settings.Default.Theme == "Light")
             {
                 window_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);

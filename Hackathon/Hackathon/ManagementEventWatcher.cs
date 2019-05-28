@@ -1,4 +1,4 @@
-﻿namespace Hackathon
+﻿namespace Gooboi
 {
     internal class ManagementEventWatcher
     {

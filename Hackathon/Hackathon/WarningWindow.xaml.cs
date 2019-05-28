@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Hackathon
+namespace Gooboi
 {
     /// <summary>
     /// Logique d'interaction pour WarningWindow.xaml

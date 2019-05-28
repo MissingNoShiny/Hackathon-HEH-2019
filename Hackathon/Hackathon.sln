@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon", "Hackathon\Hackathon.csproj", "{C12659EF-E766-48A5-BED4-B3FB12B56E2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gooboi", "Hackathon\Gooboi.csproj", "{C12659EF-E766-48A5-BED4-B3FB12B56E2E}"
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "ProjectShiba_Packaging", "ProjectShiba_Packaging\ProjectShiba_Packaging.wapproj", "{8F37162F-1B81-4960-95CB-0A93FFD89F5B}"
 EndProject

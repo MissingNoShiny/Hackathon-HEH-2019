@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Hackathon
+namespace Gooboi
 {
     /// <summary>
     /// Logique d'interaction pour LibraryWindow.xaml
@@ -130,7 +130,7 @@ namespace Hackathon
         /*APPLYING THEME*/
         public void Theme()
         {
-            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            if (Gooboi.Properties.Settings.Default.Theme == "Light")
             {
                 window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);

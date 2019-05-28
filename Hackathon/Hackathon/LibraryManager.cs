@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hackathon {
+namespace Gooboi {
     public class LibraryManager {
 
         public static String DefaultLibrariesPath {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Hackathon {
+namespace Gooboi {
     [Serializable]
     public class Attribute {
 

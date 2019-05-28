@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Interop;
 
-namespace Hackathon
+namespace Gooboi
 {
     /*ACRYLIC BLUR is a UWP component unavailable from the WPF framework currently.
      ABE_start > ABE_end = code than mimic this visual effect. It comes from Rafael Rivera's GitHub.
@@ -94,14 +94,14 @@ namespace Hackathon
                 mainWindow.Display_Fullscreen(false);
                 settings_button.Margin = new Thickness(10, 0, 0, 10);
                 page_title.Margin = new Thickness(25, 50, 75, 0);
-                page_content.Text = "myCollections";
+                page_content.Text = "Gooboi";
             }
             
         }        
         /*APPLYING THEME*/
         public void Theme()
         {
-            if (Hackathon.Properties.Settings.Default.Theme == "Light")
+            if (Gooboi.Properties.Settings.Default.Theme == "Light")
             {
                 window_background.Background = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 window_background.Opacity = 0.3;

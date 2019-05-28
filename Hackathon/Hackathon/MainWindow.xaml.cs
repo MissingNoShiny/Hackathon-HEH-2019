@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 
-namespace Hackathon
+namespace Gooboi
 {
     public partial class MainWindow : Window
     {
@@ -54,7 +54,7 @@ namespace Hackathon
             timer.Start();
 
             Is_Library_empty();
-            if (Hackathon.Properties.Settings.Default.Advanced == "Admin")
+            if (Gooboi.Properties.Settings.Default.Advanced == "Admin")
             {
                 Admin_Mode();
             }
@@ -230,7 +230,7 @@ namespace Hackathon
         /*APPLYING THEME*/
         public void Theme()
         {
-            if (Hackathon.Properties.Settings.Default.Theme=="Light")
+            if (Gooboi.Properties.Settings.Default.Theme=="Light")
             {
                 window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
