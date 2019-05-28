@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="WarningWindow" Height="250" Width="500"
         AllowsTransparency="True"
+        MinWidth="460"
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
         WindowStyle="None" 

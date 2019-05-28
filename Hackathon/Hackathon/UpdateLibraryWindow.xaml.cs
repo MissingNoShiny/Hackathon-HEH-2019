@@ -202,6 +202,8 @@ namespace Hackathon
             }
             
             this.Close();
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            mainWindow.Content_Visibility();
             Owner.Focus();
         }
 

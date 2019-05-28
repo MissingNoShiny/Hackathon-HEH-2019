@@ -51,7 +51,7 @@ namespace Hackathon
             library_list.Columns[4].MaxWidth = 300;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Content_Load;
-            timer.Interval = TimeSpan.FromSeconds(0.5);
+            timer.Interval = TimeSpan.FromSeconds(0.25);
             timer.Start();
 
             Is_Library_empty();
@@ -78,7 +78,7 @@ namespace Hackathon
             }
             else
             {
-                delete_button.Width = 50;
+                if (Admin) { delete_button.Width = 50; } else { delete_button.Width = 0; }             
                 open_button.Width = 150;
             }
         }
@@ -171,10 +171,22 @@ namespace Hackathon
             }
         }
 
-        private void Content_Visibility()
+        public void Content_Visibility()
         {
             search_box.Width = 150;
             search_button.Width = 25;
+            if (Admin)
+            {
+                library_list.Width = this.Width - 14;
+                library_list.ItemsSource = new List<int>();
+                library_list.ItemsSource = libraryManager.Libraries;
+                library_list.Columns[0].MaxWidth = 0;
+                library_list.Columns[1].MaxWidth = 0;
+                library_list.Columns[2].MaxWidth = 0;
+                library_list.Columns[3].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
+                library_list.Columns[4].MaxWidth = 300;
+                Is_Library_empty();
+            }
         }
         public void Admin_Mode()
         {
@@ -334,20 +346,6 @@ namespace Hackathon
             maximize_button.Focusable = false;
             minimize_button.Width = 50;
             minimize_button.Focusable = true;
-        }
-
-        private void Window_Activated(object sender, EventArgs e) {
-            if (Admin) {
-                library_list.Width = this.Width-14;
-                library_list.ItemsSource = new List<int>();
-                library_list.ItemsSource = libraryManager.Libraries;
-                library_list.Columns[0].MaxWidth = 0;
-                library_list.Columns[1].MaxWidth = 0;
-                library_list.Columns[2].MaxWidth = 0;
-                library_list.Columns[3].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
-                library_list.Columns[4].MaxWidth = 300;
-                Is_Library_empty();
-            }
         }
 
         private void Is_Library_empty() {//Verify the emptiness of the library list and hide some elements if it's empty
