@@ -35,12 +35,16 @@ namespace Gooboi
             this.Theme();
             this.Show();            
             Left += 150;
+            Admin = false;
 
             libraryManager = new LibraryManager();
             libraryManager.OpenLibraries();
+            if (Gooboi.Properties.Settings.Default.Advanced == "Admin")
+            {
+                Admin_Mode();
+            }
 
-            panelWindow = new PanelWindow(this);
-            Admin = false;
+            panelWindow = new PanelWindow(this);            
             LoadCollection(libraryManager.Libraries.Count > 0);
             library_list.ItemsSource = libraryManager.Libraries;
             library_list.Columns[0].MaxWidth = 0;
@@ -53,11 +57,7 @@ namespace Gooboi
             timer.Interval = TimeSpan.FromSeconds(0.25);
             timer.Start();
 
-            Is_Library_empty();
-            if (Gooboi.Properties.Settings.Default.Advanced == "Admin")
-            {
-                Admin_Mode();
-            }
+            Is_Library_empty();            
 
                 if (this.WindowState == WindowState.Normal)
             {

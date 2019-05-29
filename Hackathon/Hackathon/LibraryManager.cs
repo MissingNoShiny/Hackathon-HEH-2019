@@ -20,7 +20,7 @@ namespace Gooboi {
         }
 
         public LibraryManager() {
-            DefaultLibrariesPath = Path.GetFullPath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\libraries\");
+            DefaultLibrariesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\libraries\");
             Libraries = new List<Library>();
             if (!Directory.Exists(DefaultLibrariesPath))
                 Directory.CreateDirectory(DefaultLibrariesPath);
