@@ -56,14 +56,25 @@ namespace Gooboi
             timer.Tick += Content_Load;
             timer.Interval = TimeSpan.FromSeconds(0.25);
             timer.Start();
-
-            Is_Library_empty();            
-
-                if (this.WindowState == WindowState.Normal)
+            Is_Library_empty();
+            if (this.WindowState == WindowState.Maximized)
+            {
+                library_list.Width = window_background.Width;
+                library_list.Height = window_background.Height - 140;
+                library_list.RowHeight = 75;
+                maximize_button.Width = 0;
+                maximize_button.Focusable = false;
+                minimize_button.Width = 0;
+                minimize_button.Focusable = false;
+                search_box.Margin = new Thickness(0, 20, 25, 0);
+                search_button.Margin = new Thickness(0, 20, 25, 0);
+            }
+            else
             {
                 maximize_button.Width = 50;
                 maximize_button.Focusable = true;
             }
+                    
             Application.Current.MainWindow = this;
         }
 
@@ -120,8 +131,8 @@ namespace Gooboi
         {
             //CREER NOUVELLE BIBLIO
             UpdateLibraryWindow window = new UpdateLibraryWindow(libraryManager);
-            window.Owner = this;
             panelWindow.Close();
+            window.Owner = this;            
         }
         public void Delete_action()
         {
@@ -213,11 +224,13 @@ namespace Gooboi
                 {
                     this.WindowStyle = System.Windows.WindowStyle.None;
                     navigation_button.Margin = new Thickness(300, 10, 0, 0);
+                    add_button.Margin = new Thickness(300, 0, 0, 10);
                 }
                 else
                 {
                     this.WindowStyle = System.Windows.WindowStyle.None;
                     navigation_button.Margin = new Thickness(10, 10, 0, 0);
+                    add_button.Margin = new Thickness(10, 0, 0, 10);
                 }
             }
             else

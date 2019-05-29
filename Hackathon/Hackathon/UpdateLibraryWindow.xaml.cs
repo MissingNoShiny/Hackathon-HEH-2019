@@ -63,8 +63,8 @@ namespace Gooboi
             timer.Tick += Window_Position;
             timer.Interval = TimeSpan.FromSeconds(0.0001);
             timer.Start();
-            this.Show();
-            textBlocks = new List<TextBlock>();
+            this.Show();            
+                textBlocks = new List<TextBlock>();
             textBoxes = new List<TextBox>();
             comboBoxes = new List<ComboBox>();
             panelIndex = 0;
@@ -244,6 +244,7 @@ namespace Gooboi
                 this.Left = 0;
                 this.Height = Owner.Height;
                 this.Width = Owner.Width;
+                save_library.Margin = new Thickness(0, 0, 25, 25);
             }                        
         }
         /*DISABLE Touch Cursor*/
