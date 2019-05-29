@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
@@ -150,38 +151,176 @@ namespace Gooboi
         private void Save_library_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(name.Text)) {
-                MessageBox.Show("La bibliothèque doit avoir un nom !", "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(2);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
                 return;
             }
             if (name.Text.Length > 24) {
-                MessageBox.Show("Le nom de la bibliothèque ne peut pas dépasser 24 caractères.", "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(3);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
                 return;
             }
             if (name.Text.All(char.IsLetterOrDigit) == false) {
-                MessageBox.Show("Le nom de la bibliothèque ne peut contenir que des lettres ou des chiffres", "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(4);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
+                return;
             }
             if (libraryManager.Libraries.Select(x => x.Nom).Contains(name.Text) && (!edition || name.Name != name.Text)) {
-                MessageBox.Show("Une bibliothèque du même nom existe déjà, veuillez en choisir un différent.", "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(5);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
                 return;
             }
             if (textBoxes.Count == 0) {
-                MessageBox.Show("La bibliothèque doit avoir au moins un attribut !", "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(6);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
                 return;
             }
             List<int> emptyTextBoxes = Enumerable.Range(0, textBoxes.Count).Where(i => String.IsNullOrEmpty(textBoxes[i].Text)).ToList();
             emptyTextBoxes = emptyTextBoxes.Select(x => { x += 1; return x; }).ToList();
             if (emptyTextBoxes.Count > 0) {
-                MessageBox.Show("Tous les attributs doivent avoir un nom !\nLes attributs suivants n'en ont pas : " + String.Join(", ", emptyTextBoxes), "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(7);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.object_content.Text = "Ligne " + String.Join(", ", emptyTextBoxes);
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
                 return;
             }
             List<String> attributeNames = textBoxes.Select(x => x.Text).ToList();
             if (attributeNames.Count != attributeNames.Distinct().Count()) {
-                MessageBox.Show("Tous les attributs doivent avoir un nom différent !", "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(8);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                this.Opacity = 1;
+                this.Effect = null;//end
                 return;
             }
             foreach (String name in attributeNames){
                 if (name.All(char.IsLetterOrDigit) == false) {
-                    MessageBox.Show("Les noms d'attributs ne doivent contenir que des lettres ou des chiffres","Erreur", MessageBoxButton.OK);
+                    WarningWindow warning = new WarningWindow();//start
+                    warning.Owner = this;
+                    warning.Message_show(9);
+                    if (this.WindowState == WindowState.Normal)
+                    {
+                        warning.Width = Width / 1.5;
+                        warning.Left = Left + warning.Width / 4;
+                        warning.Height = Height / 2;
+                        warning.Top = Top + warning.Height / 2;
+                    }
+                    this.Opacity = 0.5;
+                    BlurEffect blur;
+                    blur = new BlurEffect();
+                    blur.Radius = 15;
+                    this.Effect = blur;
+                    warning.ShowDialog();
+                    this.Opacity = 1;
+                    this.Effect = null;//end
                     return;
                 }      
             }

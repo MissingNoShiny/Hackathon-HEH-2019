@@ -17,13 +17,82 @@ namespace Gooboi
     /// <summary>
     /// Logique d'interaction pour WarningWindow.xaml
     /// </summary>
+    
     public partial class WarningWindow : Window
-    {
+    {       
         MainWindow mainWindow;
         public WarningWindow()
         {
-            InitializeComponent();
-            page_content.Text = "Êtes-vous sûr de vouloir supprimer cette bibliothèque ? Cette action est irréversible.";
+            InitializeComponent();            
+        }
+
+        public void Message_show(int message)
+        {
+            switch (message)
+            {
+                case 1:
+                    page_content.Text = "Êtes-vous sûr de vouloir supprimer cette bibliothèque ? Cette action est irréversible.";
+                    break;
+                case 2:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. La collection doit avoir un nom.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 3:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. Le nom ne peut pas dépasser 24 caractères.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 4:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. Le nom ne peut contenir que des lettres ou des chiffres.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 5:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. Une autre du même nom existe déjà, veuillez en choisir un différent.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 6:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. La collection doit avoir au moins un attribut.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 7:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. Un attribut n'a pas de nom.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 8:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. Tous les attributs doivent avoir un nom différent.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 9:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible de créer la bibliothèque. Les noms d'attributs ne doivent contenir que des lettres ou des chiffres.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                default:
+                    page_content.Text = "ERREUR";
+                    break;
+            }
         }
 
         private void No_btn(object sender, RoutedEventArgs e)

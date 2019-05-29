@@ -59,7 +59,10 @@ namespace Gooboi
             Is_Library_empty();
             if (this.WindowState == WindowState.Maximized)
             {
-                library_list.Width = window_background.Width;
+                if (libraryManager.Libraries.Count == 0)
+                { library_list.Width = 0; }
+                else { 
+                library_list.Width = window_background.Width; }
                 library_list.Height = window_background.Height - 140;
                 library_list.RowHeight = 75;
                 maximize_button.Width = 0;
@@ -98,7 +101,15 @@ namespace Gooboi
             panelWindow.WindowState = WindowState;
             if (!panelWindow.IsLoaded)
             {
-                panelWindow = new PanelWindow(this);
+                if (Left >= 300)
+                {
+                    panelWindow = new PanelWindow(this);
+                }
+                else
+                {
+                    Left = 300;
+                    panelWindow = new PanelWindow(this);
+                }
             }
             else
             {
@@ -147,6 +158,7 @@ namespace Gooboi
         {
             WarningWindow warning = new WarningWindow();
             warning.Owner = this;
+            warning.Message_show(1);
             warning.object_content.Text= libraryManager.Libraries.ElementAt(library_list.SelectedIndex).Nom;
             if (this.WindowState == WindowState.Normal)
             {
