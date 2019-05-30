@@ -32,6 +32,7 @@ namespace Gooboi
             var mainWindow = (Application.Current.MainWindow as MainWindow);
             dataTable = new DataTable();
             item_list.DataContext = dataTable.DefaultView;
+            item_list.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
 
             UpdateItems();
 
@@ -188,7 +189,9 @@ namespace Gooboi
             for (int i = 0; i < library.Items.Count; i++) {
                 Item item = library.Items[i];
                 dataTable.Rows.Add(item.Values.Select(x => x.Value.ToString()).ToList().ToArray());
+                item_list.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             }
+
         }
 
         private void CreateColumns() {

@@ -78,8 +78,9 @@ namespace Gooboi
 
                 TextBox tb = new TextBox();
                 tb.Width = 120;
-                tb.Height = 23;
+                tb.Height = 25;
                 tb.Opacity = 0.5;
+                tb.FontSize = 16;
                 tb.HorizontalAlignment = HorizontalAlignment.Left;
                 tb.Name = attributeName;
                 textBoxes.Add(tb);

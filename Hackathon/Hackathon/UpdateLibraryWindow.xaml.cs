@@ -89,7 +89,7 @@ namespace Gooboi
             txb.FontSize = 13;
             txb.FontWeight = FontWeights.Bold;
             txb.Foreground = new SolidColorBrush(Colors.DimGray);
-            txb.Text = (panelIndex + 1).ToString();
+            txb.Text = (panelIndex + 1).ToString();            
             txb.Width = 23;
             txb.Height = 23;
             textBlocks.Add(txb);
@@ -97,6 +97,7 @@ namespace Gooboi
             TextBox tb = new TextBox();
             tb.Width = 120;
             tb.Height = 25;
+            tb.FontSize = 16;
             tb.HorizontalAlignment = HorizontalAlignment.Left;
             tb.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
             tb.Text = text;
