@@ -110,10 +110,18 @@ namespace Gooboi
 
         private void Search_field(string field)
         {
-            if (search_box.Text != "" && search_box.Width>0)
+            if (search_box.Width > 0)
             {
-                //lance la recherche
-                MessageBox.Show("Recherche de : " + field);
+                if (search_box.Text == "")//TODO
+                {
+                    item_list.ItemsSource = new List<int>();
+                    item_list.ItemsSource = library.Items;
+                }
+                else
+                {
+                    item_list.ItemsSource = new List<int>();
+                    item_list.ItemsSource = library.Search(field);
+                }
             }
         }
         private void Resize_window(object sender, SizeChangedEventArgs e)
@@ -123,7 +131,6 @@ namespace Gooboi
                 item_list.Width = this.Width-14;
                 item_list.Height = this.Height - 140;
                 item_list.Margin = new Thickness(0, 7, 0, 70);
-                rectangle_grid.Width = this.Width;
             }
         }
 
@@ -164,9 +171,8 @@ namespace Gooboi
 
         private void Window_maximized(object sender, EventArgs e)
         {
-            item_list.Width = rectangle_grid.Width;
+            item_list.Width = image_back.Width;
             item_list.Height = image_back.Height - 140;
-            rectangle_grid.Width = 2000;
         }
 
         private void Close_window(object sender, RoutedEventArgs e)

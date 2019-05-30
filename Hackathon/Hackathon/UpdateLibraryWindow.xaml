@@ -53,6 +53,11 @@
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="Purple"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Purple" ShadowDepth="0" Opacity="0.7" BlurRadius="10"></DropShadowEffect>
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="BorderThickness" TargetName="border" Value="1"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
@@ -145,6 +150,11 @@ Opacity="0.5"
             <ControlTemplate.Triggers>
                 <Trigger Property="ToggleButton.IsMouseOver" Value="true">
                     <Setter TargetName="Border" Property="Background" Value="Purple" />
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Purple" ShadowDepth="0" Opacity="0.7" BlurRadius="10"></DropShadowEffect>
+                        </Setter.Value>
+                    </Setter>
                     <Setter TargetName="Border" Property="Opacity" Value="0.5" />
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="true">
@@ -286,7 +296,7 @@ Opacity="0.5"
 
 
     <Grid x:Name="window_background" Background="#262626">
-        <Label x:Name="page_title" Content="CRÉER UNE BIBLIOTHÈQUE" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" HorizontalAlignment="Left" Margin="75,25,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="page_title" Content="CRÉER UNE COLLECTION" Foreground="White" FontSize="20" FontFamily="Segoe UI Black" HorizontalAlignment="Left" Margin="75,25,0,0" VerticalAlignment="Top"/>
         <Button x:Name="cancel_library" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" BorderBrush="#44444444" Click="Cancel_library_Click" Height="50">
             <Button.Background>
                 <ImageBrush ImageSource="Assets/back_button.png"/>

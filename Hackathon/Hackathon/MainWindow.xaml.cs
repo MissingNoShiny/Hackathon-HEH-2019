@@ -188,7 +188,7 @@ namespace Gooboi
             }
             else
             {
-                page_title.Content = "BIBLIOTHÈQUES";
+                page_title.Content = "COLLECTIONS";
                 Content_Visibility();                
             }
         }
@@ -222,7 +222,7 @@ namespace Gooboi
             }
             else
             {
-                page_title.Content = "BIBLIOTHÈQUES";
+                page_title.Content = "COLLECTIONS";
                 Is_Library_empty();
                 add_button.Width = 0;
             }
@@ -249,6 +249,7 @@ namespace Gooboi
             {
                 this.WindowStyle = System.Windows.WindowStyle.SingleBorderWindow;
                 navigation_button.Margin = new Thickness(10, 10, 0, 0);
+                add_button.Margin = new Thickness(10, 0, 0, 10);
             }
         }
              
@@ -348,6 +349,11 @@ namespace Gooboi
                     library_list.ItemsSource = new List<int>();
                     library_list.ItemsSource = libraryManager.Search(field);
                 }
+                library_list.Columns[0].MaxWidth = 0;
+                library_list.Columns[1].MaxWidth = 0;
+                library_list.Columns[2].MaxWidth = 0;
+                library_list.Columns[3].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
+                library_list.Columns[4].MaxWidth = 300;
             }
         }
 
@@ -380,10 +386,10 @@ namespace Gooboi
                 library_list.Width = 0;
                 page_content.Width = Double.NaN;
                 if (Admin) {
-                    page_content.Text = "Aucune bibliothèque";
+                    page_content.Text = "Aucune collection";
                 } 
                 else {
-                    page_content.Text = "Vous ne possédez pas de bibliothèque. Pour éditer, veuillez passer en mode avancé.";
+                    page_content.Text = "Vous ne possédez pas de collection. Pour éditer, veuillez passer en mode avancé.";
                 }
             } 
             else {

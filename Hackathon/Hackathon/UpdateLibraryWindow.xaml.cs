@@ -48,7 +48,7 @@ namespace Gooboi
 
         public UpdateLibraryWindow(LibraryManager libraryManager, Library library) {
             initializeWindow();
-            page_title.Content = "ÉDITER UNE BIBLIOTHÈQUE";
+            page_title.Content = "ÉDITER UNE COLLECTION";
             edition = true;
             this.libraryManager = libraryManager;
             this.library = library;

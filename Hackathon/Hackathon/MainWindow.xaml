@@ -44,8 +44,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border"  CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true">
@@ -53,6 +54,11 @@
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="Purple"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Purple" ShadowDepth="0" Opacity="0.7" BlurRadius="10"></DropShadowEffect>
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="BorderThickness" TargetName="border" Value="1"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
@@ -145,6 +151,7 @@
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
                     </Style>
                     <Style TargetType="DataGridCell">
+                        <Setter Property="Background" Value="Transparent" />
                         <Setter Property="FontSize" Value="22"></Setter>
                         <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                         <Setter Property="Margin" Value="0,10,0,0"/>
@@ -163,6 +170,11 @@
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter  Property="FontWeight" Value="Bold"></Setter>
                                 <Setter  Property="Opacity" Value="1"></Setter>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="Purple" ShadowDepth="0" Opacity="0.7" BlurRadius="10"></DropShadowEffect>
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter  Property="Opacity" Value="0.6"></Setter>
@@ -172,17 +184,17 @@
                 </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
-        <Button x:Name="add_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
+        <Button x:Name="add_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/add_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="delete_button" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,165.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" >
+        <Button x:Name="delete_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,165.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/delete_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="open_button" Padding="20,0,50,4" Content="Ouvrir" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Open_button" Focusable="False" FontWeight="Bold" >
+        <Button x:Name="open_button" Opacity="0.8" Padding="20,0,50,4" Content="Ouvrir" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Open_button" Focusable="False" FontWeight="Bold" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/open_button.png"/>
             </Button.Background>
