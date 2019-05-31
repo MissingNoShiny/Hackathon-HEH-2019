@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gooboi"
         mc:Ignorable="d"
-        Title="LibraryWindow" Height="507" Width="700"
+        Title="LibraryWindow" Height="507" Width="300"
         MinWidth="400"
         MinHeight="507"
         MaxHeight="1500"
@@ -128,21 +128,24 @@
             <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="254*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="page_title" Background="Transparent" FontFamily="Segoe UI Black" Margin="70,20,0.333,0.333" Foreground="White" FontSize="20" Grid.ColumnSpan="4">
+        <Label x:Name="page_title" Content="COLLECTION" Background="Transparent" FontFamily="Segoe UI Black" Margin="20,20,0,0" Foreground="White" FontSize="20" Grid.ColumnSpan="4">
         </Label>
-        <TextBox x:Name="search_box"  Opacity="0.4" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#444444" Foreground="White" TextWrapping="Wrap" Text="Rechercher" Width="150" Margin="0,20,15.333,0" FontSize="16" LostFocus="Search_unfocus" GotFocus="Search_focus" KeyDown="Enter_search_key" Grid.Column="3"/>
         <Image x:Name="image_back" HorizontalAlignment="Right" VerticalAlignment="Bottom" Source="Assets/background_dogs.png" Stretch="Uniform" Grid.ColumnSpan="4" Margin="0,0,0.333,0.333"/>
-        <Label x:Name="page_content" Padding="50,0,50,0" FontFamily="Segoe UI"  Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="0" Margin="7.423,47,92.577,47.333" Grid.Column="2">
+        <Label x:Name="page_content" Padding="50,0,50,0" FontFamily="Segoe UI"  Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="0" Margin="7.423,47,92.577,47.333" Grid.Column="2">
             <AccessText TextWrapping="WrapWithOverflow" Text="Vous ne possédez pas de bibliothèque. Pour éditer, veuillez passer en mode avancé. Un login peut être requis."/>
         </Label>
         <Grid Margin="0,65,0.333,0.333" Grid.ColumnSpan="4">
 
-            <DataGrid  x:Name="item_list" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MinRowHeight="50" RowBackground="#77777777" BorderThickness="1,0,0,0" Background="Transparent" BorderBrush="Black" Foreground="White"  Opacity="1" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" HorizontalGridLinesBrush="#77777777" VerticalGridLinesBrush="#77777777" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="347,0,346.333,67.333" HeadersVisibility="Column" ItemsSource="{Binding}">
+            <DataGrid  x:Name="item_list" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" CanUserAddRows="false" VerticalScrollBarVisibility="Auto" MinRowHeight="50" RowBackground="#77777777" BorderThickness="1,0,0,0" Background="Transparent" BorderBrush="Black" Foreground="White"  Opacity="1" CanUserReorderColumns="False" CanUserResizeColumns="True" CanUserSortColumns="False" CanUserResizeRows="False" HorizontalGridLinesBrush="#77777777" VerticalGridLinesBrush="#77777777" FontSize="18" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="347,0,346.333,67.333" HeadersVisibility="Column" ItemsSource="{Binding}">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="FontFamily" Value="Segoe UI Black"></Setter>
                         <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        <Setter Property="Foreground" Value="#77777777" />
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="BorderBrush" Value="#77777777"/>
+                        <Setter Property="BorderThickness" Value="0.5,0,0.5,0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     </Style>
                     <Style TargetType="DataGridCell">
                         <Setter Property="Background" Value="Transparent" />
@@ -178,19 +181,9 @@
                 </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
-        <Button x:Name="edit_struct_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_struct_button" Focusable="False" >
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/edit_struct_button.png"/>
-            </Button.Background>
-        </Button>
         <Button x:Name="add_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,10.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Add_button" Focusable="False" Grid.Column="3" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/add_button.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="delete_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,120.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" Grid.Column="3" >
-            <Button.Background>
-                <ImageBrush ImageSource="Assets/delete_button.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="edit_item_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,65.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_item_button" Focusable="False" Grid.Column="3" >
@@ -198,14 +191,25 @@
                 <ImageBrush ImageSource="Assets/edit_button.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="viewimage_button" Opacity="0.8" Padding="20,0,50,4" Content="Image" HorizontalAlignment="Left" Margin="10,0,0,10.333" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Viewimage_button" Focusable="False" FontWeight="Bold" Grid.ColumnSpan="2" >
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/viewimage.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="delete_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,120.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" Grid.Column="2" Grid.ColumnSpan="2" >
+            <Button.Background>
+                <ImageBrush ImageSource="Assets/delete_button.png"/>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="search_box"  Opacity="0.4" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#444444" Foreground="White" TextWrapping="Wrap" Text="Rechercher" Width="150" Margin="0,20,15.333,0" FontSize="16" LostFocus="Search_unfocus" GotFocus="Search_focus" KeyDown="Enter_search_key" Grid.Column="2" Grid.ColumnSpan="2"/>
         <Button x:Name="search_button" Padding="0" BorderThickness="0,0,1,0" Content="" HorizontalAlignment="Right" Margin="0,20,15.333,0" VerticalAlignment="Top" Height="25" Width="25" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Search_Button" Opacity="0.6" Focusable="False" Grid.Column="3" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/search_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="viewimage_button" Opacity="0.8" Padding="20,0,50,4" Content="Image" HorizontalAlignment="Left" Margin="10,0,0,10.333" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Viewimage_button" Focusable="False" FontWeight="Bold" Grid.ColumnSpan="2" >
+        <Button x:Name="edit_struct_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_struct_button" Focusable="False" Grid.ColumnSpan="2" >
             <Button.Background>
-                <ImageBrush ImageSource="Assets/viewimage.png"/>
+                <ImageBrush ImageSource="Assets/edit_struct_button.png"/>
             </Button.Background>
         </Button>
     </Grid>

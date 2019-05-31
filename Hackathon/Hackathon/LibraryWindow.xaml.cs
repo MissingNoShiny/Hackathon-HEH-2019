@@ -38,9 +38,10 @@ namespace Gooboi
 
             if (mainWindow.Admin){
                 edit_struct_button.Width = 50;
+                page_title.Margin = new Thickness(70, 20, 0, 0);
                 edit_struct_button.Focusable = true;
             }
-            this.Title = library.Nom;
+            page_title.Content = library.Nom;
             this.Show();
         }
         private void Add_button(object sender, RoutedEventArgs e)
@@ -183,13 +184,12 @@ namespace Gooboi
 
         
         private void UpdateItems() {
-
             CreateColumns();
             dataTable.Rows.Clear();
             for (int i = 0; i < library.Items.Count; i++) {
                 Item item = library.Items[i];
                 dataTable.Rows.Add(item.Values.Select(x => x.Value.ToString()).ToList().ToArray());
-                item_list.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+                item_list.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);                
             }
 
         }

@@ -106,16 +106,16 @@ namespace Gooboi
         private void Add_picture_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog OFD = new OpenFileDialog();
-            OFD.Title = "Selectionne une image";
+            OFD.Title = "Importer une image";
             OFD.Filter = "*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
 
             if (OFD.ShowDialog() == true)
             {
                 imagePath = new Uri(OFD.FileName);
                 img_object.Source = new BitmapImage(imagePath);
-            }
-            img_object.Width = 150;
-            img_object.Height = 150;
+                img_object.Width = 150;
+                img_object.Height = 150;
+            }            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
