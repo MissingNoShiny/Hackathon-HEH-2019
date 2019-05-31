@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Threading;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -33,6 +34,10 @@ namespace Gooboi
             dataTable = new DataTable();
             item_list.DataContext = dataTable.DefaultView;
             item_list.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += Content_Load;
+            timer.Interval = TimeSpan.FromSeconds(0.25);
+            timer.Start();
 
             UpdateItems();
 
@@ -43,6 +48,21 @@ namespace Gooboi
             }
             page_title.Content = library.Nom;
             this.Show();
+        }
+        private void Content_Load(object sender, EventArgs e)
+        {
+            if (item_list.SelectedItem == null)
+            {
+                delete_button.Width = 0;
+                edit_item_button.Width = 0;
+                viewimage_button.Width = 0;
+            }
+            else
+            {
+                delete_button.Width = 50;
+                edit_item_button.Width = 50;
+                viewimage_button.Width = 150;
+            }
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {

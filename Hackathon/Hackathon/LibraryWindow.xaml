@@ -186,17 +186,17 @@
                 <ImageBrush ImageSource="Assets/add_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="edit_item_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,65.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_item_button" Focusable="False" Grid.Column="3" >
+        <Button x:Name="edit_item_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,65.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_item_button" Focusable="False" Grid.Column="3" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/edit_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="viewimage_button" Opacity="0.8" Padding="20,0,50,4" Content="Image" HorizontalAlignment="Left" Margin="10,0,0,10.333" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Viewimage_button" Focusable="False" FontWeight="Bold" Grid.ColumnSpan="2" >
+        <Button x:Name="viewimage_button" Opacity="0.8" Padding="20,0,50,4" Content="Image" HorizontalAlignment="Left" Margin="10,0,0,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="22" BorderBrush="#44444444" Foreground="White" Click="Viewimage_button" Focusable="False" FontWeight="Bold" Grid.ColumnSpan="2" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/viewimage.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="delete_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,120.333,10.333" VerticalAlignment="Bottom" Height="50" Width="50" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" Grid.Column="2" Grid.ColumnSpan="2" >
+        <Button x:Name="delete_button" Opacity="0.8" Padding="0" Content="" HorizontalAlignment="Right" Margin="0,0,120.333,10.333" VerticalAlignment="Bottom" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Delete_button" Focusable="False" Grid.Column="2" Grid.ColumnSpan="2" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/delete_button.png"/>
             </Button.Background>
