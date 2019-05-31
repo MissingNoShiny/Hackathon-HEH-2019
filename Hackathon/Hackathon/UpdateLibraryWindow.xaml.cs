@@ -371,12 +371,13 @@ namespace Gooboi
         }
         private void Window_Position(object sender, EventArgs e)
         {
-            if (Owner.WindowState != WindowState.Maximized)
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            if (mainWindow.WindowState != WindowState.Maximized)
             {
-                this.Top = Owner.Top + 30;
-                this.Left = Owner.Left + 8;
-                this.Height = Owner.Height - 38;
-                this.Width = Owner.Width - 16;
+                this.Top = mainWindow.Top + 30;
+                this.Left = mainWindow.Left + 8;
+                this.Height = mainWindow.Height - 38;
+                this.Width = mainWindow.Width - 16;
             }
             else
             {

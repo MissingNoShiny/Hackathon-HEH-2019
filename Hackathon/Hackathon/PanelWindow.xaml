@@ -8,7 +8,6 @@
         Left="-300"
         Background="#00000000"
         AllowsTransparency="True"
-        Topmost = "False"
         ShowInTaskbar="False"
         WindowStyle="None"        
         BorderThickness="0"

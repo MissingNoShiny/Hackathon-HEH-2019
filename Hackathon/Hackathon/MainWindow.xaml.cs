@@ -134,9 +134,9 @@ namespace Gooboi
             //OPEN SELECTED BIBLIO
             if (library_list.SelectedItem == null)
                 return;
+            panelWindow.Close();
             LibraryWindow window = new LibraryWindow(libraryManager, (Library) library_list.SelectedItem);
             window.Owner = this;
-            window.WindowState = this.WindowState;
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {

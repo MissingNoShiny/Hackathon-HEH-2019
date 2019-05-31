@@ -211,13 +211,13 @@ namespace Gooboi
             Owner.Focus();
         }
         private void Window_Position(object sender, EventArgs e)
-        {
+        {           
             if (Owner.WindowState != WindowState.Maximized)
             {
-                this.Top = Owner.Top + 30;
-                this.Left = Owner.Left + 8;
-                this.Height = Owner.Height - 38;
-                this.Width = Owner.Width - 16;
+                this.Top = Owner.Top;
+                this.Left = Owner.Left;
+                this.Height = Owner.Height;
+                this.Width = Owner.Width;
             }
             else
             {
@@ -225,6 +225,9 @@ namespace Gooboi
                 this.Left = 0;
                 this.Height = Owner.Height;
                 this.Width = Owner.Width;
+                save_changes.Margin = new Thickness(0, 0, 25, 25);
+                cancel_changes.Margin = new Thickness(0, 0, 80, 25);
+                add_picture.Margin = new Thickness(0, 0, 135, 25);
             }
         }
         /*APPLYING THEME*/

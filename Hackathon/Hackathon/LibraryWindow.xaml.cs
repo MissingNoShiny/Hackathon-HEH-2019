@@ -63,6 +63,28 @@ namespace Gooboi
                 edit_item_button.Width = 50;
                 viewimage_button.Width = 150;
             }
+            if (Owner.WindowState != WindowState.Maximized)
+            {
+                this.Top = Owner.Top + 30;
+                this.Left = Owner.Left + 8;
+                this.Height = Owner.Height - 38;
+                this.Width = Owner.Width - 16;
+            }
+            else
+            {
+                this.Top = 0;
+                this.Left = 0;
+                this.Height = Owner.Height;
+                this.Width = Owner.Width;
+                item_list.RowHeight = 75;
+                search_box.Margin = new Thickness(0, 20, 30, 0);
+                search_button.Margin = new Thickness(0, 20, 30, 0);
+                add_button.Margin = new Thickness(0, 0, 25, 25);
+                edit_item_button.Margin = new Thickness(0, 0, 80, 25);
+                delete_button.Margin = new Thickness(0, 0, 135, 25);
+                viewimage_button.Margin = new Thickness(15, 0, 0, 25);
+            }
+            Theme();
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {
@@ -150,7 +172,7 @@ namespace Gooboi
         {
             if (this.WindowState != WindowState.Maximized)
             {
-                item_list.Width = this.Width-14;
+                item_list.Width = this.Width;
                 item_list.Height = this.Height - 140;
                 item_list.Margin = new Thickness(0, 7, 0, 70);
             }
@@ -167,27 +189,14 @@ namespace Gooboi
                 search_box.Background = new SolidColorBrush(Colors.White);
                 search_box.Foreground = new SolidColorBrush(Colors.Black);
                 item_list.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
+                item_list.Foreground = new SolidColorBrush(Colors.Black);
                 viewimage_button.Foreground = new SolidColorBrush(Colors.Black);
                 viewimage_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/viewimage_light.png")));
+                back_library.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/back_button_light.png")));
                 edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_struct_button_light.png")));
                 edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button_light.png")));
                 delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button_light.png")));
                 add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button_light.png")));                
-            }
-            else
-            {
-                window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
-                page_title.Foreground = new SolidColorBrush(Colors.White);
-                page_content.Foreground = new SolidColorBrush(Colors.White);
-                search_box.Background = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
-                search_box.Foreground = new SolidColorBrush(Colors.White);
-                item_list.BorderBrush = new SolidColorBrush(Color.FromArgb(77, 77, 77, 77));
-                viewimage_button.Foreground = new SolidColorBrush(Colors.White);
-                viewimage_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/viewimage.png")));
-                edit_struct_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_struct_button.png")));
-                edit_item_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/edit_button.png")));
-                delete_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/delete_button.png")));
-                add_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/add_button.png")));                
             }
         }
 
@@ -263,6 +272,11 @@ namespace Gooboi
             base.OnPreviewMouseMove(e);
             if (e.StylusDevice == null)
                 Cursor = Cursors.Arrow;
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
