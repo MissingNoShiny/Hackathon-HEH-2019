@@ -49,6 +49,16 @@ namespace Gooboi
             for (int i = 0; i < textBoxes.Count; i++) {
                 textBoxes[i].Text = item.Values[i].Value.ToString();
             }
+            if (item.ImagePath != null) {
+                try {
+                    img_object.Source = new BitmapImage(item.ImagePath);
+                    img_object.Width = 150;
+                    img_object.Height = 150;
+                    imagePath = item.ImagePath;
+                } catch(Exception) {
+                    MessageBox.Show("Erreur lors du chargement de l'image", "Erreur", MessageBoxButton.OK);
+                }
+            }
         }
 
         private void InitializeWindow() {
@@ -178,7 +188,7 @@ namespace Gooboi
                     if (item.ImagePath != imagePath)
                         library.ModifyItem(item, new Item(attributes, imagePath));
                     else
-                        library.ModifyItem(item, new Item(attributes));
+                        library.ModifyItem(item, new Item(attributes, item.ImagePath));
                 } else {
                     if (imagePath != null)
                         library.AddItem(new Item(attributes, imagePath));
