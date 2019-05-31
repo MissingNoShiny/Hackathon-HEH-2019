@@ -228,8 +228,9 @@ namespace Gooboi
 
         private void Viewimage_button(object sender, RoutedEventArgs e)
         {
-            if (library.Items[item_list.SelectedIndex].ImagePath == null)
+            if (item_list.SelectedIndex < 0 || library.Items[item_list.SelectedIndex].ImagePath == null)
                 return;
+
             Window pic = new Window();
             pic.Show();
 

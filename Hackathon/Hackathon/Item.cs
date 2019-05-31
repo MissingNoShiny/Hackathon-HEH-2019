@@ -23,7 +23,7 @@ namespace Gooboi {
 
         public Item(List<Attribute> values, Uri imagePath) {
             Values = values;
-            imagePath = ImagePath;
+            ImagePath = imagePath;
         }
 
         //Return a List of all DataType of the Item attribute
