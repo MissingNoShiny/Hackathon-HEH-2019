@@ -62,7 +62,14 @@ namespace Gooboi
             {
                 delete_button.Width = 50;
                 edit_item_button.Width = 50;
-                viewimage_button.Width = 150;
+                if (library.Items[item_list.SelectedIndex].ImagePath != null)
+                {
+                    viewimage_button.Width = 150;
+                }
+                else
+                {
+                    viewimage_button.Width = 0;
+                }
             }
             if (Owner.WindowState != WindowState.Maximized)
             {
