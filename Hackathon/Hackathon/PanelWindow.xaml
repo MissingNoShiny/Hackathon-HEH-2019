@@ -81,7 +81,7 @@
         <TextBlock x:Name="page_content" Padding="10 5 300 9" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" Background="#22222222" FontSize="12" Foreground="White" TextAlignment="Center"
         Text="Gooboi" Width="300"/>
 
-        <Label x:Name="window_background" Padding="0 50 300 0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" Background="#44444444" Opacity="0.6" FontSize="12" Foreground="White"  Height="2000" Margin="0,30,0,-2000"></Label>
+        <Label x:Name="window_background" Padding="0 50 300 0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Segoe UI" Background="#44444444" Opacity="0.6" FontSize="12" Foreground="White"  Height="479" Margin="0,30,0,-9"></Label>
 
 
         <Label x:Name="page_title" Content="MENU" Width="200" Background="Transparent" FontFamily="Segoe UI Black" Margin="25,50,75,400" Foreground="White" FontSize="20"/>

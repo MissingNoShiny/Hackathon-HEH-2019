@@ -191,21 +191,21 @@ namespace Gooboi
                     case DataType.INTEGER:
                         try {
                             attributes.Add(new Attribute(Int32.Parse(value)));
-                        } catch (Exception ex) {
+                        } catch (Exception) {
                             attributes.Add(null);
                         }
                         break;
                     case DataType.BOOLEAN:
                         try {
                             attributes.Add(new Attribute(Boolean.Parse(value)));
-                        } catch (Exception ex) {
+                        } catch (Exception) {
                             attributes.Add(null);
                         }
                         break;
                     case DataType.DATE:
                         try {
                             attributes.Add(new Attribute(DateTime.Parse(value)));
-                        } catch (Exception ex) {
+                        } catch (Exception) {
                             attributes.Add(null);
                         }
                         break;
@@ -250,7 +250,7 @@ namespace Gooboi
                     else
                         library.AddItem(new Item(attributes));
                 }       
-            } catch (Exception ex) {
+            } catch (Exception) {
                 String action = edition ? "édition" : "ajout";
                 MessageBox.Show($"Une erreur s'est produite lors de l'{action} de l'objet.", "Erreur", MessageBoxButton.OK);
                 return;

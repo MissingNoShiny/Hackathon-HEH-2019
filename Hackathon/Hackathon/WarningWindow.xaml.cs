@@ -20,7 +20,6 @@ namespace Gooboi
     
     public partial class WarningWindow : Window
     {       
-        MainWindow mainWindow;
         public WarningWindow()
         {
             InitializeComponent();            

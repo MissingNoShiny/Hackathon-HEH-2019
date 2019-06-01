@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Gooboi
 {
@@ -258,6 +259,13 @@ namespace Gooboi
         {
             if (item_list.SelectedIndex < 0 || library.Items[item_list.SelectedIndex].ImagePath == null)
                 return;
+            BitmapImage im = null;
+            try {
+                im = new BitmapImage(library.Items[item_list.SelectedIndex].ImagePath);
+            } catch (FileNotFoundException) {
+                MessageBox.Show("L'image n'a pas pu être chargée", "Erreur", MessageBoxButton.OK);
+                return;
+            }
             this.Opacity = 0.5;
             BlurEffect blur;
             blur = new BlurEffect();
@@ -270,8 +278,6 @@ namespace Gooboi
             pic.Height = this.Height;
             pic.Width = this.Width;
             pic.Show();
-
-            BitmapImage im = new BitmapImage(library.Items[item_list.SelectedIndex].ImagePath);
             pic.content.Source = im;
         }
         /*DISABLE Touch Cursor*/
