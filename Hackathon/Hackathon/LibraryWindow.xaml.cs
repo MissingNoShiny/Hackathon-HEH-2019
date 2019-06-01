@@ -48,7 +48,6 @@ namespace Gooboi
                 edit_struct_button.Focusable = true;
             }
             page_title.Content = library.Nom;
-            this.Show();
         }
         private void Content_Load(object sender, EventArgs e)
         {
@@ -295,7 +294,9 @@ namespace Gooboi
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
-        {
+        {            
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            mainWindow.Opacity = 1;
             this.Close();
         }
     }

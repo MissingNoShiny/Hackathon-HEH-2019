@@ -137,6 +137,12 @@ namespace Gooboi
             panelWindow.Close();
             LibraryWindow window = new LibraryWindow(libraryManager, (Library) library_list.SelectedItem);
             window.Owner = this;
+            window.Top = this.Top + 30;
+            window.Left = this.Left + 7;
+            window.Height = this.Height - 38;
+            window.Width = this.Width - 15;
+            window.Show();
+            Opacity = 0;
         }
         private void Add_button(object sender, RoutedEventArgs e)
         {

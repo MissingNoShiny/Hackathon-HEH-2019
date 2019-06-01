@@ -35,7 +35,7 @@ namespace Gooboi
                     break;
                 case 2:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. La collection doit avoir un nom.";
+                    page_content.Text = "Impossible d'enregistrer la collection. La collection doit avoir un nom.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";
@@ -49,42 +49,63 @@ namespace Gooboi
                     break;
                 case 4:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. Le nom ne peut contenir que des lettres ou des chiffres.";
+                    page_content.Text = "Impossible d'enregistrer la collection. Le nom ne peut contenir que des lettres ou des chiffres.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";
                     break;
                 case 5:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. Une autre du même nom existe déjà, veuillez en choisir un différent.";
+                    page_content.Text = "Impossible d'enregistrer la collection. Une autre du même nom existe déjà, veuillez en choisir un différent.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";
                     break;
                 case 6:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. La collection doit avoir au moins un attribut.";
+                    page_content.Text = "Impossible d'enregistrer la collection. La collection doit avoir au moins un attribut.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";
                     break;
                 case 7:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. Un attribut n'a pas de nom.";
+                    page_content.Text = "Impossible d'enregistrer la collection. Un attribut n'a pas de nom.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";
                     break;
                 case 8:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. Tous les attributs doivent avoir un nom différent.";
+                    page_content.Text = "Impossible d'enregistrer la collection. Tous les attributs doivent avoir un nom différent.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";
                     break;
                 case 9:
                     page_title.Content = "Erreur";
-                    page_content.Text = "Impossible de créer la bibliothèque. Les noms d'attributs ne doivent contenir que des lettres ou des chiffres.";
+                    page_content.Text = "Impossible d'enregistrer la collection. Les noms d'attributs ne doivent contenir que des lettres ou des chiffres.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 10:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible d'enregistrer l'élément. L'un des champs n'est pas rempli.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 11:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible d'enregistrer l'élément. Le contenu ne peuvent pas dépasser 24 caractères.";
+                    yes.Width = 0;
+                    yes.Focusable = false;
+                    no.Content = "Ok";
+                    break;
+                case 12:
+                    page_title.Content = "Erreur";
+                    page_content.Text = "Impossible d'enregistrer l'élément. L'une des valeurs n'est pas au bon format.";
                     yes.Width = 0;
                     yes.Focusable = false;
                     no.Content = "Ok";

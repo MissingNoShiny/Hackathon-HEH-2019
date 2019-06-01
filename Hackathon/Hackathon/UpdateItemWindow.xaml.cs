@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
@@ -140,11 +141,47 @@ namespace Gooboi
             foreach (TextBox textBox in textBoxes) {
                 String value = textBox.Text;
                 if (String.IsNullOrEmpty(value)) {
-                    MessageBox.Show("Tous les attributs doivent avoir une valeur ! La valeur suivante ne respecte pas cette condition :\n" + textBox.Name, "Erreur", MessageBoxButton.OK);
+                    WarningWindow warning = new WarningWindow();//start
+                    warning.Owner = this;
+                    warning.Message_show(10);
+                    if (this.WindowState == WindowState.Normal)
+                    {
+                        warning.Width = Width / 1.5;
+                        warning.Left = Left + warning.Width / 4;
+                        warning.Height = Height / 2;
+                        warning.Top = Top + warning.Height / 2;
+                    }
+                    this.Opacity = 0.5;
+                    BlurEffect blur;
+                    blur = new BlurEffect();
+                    blur.Radius = 15;
+                    this.Effect = blur;
+                    warning.ShowDialog();
+                    warning.object_content.Text = textBox.Name;
+                    this.Opacity = 1;
+                    this.Effect = null;//end 
                     return;
                 }
                 if (value.Length > 24) {
-                    MessageBox.Show("Les valeurs ne peuvent pas dépasser 24 caractères. La valeur suivante ne respecte pas cette condition :\n" + textBox.Name, "Erreur", MessageBoxButton.OK);
+                    WarningWindow warning = new WarningWindow();//start
+                    warning.Owner = this;
+                    warning.Message_show(11);
+                    if (this.WindowState == WindowState.Normal)
+                    {
+                        warning.Width = Width / 1.5;
+                        warning.Left = Left + warning.Width / 4;
+                        warning.Height = Height / 2;
+                        warning.Top = Top + warning.Height / 2;
+                    }
+                    this.Opacity = 0.5;
+                    BlurEffect blur;
+                    blur = new BlurEffect();
+                    blur.Radius = 15;
+                    this.Effect = blur;
+                    warning.ShowDialog();
+                    warning.object_content.Text = textBox.Name;
+                    this.Opacity = 1;
+                    this.Effect = null;//end 
                     return;
                 }
                 switch (library.AttributeTypes[textBox.Name]) {
@@ -180,7 +217,25 @@ namespace Gooboi
                     badTextBoxes.Add(textBoxes[i].Name);
             }
             if (badTextBoxes.Count > 0) {
-                MessageBox.Show("Les valeurs suivantes ne sont pas au bon format : " + String.Join(", ", badTextBoxes), "Erreur", MessageBoxButton.OK);
+                WarningWindow warning = new WarningWindow();//start
+                warning.Owner = this;
+                warning.Message_show(12);
+                if (this.WindowState == WindowState.Normal)
+                {
+                    warning.Width = Width / 1.5;
+                    warning.Left = Left + warning.Width / 4;
+                    warning.Height = Height / 2;
+                    warning.Top = Top + warning.Height / 2;
+                }
+                this.Opacity = 0.5;
+                BlurEffect blur;
+                blur = new BlurEffect();
+                blur.Radius = 15;
+                this.Effect = blur;
+                warning.ShowDialog();
+                warning.object_content.Text = String.Join(", ", badTextBoxes);
+                this.Opacity = 1;
+                this.Effect = null;//end 
                 return;
             }
             try {
