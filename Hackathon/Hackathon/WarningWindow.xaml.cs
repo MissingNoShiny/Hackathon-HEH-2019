@@ -31,7 +31,7 @@ namespace Gooboi
             switch (message)
             {
                 case 1:
-                    page_content.Text = "Êtes-vous sûr de vouloir supprimer cette bibliothèque ? Cette action est irréversible.";
+                    page_content.Text = "Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.";
                     break;
                 case 2:
                     page_title.Content = "Erreur";
@@ -102,9 +102,25 @@ namespace Gooboi
 
         private void Yes_btn(object sender, RoutedEventArgs e)
         {
+            if (object_content.Text == "")
+            {
+                Yes_item();
+            }
+            else
+            {
+                Yes_libr();
+            }
+            Close();
+        }
+        private void Yes_libr()
+        {
             var mainWindow = (Application.Current.MainWindow as MainWindow);
             mainWindow.Delete_action();
-            Close();
+        }
+        private void Yes_item()
+        {
+            var librarywindow = Application.Current.Windows.OfType<LibraryWindow>().FirstOrDefault();
+            librarywindow.Delete_action();
         }
     }
 }

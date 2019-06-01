@@ -209,7 +209,7 @@
                 <ImageBrush ImageSource="Assets/search_button.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="edit_struct_button" Padding="0" Content="" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_struct_button" Focusable="False" Grid.ColumnSpan="2" >
+        <Button x:Name="edit_struct_button" Padding="0" Opacity="0.5" Content="" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Height="50" Width="0" FontSize="24" BorderBrush="#44444444" Foreground="White" Click="Edit_struct_button" Focusable="False" Grid.ColumnSpan="2" >
             <Button.Background>
                 <ImageBrush ImageSource="Assets/edit_struct_button.png"/>
             </Button.Background>

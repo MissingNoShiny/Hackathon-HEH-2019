@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -36,7 +37,7 @@ namespace Gooboi
             item_list.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Content_Load;
-            timer.Interval = TimeSpan.FromSeconds(0.25);
+            timer.Interval = TimeSpan.FromSeconds(0.0001);
             timer.Start();
 
             UpdateItems();
@@ -66,9 +67,9 @@ namespace Gooboi
             if (Owner.WindowState != WindowState.Maximized)
             {
                 this.Top = Owner.Top + 30;
-                this.Left = Owner.Left + 8;
+                this.Left = Owner.Left + 7;
                 this.Height = Owner.Height - 38;
-                this.Width = Owner.Width - 16;
+                this.Width = Owner.Width - 15;
             }
             else
             {
@@ -110,14 +111,33 @@ namespace Gooboi
             window.page_title.Content = "ÉDITER UN ÉLÉMENT";
             window.Show();
         }
-        private void Delete_button(object sender, RoutedEventArgs e)
+        public void Delete_action()
         {
             int index = item_list.SelectedIndex;
-            MessageBoxResult dialresult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cet item ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (dialresult == MessageBoxResult.Yes) {
-                library.RemoveItem(index);
-                UpdateItems();
+            library.RemoveItem(index);
+            UpdateItems();
+        }
+            private void Delete_button(object sender, RoutedEventArgs e)
+        {
+            WarningWindow warning = new WarningWindow();
+            warning.Owner = this;
+            warning.Message_show(1);
+            warning.object_content.Text = "";
+            if (this.WindowState == WindowState.Normal)
+            {
+                warning.Width = Width / 1.5;
+                warning.Left = Left + warning.Width / 4;
+                warning.Height = Height / 2;
+                warning.Top = Top + warning.Height / 2;
             }
+            this.Opacity = 0.5;
+            BlurEffect blur;
+            blur = new BlurEffect();
+            blur.Radius = 15;
+            this.Effect = blur;
+            warning.ShowDialog();
+            this.Opacity = 1;
+            this.Effect = null;            
         }
         private void Search_focus(object sender, RoutedEventArgs e)
         {
