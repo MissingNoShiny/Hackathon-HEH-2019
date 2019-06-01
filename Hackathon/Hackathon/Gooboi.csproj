@@ -282,8 +282,5 @@
   <ItemGroup>
     <Resource Include="Assets\cancel_btn.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\cancel_btn_light.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
