@@ -105,6 +105,9 @@
     <Compile Include="UpdateLibraryWindow.xaml.cs">
       <DependentUpon>UpdateLibraryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewWindow.xaml.cs">
+      <DependentUpon>ViewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WarningWindow.xaml.cs">
       <DependentUpon>WarningWindow.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateLibraryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,6 +278,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\viewimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cancel_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cancel_btn_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

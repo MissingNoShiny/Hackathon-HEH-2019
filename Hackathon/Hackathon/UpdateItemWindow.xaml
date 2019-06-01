@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Gooboi"
         mc:Ignorable="d"
         Title="UpdateItemWindow" Height="477" Width="400"
-       WindowStartupLocation="Manual"
+        WindowStartupLocation="Manual"
         Top="0"
         Left="-400"
         ResizeMode="NoResize"

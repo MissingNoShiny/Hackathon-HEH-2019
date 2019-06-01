@@ -258,17 +258,21 @@ namespace Gooboi
         {
             if (item_list.SelectedIndex < 0 || library.Items[item_list.SelectedIndex].ImagePath == null)
                 return;
-
-            Window pic = new Window();
+            this.Opacity = 0.5;
+            BlurEffect blur;
+            blur = new BlurEffect();
+            blur.Radius = 15;
+            this.Effect = blur;
+            ViewWindow pic = new ViewWindow();
+            pic.Owner = this;
+            pic.Top = this.Top;
+            pic.Left = this.Left;
+            pic.Height = this.Height;
+            pic.Width = this.Width;
             pic.Show();
 
             BitmapImage im = new BitmapImage(library.Items[item_list.SelectedIndex].ImagePath);
-            Image i = new Image();
-            i.Source = im;
-
-            ImageBrush brush = new ImageBrush();
-            brush.ImageSource = im;
-            pic.Background = brush;
+            pic.content.Source = im;
         }
         /*DISABLE Touch Cursor*/
         protected override void OnPreviewTouchDown(TouchEventArgs e)
