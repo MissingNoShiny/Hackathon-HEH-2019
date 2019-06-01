@@ -82,6 +82,7 @@ namespace Gooboi
                 this.Height = Owner.Height - 7;
                 var mainWindow = (Application.Current.MainWindow as MainWindow);
                 this.WindowState = mainWindow.WindowState;
+                window_background.Height = Height - 30;
             if (WindowState == WindowState.Maximized)
             {
                 mainWindow.Display_Fullscreen(true);
