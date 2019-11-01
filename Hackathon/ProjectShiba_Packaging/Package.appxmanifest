@@ -9,7 +9,7 @@
   <Identity
     Name="52133LFA-Interactive.Gooboi"
     Publisher="CN=539FF91F-07E5-499E-AFA4-0CF674AA6511"
-    Version="1.0.7.0" />
+    Version="1.0.8.0" />
 
   <Properties>
     <DisplayName>Gooboi</DisplayName>
