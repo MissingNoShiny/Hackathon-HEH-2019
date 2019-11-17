@@ -138,9 +138,9 @@ namespace Gooboi
             LibraryWindow window = new LibraryWindow(libraryManager, (Library) library_list.SelectedItem);
             window.Owner = this;
             window.Top = this.Top + 30;
-            window.Left = this.Left + 7;
-            window.Height = this.Height - 38;
-            window.Width = this.Width - 15;
+            window.Left = this.Left;
+            window.Height = this.Height - 30;
+            window.Width = this.Width;
             window.Show();
             Opacity = 0;
         }
@@ -205,7 +205,7 @@ namespace Gooboi
             search_button.Width = 25;
             if (Admin)
             {
-                library_list.Width = this.Width - 14;
+                library_list.Width = this.Width;
                 library_list.ItemsSource = new List<int>();
                 library_list.ItemsSource = libraryManager.Libraries;
                 library_list.Columns[0].MaxWidth = 0;
@@ -241,8 +241,8 @@ namespace Gooboi
                 if (panelWindow.IsLoaded)
                 {
                     this.WindowStyle = System.Windows.WindowStyle.None;
-                    navigation_button.Margin = new Thickness(300, 10, 0, 0);
-                    add_button.Margin = new Thickness(300, 0, 0, 10);
+                    navigation_button.Margin = new Thickness(305, 10, 0, 0);
+                    add_button.Margin = new Thickness(305, 0, 0, 10);
                 }
                 else
                 {
@@ -250,12 +250,16 @@ namespace Gooboi
                     navigation_button.Margin = new Thickness(10, 10, 0, 0);
                     add_button.Margin = new Thickness(10, 0, 0, 10);
                 }
+                ui_titlebar.Visibility = Visibility.Collapsed;
+                ui_page.Margin = new Thickness(5, 5, 5, 0);
             }
             else
             {
-                this.WindowStyle = System.Windows.WindowStyle.SingleBorderWindow;
+                this.WindowStyle = System.Windows.WindowStyle.None;
                 navigation_button.Margin = new Thickness(10, 10, 0, 0);
                 add_button.Margin = new Thickness(10, 0, 0, 10);
+                ui_titlebar.Visibility = Visibility.Visible;
+                ui_page.Margin = new Thickness(0, 30, 0, 0);
             }
         }
              
@@ -264,7 +268,7 @@ namespace Gooboi
         {
             if (Gooboi.Properties.Settings.Default.Theme=="Light")
             {
-                window_background.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                window_background.Background = new SolidColorBrush(Color.FromRgb(238, 238, 238));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 page_content.Foreground = new SolidColorBrush(Colors.Black);
                 library_list.Foreground = new SolidColorBrush(Colors.Black);
@@ -287,7 +291,7 @@ namespace Gooboi
             }
             else
             {
-                window_background.Background = new SolidColorBrush(Color.FromRgb(38, 38, 38));
+                window_background.Background = new SolidColorBrush(Color.FromRgb(21, 21, 21));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 page_content.Foreground = new SolidColorBrush(Colors.White);
                 library_list.Foreground = new SolidColorBrush(Colors.White);
@@ -367,7 +371,7 @@ namespace Gooboi
         {
             if (this.WindowState == WindowState.Normal)
             {
-                library_list.Width = this.Width-14;
+                library_list.Width = this.Width;
                 library_list.Height = this.Height - 140;
                 library_list.Margin = new Thickness(0, 7, 0, 70);
             }
@@ -424,6 +428,23 @@ namespace Gooboi
             base.OnPreviewMouseMove(e);
             if (e.StylusDevice == null)
                 Cursor = Cursors.Arrow;
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            panelWindow.DisableBlur();
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
+
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            panelWindow.EnableBlur();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

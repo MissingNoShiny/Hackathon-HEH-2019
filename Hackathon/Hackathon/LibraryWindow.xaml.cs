@@ -52,6 +52,8 @@ namespace Gooboi
         }
         private void Content_Load(object sender, EventArgs e)
         {
+            var mainWindow = (Application.Current.MainWindow as MainWindow);
+            this.WindowState = mainWindow.WindowState;
             if (item_list.SelectedItem == null)
             {
                 delete_button.Width = 0;
@@ -74,9 +76,9 @@ namespace Gooboi
             if (Owner.WindowState != WindowState.Maximized)
             {
                 this.Top = Owner.Top + 30;
-                this.Left = Owner.Left + 7;
-                this.Height = Owner.Height - 38;
-                this.Width = Owner.Width - 15;
+                this.Left = Owner.Left + 2;
+                this.Height = Owner.Height - 32;
+                this.Width = Owner.Width - 4;
             }
             else
             {

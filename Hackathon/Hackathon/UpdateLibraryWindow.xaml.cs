@@ -62,7 +62,7 @@ namespace Gooboi
             Theme();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Window_Position;
-            timer.Interval = TimeSpan.FromSeconds(0.0001);
+            timer.Interval = TimeSpan.FromSeconds(0.00001);
             timer.Start();
             this.Show();            
                 textBlocks = new List<TextBlock>();
@@ -358,7 +358,7 @@ namespace Gooboi
         {
             if (Gooboi.Properties.Settings.Default.Theme == "Light")
             {
-                window_background.Background = new SolidColorBrush(Color.FromRgb(217, 217, 217));
+                window_background.Background = new SolidColorBrush(Color.FromRgb(238, 238, 238));
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 nameText.Foreground = new SolidColorBrush(Colors.Black);
                 info.Foreground = new SolidColorBrush(Colors.Black);
@@ -372,12 +372,13 @@ namespace Gooboi
         private void Window_Position(object sender, EventArgs e)
         {
             var mainWindow = (Application.Current.MainWindow as MainWindow);
+            this.WindowState = mainWindow.WindowState;
             if (mainWindow.WindowState != WindowState.Maximized)
             {
                 this.Top = mainWindow.Top + 30;
-                this.Left = mainWindow.Left + 8;
-                this.Height = mainWindow.Height - 38;
-                this.Width = mainWindow.Width - 16;
+                this.Left = mainWindow.Left+2;
+                this.Height = mainWindow.Height - 32;
+                this.Width = mainWindow.Width - 4;
             }
             else
             {

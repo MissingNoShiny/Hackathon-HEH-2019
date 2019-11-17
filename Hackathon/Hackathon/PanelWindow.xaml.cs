@@ -39,7 +39,7 @@ namespace Gooboi
             this.Theme();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += Window_Position;
-            timer.Interval = TimeSpan.FromSeconds(0.0001);
+            timer.Interval = TimeSpan.FromSeconds(0.00001);
             timer.Start();
             EnableBlur();
             WindowState = mainWindow.WindowState;
@@ -78,24 +78,22 @@ namespace Gooboi
         private void Window_Position(object sender, EventArgs e)
         {
                 this.Top = Owner.Top;
-                this.Left = Owner.Left - 290;
-                this.Height = Owner.Height - 7;
+                this.Left = Owner.Left - 300;
+                this.Height = Owner.Height;
                 var mainWindow = (Application.Current.MainWindow as MainWindow);
                 this.WindowState = mainWindow.WindowState;
-                window_background.Height = Height - 30;
+                window_background.Height = Height;
             if (WindowState == WindowState.Maximized)
             {
                 mainWindow.Display_Fullscreen(true);
-                settings_button.Margin = new Thickness(10, 0, 0, 50);
                 page_title.Margin = new Thickness(25, 20, 75, 0);
-                page_content.Text = "";
+                page_content.Visibility = Visibility.Collapsed;
             }
             else
             {
                 mainWindow.Display_Fullscreen(false);
-                settings_button.Margin = new Thickness(10, 0, 0, 10);
                 page_title.Margin = new Thickness(25, 50, 75, 0);
-                page_content.Text = "Gooboi";
+                page_content.Visibility = Visibility.Visible;
             }
             
         }        
@@ -104,8 +102,8 @@ namespace Gooboi
         {
             if (Gooboi.Properties.Settings.Default.Theme == "Light")
             {
-                window_background.Background = new SolidColorBrush(Color.FromRgb(192, 192, 192));
-                window_background.Opacity = 0.3;
+                window_background.Background = new SolidColorBrush(Color.FromArgb(44,192, 192, 192));
+                window_background.Opacity = 0.1;
                 page_title.Foreground = new SolidColorBrush(Colors.Black);
                 window_titlebar.BorderBrush = new SolidColorBrush(Colors.White);
                 window_titlebar.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
@@ -117,16 +115,15 @@ namespace Gooboi
                 about_button.Foreground = new SolidColorBrush(Colors.Black);
                 about_button.Background = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 page_content.Foreground = new SolidColorBrush(Colors.Black);
-                settings_button.BorderBrush = new SolidColorBrush(Color.FromRgb(192, 192, 192));
                 settings_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/settings_button_light.png")));
             }
             else
             {
-                window_background.Background = new SolidColorBrush(Color.FromArgb(44,44, 44, 44));
+                window_background.Background = new SolidColorBrush(Color.FromRgb(21, 21, 21));
                 window_background.Opacity = 0.1;
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 window_titlebar.BorderBrush = new SolidColorBrush(Color.FromArgb(77,77, 77, 77));
-                window_titlebar.Background = new SolidColorBrush(Color.FromArgb(44,44, 44, 44));
+                window_titlebar.Background = new SolidColorBrush(Color.FromRgb(36, 36, 36));
                 window_titlebar.Opacity = 0.6;
                 admin_button.Foreground = new SolidColorBrush(Colors.White);
                 admin_button.Background = new SolidColorBrush(Color.FromRgb(36, 36, 36));
@@ -135,16 +132,31 @@ namespace Gooboi
                 about_button.Foreground = new SolidColorBrush(Colors.White);
                 about_button.Background = new SolidColorBrush(Color.FromRgb(36, 36, 36));
                 page_content.Foreground = new SolidColorBrush(Colors.White);
-                settings_button.BorderBrush = new SolidColorBrush(Color.FromArgb(77,77, 77, 77));
                 settings_button.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Assets/settings_button.png")));
             }
         }        
         public void EnableBlur() /*ABE_start*/
-        {
+        {            
             var windowHelper = new WindowInteropHelper(this);
             var accent = new AccentPolicy();
             accent.AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND;
-            accent.GradientColor = (_blurOpacity << 24) | (_blurBackgroundColor & 0xFFFFFF);
+            accent.GradientColor = 2013265920;
+            var accentStructSize = Marshal.SizeOf(accent);
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+            Marshal.FreeHGlobal(accentPtr);
+        }
+        internal void DisableBlur()
+        {            
+            var windowHelper = new WindowInteropHelper(this);
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_DISABLED;
+            accent.GradientColor = 2013265920;
             var accentStructSize = Marshal.SizeOf(accent);
             var accentPtr = Marshal.AllocHGlobal(accentStructSize);
             Marshal.StructureToPtr(accent, accentPtr, false);

@@ -119,7 +119,7 @@ namespace Gooboi
             }
             else
             {
-                window_background.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
+                window_background.Background = new SolidColorBrush(Color.FromRgb(26, 26, 26));
                 page_title.Foreground = new SolidColorBrush(Colors.White);
                 theme_set.Foreground = new SolidColorBrush(Colors.White);
                 admin_set.Foreground = new SolidColorBrush(Colors.White);
